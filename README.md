@@ -26,6 +26,8 @@ For each supported media file, `easr` writes:
 - `<name>.json` for downstream tools that need segments, tokens, timestamps,
   language metadata, and provider metadata
 - `<name>.metrics.json` when `--verbose` is enabled
+- `<name>.calibration.json` when `--calibrate` is enabled, including runs
+  where no text changed or calibration failed
 
 `easr` accepts files, directories, and glob patterns. Directory scans are
 non-recursive by default, and recursive processing is opt-in with `--recursive`.
@@ -48,6 +50,12 @@ Default provider models:
 
 - [`mlx-community/Qwen3-ASR-1.7B-bf16`](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16)
 - [`mlx-community/Qwen3-ForcedAligner-0.6B-bf16`](https://huggingface.co/mlx-community/Qwen3-ForcedAligner-0.6B-bf16)
+
+Optional text-calibration model:
+
+- [`mlx-community/Qwen3.5-4B-MLX-4bit`](https://huggingface.co/mlx-community/Qwen3.5-4B-MLX-4bit),
+  pinned to repository revision
+  `32f3e8ecf65426fc3306969496342d504bfa13f3`
 
 ## Installation
 
@@ -113,6 +121,12 @@ Show detailed progress and write metrics:
 
 ```bash
 easr ./demo.mp4 --verbose
+```
+
+Calibrate high-confidence English ASR errors before export:
+
+```bash
+easr ./demo.mp4 --calibrate
 ```
 
 ## Supported Formats
@@ -195,6 +209,7 @@ strategy, duration, window counts, quality pass counts, and window diagnostics.
 | `--granularity sentence` | Use segment boundaries for subtitle entries and JSON `items`. This is the default. |
 | `--granularity token` | Use token timing for subtitle entries and JSON `items`. |
 | `--no-vad` | Disable voice activity detection preprocessing. |
+| `--calibrate` | Review each English sentence with the pinned local Qwen3.5 model and apply only validated score-4/5 corrections. |
 | `--verbose` | Print detailed progress and write `<name>.metrics.json`. |
 | `--version` | Show the installed package version. |
 | `--help` | Show CLI help. |
@@ -214,6 +229,41 @@ easr ./demo.mp4 --no-vad
 
 If VAD fails, `easr` falls back to full-duration processing. If VAD succeeds and
 finds no speech, `easr` writes successful empty subtitle outputs.
+
+## Optional Text Calibration
+
+`--calibrate` runs after transcription, alignment, and final subtitle segment
+construction, but before SRT, VTT, and JSON rendering. Each target sentence is
+reviewed with up to the previous three sentences as read-only context. Earlier
+accepted corrections are used as rolling context.
+
+This path is experimental. The committed real-model baseline for the pinned
+revision currently fails the release quality gate (76.19% applied-proposal
+precision and 64% correctable-error recall, versus required thresholds of 95%
+and 70%). Inspect the versioned evaluation artifacts before relying on
+automatic corrections in production.
+
+The first calibrated run downloads the pinned, approximately 2.9GB model into
+the standard Hugging Face cache. The model is loaded lazily only when an
+English-containing correction unit is encountered and is then reused across
+the remaining files in the command.
+
+Only model proposals scored 4 or 5 are considered. Exact offsets, source text,
+overlaps, newlines, and sentence structure are checked programmatically before
+application. Scores 1 through 3 are discarded.
+
+Sentence-level SRT, VTT, and JSON output uses calibrated text. Original ASR
+tokens and token timestamps remain acoustic evidence, so `--granularity token`
+continues to emit the original token text. A changed JSON segment includes
+`original_text`; unchanged segments preserve the existing schema.
+
+Calibration failure never removes the ASR outputs:
+
+- `success` writes calibrated outputs and returns exit code `0`;
+- `partial` preserves successful corrections, leaves failed units unchanged,
+  writes all outputs, and returns exit code `1`;
+- `failed` writes uncalibrated ASR outputs plus the failed calibration audit
+  and returns exit code `1`.
 
 ## Shell Completion
 

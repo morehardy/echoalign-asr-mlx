@@ -1,0 +1,469 @@
+{
+  "source_path": "/tmp/easr-calibration-smoke.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 2,
+      "duration_sec": 30.0,
+      "quality_pass_count": 1,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 10.9,
+          "context_start": 0.0,
+          "context_end": 10.9,
+          "token_count": 22,
+          "timing_source_counts": {
+            "aligner": 22,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 10.45,
+          "quality": {
+            "passed": true,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "core_start": 23.2,
+          "core_end": 30.0,
+          "context_start": 23.2,
+          "context_end": 30.0,
+          "token_count": 18,
+          "timing_source_counts": {
+            "aligner": 18,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 1,
+          "display_start": 23.8,
+          "display_end": 30.0,
+          "quality": {
+            "passed": false,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.2222222222222222,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.03816793893129766,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 2
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-g_mkwswa/easr-calibration-smoke.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 30.0,
+      "raw_span_count": 3,
+      "alignment_unit_count": 2,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 10.1,
+          "input_start": 0.0,
+          "input_end": 10.9,
+          "source_span_count": 1
+        },
+        {
+          "index": 1,
+          "speech_start": 24.0,
+          "speech_end": 30.0,
+          "input_start": 23.2,
+          "input_end": 30.0,
+          "source_span_count": 2
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+      "start_time": 0.56,
+      "end_time": 4.76,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Hey",
+          "start_time": 0.56,
+          "end_time": 0.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "everyone,",
+          "start_time": 0.88,
+          "end_time": 1.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "and",
+          "start_time": 1.36,
+          "end_time": 1.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "welcome",
+          "start_time": 1.52,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "back",
+          "start_time": 1.92,
+          "end_time": 2.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 2.24,
+          "end_time": 2.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Metal",
+          "start_time": 2.32,
+          "end_time": 2.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Gear",
+          "start_time": 2.64,
+          "end_time": 2.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Solid",
+          "start_time": 2.88,
+          "end_time": 3.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Delta",
+          "start_time": 3.36,
+          "end_time": 3.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Snake",
+          "start_time": 3.84,
+          "end_time": 4.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Eater.",
+          "start_time": 4.32,
+          "end_time": 4.64,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "On this video, we're doing Mission Two, Operation Snake Eater.",
+      "start_time": 5.04,
+      "end_time": 8.68,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "On",
+          "start_time": 5.04,
+          "end_time": 5.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "this",
+          "start_time": 5.2,
+          "end_time": 5.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "video,",
+          "start_time": 5.36,
+          "end_time": 5.84,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "we're",
+          "start_time": 5.84,
+          "end_time": 5.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "doing",
+          "start_time": 5.92,
+          "end_time": 6.16,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Mission",
+          "start_time": 6.16,
+          "end_time": 6.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Two,",
+          "start_time": 6.48,
+          "end_time": 6.96,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Operation",
+          "start_time": 7.12,
+          "end_time": 7.84,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Snake",
+          "start_time": 7.84,
+          "end_time": 8.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Eater.",
+          "start_time": 8.32,
+          "end_time": 8.56,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-3",
+      "text": "Currently flying over the Arctic Ocean, altitude thirty thousand feet.",
+      "start_time": 23.8,
+      "end_time": 26.44,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Currently",
+          "start_time": 23.439999999999998,
+          "end_time": 23.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "flying",
+          "start_time": 23.68,
+          "end_time": 23.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "over",
+          "start_time": 24.0,
+          "end_time": 24.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 24.0,
+          "end_time": 24.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Arctic",
+          "start_time": 24.08,
+          "end_time": 24.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Ocean,",
+          "start_time": 24.32,
+          "end_time": 24.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "altitude",
+          "start_time": 24.96,
+          "end_time": 25.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "thirty",
+          "start_time": 25.439999999999998,
+          "end_time": 25.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "thousand",
+          "start_time": 25.759999999999998,
+          "end_time": 26.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "feet.",
+          "start_time": 26.16,
+          "end_time": 26.32,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-4",
+      "text": "Approaching Soviet airspace.",
+      "start_time": 26.56,
+      "end_time": 28.12,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Approaching",
+          "start_time": 26.56,
+          "end_time": 27.04,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Soviet",
+          "start_time": 27.04,
+          "end_time": 27.439999999999998,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "airspace.",
+          "start_time": 27.439999999999998,
+          "end_time": 28.0,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-5",
+      "text": "Arriving in the designated",
+      "start_time": 29.119999999999997,
+      "end_time": 30.0,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Arriving",
+          "start_time": 29.119999999999997,
+          "end_time": 29.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "in",
+          "start_time": 29.52,
+          "end_time": 29.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 29.6,
+          "end_time": 29.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "designated",
+          "start_time": 29.759999999999998,
+          "end_time": 30.0,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+      "start_time": 0.56,
+      "end_time": 4.76,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "On this video, we're doing Mission Two, Operation Snake Eater.",
+      "start_time": 5.04,
+      "end_time": 8.68,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-3",
+      "text": "Currently flying over the Arctic Ocean, altitude thirty thousand feet.",
+      "start_time": 23.8,
+      "end_time": 26.44,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-4",
+      "text": "Approaching Soviet airspace.",
+      "start_time": 26.56,
+      "end_time": 28.12,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-5",
+      "text": "Arriving in the designated",
+      "start_time": 29.119999999999997,
+      "end_time": 30.0,
+      "language": "['English']"
+    }
+  ]
+}

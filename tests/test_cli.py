@@ -1,4 +1,5 @@
 import io
+import json
 import subprocess
 import unittest
 from pathlib import Path
@@ -6,6 +7,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import asr
+from asr.calibration import CalibrationMetrics, CalibrationResult
 from asr.cli import (
     _version_callback,
     app,
@@ -87,6 +89,12 @@ class CliParserTest(unittest.TestCase):
 
         self.assertFalse(default_args.no_vad)
         self.assertTrue(disabled_args.no_vad)
+
+    def test_calibration_is_opt_in(self) -> None:
+        parser = build_parser()
+
+        self.assertFalse(parser.parse_args([]).calibrate)
+        self.assertTrue(parser.parse_args(["demo.mp4", "--calibrate"]).calibrate)
 
 
 class CliEnvironmentPreflightTest(unittest.TestCase):
@@ -254,6 +262,175 @@ class CliCompletionInstallTest(unittest.TestCase):
 
 
 class CliObservabilityIntegrationTest(unittest.TestCase):
+    @patch("asr.cli.create_calibration_corrector")
+    @patch("asr.cli.calibrate_document")
+    @patch("asr.cli.discover_cli_sources")
+    @patch("asr.cli.run_environment_preflight")
+    @patch("asr.cli.process_media_file")
+    def test_main_calibrates_and_writes_audit_only_when_requested(
+        self,
+        mock_process,
+        mock_preflight,
+        mock_discover,
+        mock_calibrate,
+        mock_create_corrector,
+    ) -> None:
+        with TemporaryDirectory() as tmp:
+            source = Path(tmp) / "demo.mov"
+            source.write_text("x", encoding="utf-8")
+            output_root = Path(tmp) / "outputs"
+            document = TranscriptionDocument(
+                source_path=str(source.with_suffix(".wav")),
+                provider_name="fake",
+                segments=[],
+            )
+            mock_discover.return_value = [(source, Path(tmp))]
+            mock_preflight.return_value = (True, "")
+            mock_process.return_value = document
+            result = CalibrationResult(status="success", source_path=str(source))
+            mock_calibrate.return_value = (document, result)
+
+            exit_code = main(
+                [
+                    str(source),
+                    "--calibrate",
+                    "--output-dir",
+                    str(output_root),
+                ]
+            )
+
+            self.assertEqual(exit_code, 0)
+            mock_create_corrector.assert_called_once_with()
+            mock_calibrate.assert_called_once_with(
+                document,
+                corrector=mock_create_corrector.return_value,
+            )
+            payload = json.loads(
+                (output_root / "demo.calibration.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(payload["status"], "success")
+
+    @patch("asr.cli.create_calibration_corrector")
+    @patch("asr.cli.calibrate_document")
+    @patch("asr.cli.discover_cli_sources")
+    @patch("asr.cli.run_environment_preflight")
+    @patch("asr.cli.process_media_file")
+    def test_verbose_metrics_include_calibration_counts(
+        self,
+        mock_process,
+        mock_preflight,
+        mock_discover,
+        mock_calibrate,
+        mock_create_corrector,
+    ) -> None:
+        with TemporaryDirectory() as tmp:
+            source = Path(tmp) / "demo.mov"
+            source.write_text("x", encoding="utf-8")
+            output_root = Path(tmp) / "outputs"
+            document = TranscriptionDocument(
+                source_path=str(source),
+                provider_name="fake",
+                segments=[],
+            )
+            mock_discover.return_value = [(source, Path(tmp))]
+            mock_preflight.return_value = (True, "")
+            mock_process.return_value = document
+            metrics = CalibrationMetrics(
+                eligible_unit_count=2,
+                model_request_count=3,
+                retry_count=1,
+                low_confidence_discard_count=4,
+                applied_proposal_count=1,
+                corrected_unit_count=1,
+                rejected_proposal_count=2,
+                unit_error_count=0,
+            )
+            mock_calibrate.return_value = (
+                document,
+                CalibrationResult(
+                    status="success",
+                    source_path=str(source),
+                    metrics=metrics,
+                ),
+            )
+
+            exit_code = main(
+                [
+                    str(source),
+                    "--calibrate",
+                    "--verbose",
+                    "--output-dir",
+                    str(output_root),
+                ]
+            )
+
+            self.assertEqual(exit_code, 0)
+            payload = json.loads(
+                (output_root / "demo.metrics.json").read_text(encoding="utf-8")
+            )
+            calibration_step = next(
+                step
+                for step in payload["steps"]
+                if step["name"] == "calibrate_text"
+            )
+            self.assertEqual(
+                calibration_step["meta"]["counts"],
+                metrics.to_dict(),
+            )
+
+    @patch("asr.cli.create_calibration_corrector")
+    @patch("asr.cli.calibrate_document")
+    @patch("asr.cli.discover_cli_sources")
+    @patch("asr.cli.run_environment_preflight")
+    @patch("asr.cli.process_media_file")
+    def test_failed_calibration_preserves_asr_outputs_and_returns_one(
+        self,
+        mock_process,
+        mock_preflight,
+        mock_discover,
+        mock_calibrate,
+        mock_create_corrector,
+    ) -> None:
+        with TemporaryDirectory() as tmp:
+            source = Path(tmp) / "demo.mov"
+            source.write_text("x", encoding="utf-8")
+            output_root = Path(tmp) / "outputs"
+            document = TranscriptionDocument(
+                source_path=str(source.with_suffix(".wav")),
+                provider_name="fake",
+                segments=[],
+            )
+            mock_discover.return_value = [(source, Path(tmp))]
+            mock_preflight.return_value = (True, "")
+            mock_process.return_value = document
+            mock_calibrate.return_value = (
+                document,
+                CalibrationResult(
+                    status="failed",
+                    source_path=str(source),
+                    error="model unavailable",
+                ),
+            )
+
+            stderr = io.StringIO()
+            with patch("sys.stderr", stderr):
+                exit_code = main(
+                    [
+                        str(source),
+                        "--calibrate",
+                        "--output-dir",
+                        str(output_root),
+                    ]
+                )
+
+            self.assertEqual(exit_code, 1)
+            self.assertTrue((output_root / "demo.srt").exists())
+            self.assertTrue((output_root / "demo.vtt").exists())
+            self.assertTrue((output_root / "demo.json").exists())
+            self.assertTrue((output_root / "demo.calibration.json").exists())
+            self.assertIn("calibration failed", stderr.getvalue())
+            self.assertIn("model unavailable", stderr.getvalue())
+
     @patch("asr.cli.ConsoleProgressObserver")
     @patch("asr.cli.discover_cli_sources")
     @patch("asr.cli.run_environment_preflight")

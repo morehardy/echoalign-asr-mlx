@@ -1,0 +1,1648 @@
+{
+  "schema_version": 1,
+  "source": "tests/e2e/outputs/Metal Gear Solid Delta.json",
+  "description": "Real ASR correction units; correctable cases contain deterministic ASR-like corruptions with verified source text as the answer.",
+  "cases": [
+    {
+      "id": "seg-1:unit-1:spelling",
+      "source_unit_id": "seg-1:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [],
+      "target": "Hey everone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+      "acceptable": [
+        {
+          "start": 4,
+          "end": 11,
+          "source": "everone",
+          "replacement": "everyone"
+        }
+      ]
+    },
+    {
+      "id": "seg-2:unit-1:spelling",
+      "source_unit_id": "seg-2:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater."
+      ],
+      "target": "On this video, we're doing Mission Two, Opertion Snake Eater.",
+      "acceptable": [
+        {
+          "start": 40,
+          "end": 48,
+          "source": "Opertion",
+          "replacement": "Operation"
+        }
+      ]
+    },
+    {
+      "id": "seg-3:unit-1:spelling",
+      "source_unit_id": "seg-3:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+        "On this video, we're doing Mission Two, Operation Snake Eater."
+      ],
+      "target": "Currntly flying over the Arctic Ocean, altitude thirty thousand feet.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Currntly",
+          "replacement": "Currently"
+        }
+      ]
+    },
+    {
+      "id": "seg-4:unit-1:spelling",
+      "source_unit_id": "seg-4:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+        "On this video, we're doing Mission Two, Operation Snake Eater.",
+        "Currently flying over the Arctic Ocean, altitude thirty thousand feet."
+      ],
+      "target": "Approching Soviet airspace.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 10,
+          "source": "Approching",
+          "replacement": "Approaching"
+        }
+      ]
+    },
+    {
+      "id": "seg-5:unit-1:spelling",
+      "source_unit_id": "seg-5:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "On this video, we're doing Mission Two, Operation Snake Eater.",
+        "Currently flying over the Arctic Ocean, altitude thirty thousand feet.",
+        "Approaching Soviet airspace."
+      ],
+      "target": "Arriing at the designated drone launch point.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 7,
+          "source": "Arriing",
+          "replacement": "Arriving"
+        }
+      ]
+    },
+    {
+      "id": "seg-6:unit-1:spelling",
+      "source_unit_id": "seg-6:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Currently flying over the Arctic Ocean, altitude thirty thousand feet.",
+        "Approaching Soviet airspace.",
+        "Arriving at the designated drone launch point."
+      ],
+      "target": "Drone oil presure and voltage are nominal.",
+      "acceptable": [
+        {
+          "start": 10,
+          "end": 17,
+          "source": "presure",
+          "replacement": "pressure"
+        }
+      ]
+    },
+    {
+      "id": "seg-8:unit-1:spelling",
+      "source_unit_id": "seg-8:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Arriving at the designated drone launch point.",
+        "Drone oil pressure and voltage are nominal.",
+        "Payload oxygen supply is nominal."
+      ],
+      "target": "Power supply to payload anti-reeze system shows no problems.",
+      "acceptable": [
+        {
+          "start": 24,
+          "end": 34,
+          "source": "anti-reeze",
+          "replacement": "anti-freeze"
+        }
+      ]
+    },
+    {
+      "id": "seg-10:unit-1:spelling",
+      "source_unit_id": "seg-10:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Payload oxygen supply is nominal.",
+        "Power supply to payload anti-freeze system shows no problems.",
+        "No gusts."
+      ],
+      "target": "All systems go for drone detacment.",
+      "acceptable": [
+        {
+          "start": 25,
+          "end": 34,
+          "source": "detacment",
+          "replacement": "detachment"
+        }
+      ]
+    },
+    {
+      "id": "seg-12:unit-1:spelling",
+      "source_unit_id": "seg-12:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "No gusts.",
+        "All systems go for drone detachment.",
+        "Snake, we can't risk a halo jump this time around."
+      ],
+      "target": "Airsace security has gotten tighter since we were last here.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 7,
+          "source": "Airsace",
+          "replacement": "Airspace"
+        }
+      ]
+    },
+    {
+      "id": "seg-13:unit-1:spelling",
+      "source_unit_id": "seg-13:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "All systems go for drone detachment.",
+        "Snake, we can't risk a halo jump this time around.",
+        "Airspace security has gotten tighter since we were last here."
+      ],
+      "target": "We can't get as close to the ground as we did during the virtous mission.",
+      "acceptable": [
+        {
+          "start": 57,
+          "end": 64,
+          "source": "virtous",
+          "replacement": "virtuous"
+        }
+      ]
+    },
+    {
+      "id": "seg-18:unit-1:spelling",
+      "source_unit_id": "seg-18:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Snake, you're being given an honor on par with Alan Shepard.",
+        "This is our last chance.",
+        "Show your patriotism."
+      ],
+      "target": "If you fail, you'll be back in a hosptal bed again, waiting for the firing squad.",
+      "acceptable": [
+        {
+          "start": 33,
+          "end": 40,
+          "source": "hosptal",
+          "replacement": "hospital"
+        }
+      ]
+    },
+    {
+      "id": "seg-19:unit-1:spelling",
+      "source_unit_id": "seg-19:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "This is our last chance.",
+        "Show your patriotism.",
+        "If you fail, you'll be back in a hospital bed again, waiting for the firing squad."
+      ],
+      "target": "So how does it feel to be a patient in one of the most advaced ICUs in the world?",
+      "acceptable": [
+        {
+          "start": 55,
+          "end": 62,
+          "source": "advaced",
+          "replacement": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "seg-20:unit-1:spelling",
+      "source_unit_id": "seg-20:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Show your patriotism.",
+        "If you fail, you'll be back in a hospital bed again, waiting for the firing squad.",
+        "So how does it feel to be a patient in one of the most advanced ICUs in the world?"
+      ],
+      "target": "Would you do me a favor and tell the suits about visiing hours?",
+      "acceptable": [
+        {
+          "start": 49,
+          "end": 56,
+          "source": "visiing",
+          "replacement": "visiting"
+        }
+      ]
+    },
+    {
+      "id": "seg-21:unit-1:spelling",
+      "source_unit_id": "seg-21:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "If you fail, you'll be back in a hospital bed again, waiting for the firing squad.",
+        "So how does it feel to be a patient in one of the most advanced ICUs in the world?",
+        "Would you do me a favor and tell the suits about visiting hours?"
+      ],
+      "target": "I'll never get better with them assauting me day and night with their questions.",
+      "acceptable": [
+        {
+          "start": 32,
+          "end": 41,
+          "source": "assauting",
+          "replacement": "assaulting"
+        }
+      ]
+    },
+    {
+      "id": "seg-23:unit-1:spelling",
+      "source_unit_id": "seg-23:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Would you do me a favor and tell the suits about visiting hours?",
+        "I'll never get better with them assaulting me day and night with their questions.",
+        "Must be part of the top brass's inquiry."
+      ],
+      "target": "More like an interrgation.",
+      "acceptable": [
+        {
+          "start": 13,
+          "end": 25,
+          "source": "interrgation",
+          "replacement": "interrogation"
+        }
+      ]
+    },
+    {
+      "id": "seg-24:unit-1:spelling",
+      "source_unit_id": "seg-24:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "I'll never get better with them assaulting me day and night with their questions.",
+        "Must be part of the top brass's inquiry.",
+        "More like an interrogation."
+      ],
+      "target": "Accoding to them, I'm a traitor and an accomplice to the boss's defection.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Accoding",
+          "replacement": "According"
+        }
+      ]
+    },
+    {
+      "id": "seg-25:unit-1:spelling",
+      "source_unit_id": "seg-25:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Must be part of the top brass's inquiry.",
+        "More like an interrogation.",
+        "According to them, I'm a traitor and an accomplice to the boss's defection."
+      ],
+      "target": "They're just looking for a scapgoat.",
+      "acceptable": [
+        {
+          "start": 27,
+          "end": 35,
+          "source": "scapgoat",
+          "replacement": "scapegoat"
+        }
+      ]
+    },
+    {
+      "id": "seg-27:unit-1:spelling",
+      "source_unit_id": "seg-27:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "According to them, I'm a traitor and an accomplice to the boss's defection.",
+        "They're just looking for a scapegoat.",
+        "Does that mean they're after you too?"
+      ],
+      "target": "Let's just say neither one of us is going to be made a natinal hero out of this.",
+      "acceptable": [
+        {
+          "start": 55,
+          "end": 62,
+          "source": "natinal",
+          "replacement": "national"
+        }
+      ]
+    },
+    {
+      "id": "seg-33:unit-1:spelling",
+      "source_unit_id": "seg-33:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "This fox is still one step ahead of the hounds.",
+        "The reason I came to see you today, Jack, it's time for Fox to clear its name.",
+        "What are you talking about?"
+      ],
+      "target": "The sitution has changed.",
+      "acceptable": [
+        {
+          "start": 4,
+          "end": 12,
+          "source": "sitution",
+          "replacement": "situation"
+        }
+      ]
+    },
+    {
+      "id": "seg-43:unit-1:spelling",
+      "source_unit_id": "seg-43:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "They decided when they're going to execute us?",
+        "No.",
+        "Something even bigger."
+      ],
+      "target": "Yestrday, the White House received an unexpected call.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Yestrday",
+          "replacement": "Yesterday"
+        }
+      ]
+    },
+    {
+      "id": "seg-47:unit-1:spelling",
+      "source_unit_id": "seg-47:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "President Johnson.",
+        "Yes, I hear you, Mr.",
+        "Chairman."
+      ],
+      "target": "It was a hotline call from Khruschev to President Johnson.",
+      "acceptable": [
+        {
+          "start": 27,
+          "end": 36,
+          "source": "Khruschev",
+          "replacement": "Khrushchev"
+        }
+      ]
+    },
+    {
+      "id": "seg-54:unit-1:spelling",
+      "source_unit_id": "seg-54:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "nuclear explosion.",
+        "At about the same time, our anti-aircraft radar picked up a signature that appeared to come from one of your military",
+        "aircraft."
+      ],
+      "target": "Does any of this sound famiiar to you?",
+      "acceptable": [
+        {
+          "start": 23,
+          "end": 30,
+          "source": "famiiar",
+          "replacement": "familiar"
+        }
+      ]
+    },
+    {
+      "id": "seg-55:unit-1:spelling",
+      "source_unit_id": "seg-55:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "At about the same time, our anti-aircraft radar picked up a signature that appeared to come from one of your military",
+        "aircraft.",
+        "Does any of this sound familiar to you?"
+      ],
+      "target": "In retalation, I have placed our armed forces on secondary alert.",
+      "acceptable": [
+        {
+          "start": 3,
+          "end": 13,
+          "source": "retalation",
+          "replacement": "retaliation"
+        }
+      ]
+    },
+    {
+      "id": "seg-56:unit-1:spelling",
+      "source_unit_id": "seg-56:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "aircraft.",
+        "Does any of this sound familiar to you?",
+        "In retaliation, I have placed our armed forces on secondary alert."
+      ],
+      "target": "Depeding on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon.",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Depeding",
+          "replacement": "Depending"
+        }
+      ]
+    },
+    {
+      "id": "seg-57:unit-1:spelling",
+      "source_unit_id": "seg-57:unit-1",
+      "label": "correctable",
+      "category": "spelling",
+      "context": [
+        "Does any of this sound familiar to you?",
+        "In retaliation, I have placed our armed forces on secondary alert.",
+        "Depending on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon."
+      ],
+      "target": "With the help of your predeessor, I was able to survive the Cuban incident.",
+      "acceptable": [
+        {
+          "start": 22,
+          "end": 32,
+          "source": "predeessor",
+          "replacement": "predecessor"
+        }
+      ]
+    },
+    {
+      "id": "seg-14:unit-1:homophone",
+      "source_unit_id": "seg-14:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Snake, we can't risk a halo jump this time around.",
+        "Airspace security has gotten tighter since we were last here.",
+        "We can't get as close to the ground as we did during the virtuous mission."
+      ],
+      "target": "So instead, we'll be using won of our newest weapons.",
+      "acceptable": [
+        {
+          "start": 27,
+          "end": 30,
+          "source": "won",
+          "replacement": "one"
+        }
+      ]
+    },
+    {
+      "id": "seg-15:unit-1:homophone",
+      "source_unit_id": "seg-15:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Airspace security has gotten tighter since we were last here.",
+        "We can't get as close to the ground as we did during the virtuous mission.",
+        "So instead, we'll be using one of our newest weapons."
+      ],
+      "target": "Snake, your being given an honor on par with Alan Shepard.",
+      "acceptable": [
+        {
+          "start": 7,
+          "end": 11,
+          "source": "your",
+          "replacement": "you're"
+        }
+      ]
+    },
+    {
+      "id": "seg-28:unit-1:homophone",
+      "source_unit_id": "seg-28:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "They're just looking for a scapegoat.",
+        "Does that mean they're after you too?",
+        "Let's just say neither one of us is going to be made a national hero out of this."
+      ],
+      "target": "Does this mean Fox is going two die?",
+      "acceptable": [
+        {
+          "start": 28,
+          "end": 31,
+          "source": "two",
+          "replacement": "to"
+        }
+      ]
+    },
+    {
+      "id": "seg-30:unit-1:homophone",
+      "source_unit_id": "seg-30:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Let's just say neither one of us is going to be made a national hero out of this.",
+        "Does this mean Fox is going to die?",
+        "No."
+      ],
+      "target": "This fox is still won step ahead of the hounds.",
+      "acceptable": [
+        {
+          "start": 18,
+          "end": 21,
+          "source": "won",
+          "replacement": "one"
+        }
+      ]
+    },
+    {
+      "id": "seg-31:unit-1:homophone",
+      "source_unit_id": "seg-31:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Does this mean Fox is going to die?",
+        "No.",
+        "This fox is still one step ahead of the hounds."
+      ],
+      "target": "The reason I came two see you today, Jack, it's time for Fox to clear its name.",
+      "acceptable": [
+        {
+          "start": 18,
+          "end": 21,
+          "source": "two",
+          "replacement": "to"
+        }
+      ]
+    },
+    {
+      "id": "seg-34:unit-1:homophone",
+      "source_unit_id": "seg-34:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "The reason I came to see you today, Jack, it's time for Fox to clear its name.",
+        "What are you talking about?",
+        "The situation has changed."
+      ],
+      "target": "We still got a chance two come out of this one alive.",
+      "acceptable": [
+        {
+          "start": 22,
+          "end": 25,
+          "source": "two",
+          "replacement": "to"
+        }
+      ]
+    },
+    {
+      "id": "seg-40:unit-1:homophone",
+      "source_unit_id": "seg-40:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Here, have a cigar.",
+        "It's Cuba.",
+        "This morning I had a meeting with the CIA."
+      ],
+      "target": "They decided when they're going two execute us?",
+      "acceptable": [
+        {
+          "start": 32,
+          "end": 35,
+          "source": "two",
+          "replacement": "to"
+        }
+      ]
+    },
+    {
+      "id": "seg-59:unit-1:homophone",
+      "source_unit_id": "seg-59:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Depending on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon.",
+        "With the help of your predecessor, I was able to survive the Cuban incident.",
+        "But my power is not as great as it once was."
+      ],
+      "target": "If I am two survive this crisis, I must have your full cooperation.",
+      "acceptable": [
+        {
+          "start": 8,
+          "end": 11,
+          "source": "two",
+          "replacement": "to"
+        }
+      ]
+    },
+    {
+      "id": "seg-61:unit-1:homophone",
+      "source_unit_id": "seg-61:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "But my power is not as great as it once was.",
+        "If I am to survive this crisis, I must have your full cooperation.",
+        "I should have contacted you myself."
+      ],
+      "target": "Did you no that one of our soldiers defected to your country a week ago?",
+      "acceptable": [
+        {
+          "start": 8,
+          "end": 10,
+          "source": "no",
+          "replacement": "know"
+        }
+      ]
+    },
+    {
+      "id": "seg-71:unit-1:homophone",
+      "source_unit_id": "seg-71:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Who is the soldier?",
+        "Her name is the boss.",
+        "She's a living legend."
+      ],
+      "target": "During World War II, she was the won who led us to victory in that war.",
+      "acceptable": [
+        {
+          "start": 33,
+          "end": 36,
+          "source": "won",
+          "replacement": "one"
+        }
+      ]
+    },
+    {
+      "id": "seg-72:unit-1:homophone",
+      "source_unit_id": "seg-72:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "Her name is the boss.",
+        "She's a living legend.",
+        "During World War II, she was the one who led us to victory in that war."
+      ],
+      "target": "In Russia, you no her as Voyevoda.",
+      "acceptable": [
+        {
+          "start": 15,
+          "end": 17,
+          "source": "no",
+          "replacement": "know"
+        }
+      ]
+    },
+    {
+      "id": "seg-74:unit-1:homophone",
+      "source_unit_id": "seg-74:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "During World War II, she was the one who led us to victory in that war.",
+        "In Russia, you know her as Voyevoda.",
+        "You mean"
+      ],
+      "target": "the Boss, the mother of you're special forces?",
+      "acceptable": [
+        {
+          "start": 24,
+          "end": 30,
+          "source": "you're",
+          "replacement": "your"
+        }
+      ]
+    },
+    {
+      "id": "seg-76:unit-1:homophone",
+      "source_unit_id": "seg-76:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "You mean",
+        "the Boss, the mother of your special forces?",
+        "Yes, that's the one."
+      ],
+      "target": "And she took too miniature nuclear shells along with her.",
+      "acceptable": [
+        {
+          "start": 13,
+          "end": 16,
+          "source": "too",
+          "replacement": "two"
+        }
+      ]
+    },
+    {
+      "id": "seg-77:unit-1:homophone",
+      "source_unit_id": "seg-77:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "the Boss, the mother of your special forces?",
+        "Yes, that's the one.",
+        "And she took two miniature nuclear shells along with her."
+      ],
+      "target": "The Boss took too miniature nuclear shells.",
+      "acceptable": [
+        {
+          "start": 14,
+          "end": 17,
+          "source": "too",
+          "replacement": "two"
+        }
+      ]
+    },
+    {
+      "id": "seg-80:unit-1:homophone",
+      "source_unit_id": "seg-80:unit-1",
+      "label": "correctable",
+      "category": "homophone",
+      "context": [
+        "The Boss took two miniature nuclear shells.",
+        "I'm afraid so.",
+        "I believe they were a gift for her new hosts."
+      ],
+      "target": "The Davy Crockett atomic battle group delivery system was completed too years ago.",
+      "acceptable": [
+        {
+          "start": 68,
+          "end": 71,
+          "source": "too",
+          "replacement": "two"
+        }
+      ]
+    },
+    {
+      "id": "seg-58:unit-1:wrong_word_or_phrase",
+      "source_unit_id": "seg-58:unit-1",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "context": [
+        "In retaliation, I have placed our armed forces on secondary alert.",
+        "Depending on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon.",
+        "With the help of your predecessor, I was able to survive the Cuban incident."
+      ],
+      "target": "But my flower is not as great as it once was.",
+      "acceptable": [
+        {
+          "start": 7,
+          "end": 13,
+          "source": "flower",
+          "replacement": "power"
+        }
+      ]
+    },
+    {
+      "id": "seg-93:unit-1:wrong_word_or_phrase",
+      "source_unit_id": "seg-93:unit-1",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "context": [
+        "weapons.",
+        "Am I right so far?",
+        "Yes, that's correct."
+      ],
+      "target": "And the American governor denies any involvement in the affair.",
+      "acceptable": [
+        {
+          "start": 17,
+          "end": 25,
+          "source": "governor",
+          "replacement": "government"
+        }
+      ]
+    },
+    {
+      "id": "seg-98:unit-1:wrong_word_or_phrase",
+      "source_unit_id": "seg-98:unit-1",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "context": [
+        "That's correct.",
+        "We were not involved in any way.",
+        "Then, what was a U.S."
+      ],
+      "target": "mystery aircraft doing on our radar screen?",
+      "acceptable": [
+        {
+          "start": 0,
+          "end": 7,
+          "source": "mystery",
+          "replacement": "military"
+        }
+      ]
+    },
+    {
+      "id": "seg-99:unit-1:wrong_word_or_phrase",
+      "source_unit_id": "seg-99:unit-1",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "context": [
+        "We were not involved in any way.",
+        "Then, what was a U.S.",
+        "military aircraft doing on our radar screen?"
+      ],
+      "target": "It was clearly in a violation of our air place, and yet you say it was not acting under your orders.",
+      "acceptable": [
+        {
+          "start": 37,
+          "end": 46,
+          "source": "air place",
+          "replacement": "airspace"
+        }
+      ]
+    },
+    {
+      "id": "seg-101:unit-1:wrong_word_or_phrase",
+      "source_unit_id": "seg-101:unit-1",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "context": [
+        "military aircraft doing on our radar screen?",
+        "It was clearly in a violation of our airspace, and yet you say it was not acting under your orders.",
+        "That's correct."
+      ],
+      "target": "You expect me to believe that this was all the work of a single shoulder?",
+      "acceptable": [
+        {
+          "start": 64,
+          "end": 72,
+          "source": "shoulder",
+          "replacement": "soldier"
+        }
+      ]
+    },
+    {
+      "id": "seg-2:unit-1:proper_name",
+      "source_unit_id": "seg-2:unit-1",
+      "label": "correctable",
+      "category": "proper_name",
+      "context": [
+        "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater."
+      ],
+      "target": "On this video, we're doing Mission Two, Operation Snape Eater.",
+      "acceptable": [
+        {
+          "start": 50,
+          "end": 55,
+          "source": "Snape",
+          "replacement": "Snake"
+        }
+      ]
+    },
+    {
+      "id": "seg-31:unit-1:proper_name",
+      "source_unit_id": "seg-31:unit-1",
+      "label": "correctable",
+      "category": "proper_name",
+      "context": [
+        "Does this mean Fox is going to die?",
+        "No.",
+        "This fox is still one step ahead of the hounds."
+      ],
+      "target": "The reason I came to see you today, Jack, it's time for Fawkes to clear its name.",
+      "acceptable": [
+        {
+          "start": 56,
+          "end": 62,
+          "source": "Fawkes",
+          "replacement": "Fox"
+        }
+      ]
+    },
+    {
+      "id": "seg-117:unit-1:proper_name",
+      "source_unit_id": "seg-117:unit-1",
+      "label": "correctable",
+      "category": "proper_name",
+      "context": [
+        "The boss should be close to Colonel Volgin.",
+        "How about a little co-action?",
+        "I would not expect too much if I were you."
+      ],
+      "target": "The political situation here is unstable, and Colonel Vulcan is a member of the Brezhnev faction, which seeks seeks to topple my government.",
+      "acceptable": [
+        {
+          "start": 54,
+          "end": 60,
+          "source": "Vulcan",
+          "replacement": "Volgin"
+        }
+      ]
+    },
+    {
+      "id": "seg-118:unit-1:proper_name",
+      "source_unit_id": "seg-118:unit-1",
+      "label": "correctable",
+      "category": "proper_name",
+      "context": [
+        "How about a little co-action?",
+        "I would not expect too much if I were you.",
+        "The political situation here is unstable, and Colonel Volgin is a member of the Brezhnev faction, which seeks seeks to topple my government."
+      ],
+      "target": "One week, you have only one week, and if it is not too much to ask, do something about Vulcan as well.",
+      "acceptable": [
+        {
+          "start": 87,
+          "end": 93,
+          "source": "Vulcan",
+          "replacement": "Volgin"
+        }
+      ]
+    },
+    {
+      "id": "seg-150:unit-1:proper_name",
+      "source_unit_id": "seg-150:unit-1",
+      "label": "correctable",
+      "category": "proper_name",
+      "context": [
+        "Precisely.",
+        "Since then, they've apparently been training with the KGB for exactly this kind of situation.",
+        "Their code names are Adam and Eva."
+      ],
+      "target": "I've been told that Atom has infiltrated Volgin's ranks.",
+      "acceptable": [
+        {
+          "start": 20,
+          "end": 24,
+          "source": "Atom",
+          "replacement": "Adam"
+        }
+      ]
+    },
+    {
+      "id": "seg-7:unit-1:clean",
+      "source_unit_id": "seg-7:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Approaching Soviet airspace.",
+        "Arriving at the designated drone launch point.",
+        "Drone oil pressure and voltage are nominal."
+      ],
+      "target": "Payload oxygen supply is nominal.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-11:unit-1:clean",
+      "source_unit_id": "seg-11:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Power supply to payload anti-freeze system shows no problems.",
+        "No gusts.",
+        "All systems go for drone detachment."
+      ],
+      "target": "Snake, we can't risk a halo jump this time around.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-22:unit-1:clean",
+      "source_unit_id": "seg-22:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "So how does it feel to be a patient in one of the most advanced ICUs in the world?",
+        "Would you do me a favor and tell the suits about visiting hours?",
+        "I'll never get better with them assaulting me day and night with their questions."
+      ],
+      "target": "Must be part of the top brass's inquiry.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-26:unit-1:clean",
+      "source_unit_id": "seg-26:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "More like an interrogation.",
+        "According to them, I'm a traitor and an accomplice to the boss's defection.",
+        "They're just looking for a scapegoat."
+      ],
+      "target": "Does that mean they're after you too?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-32:unit-1:clean",
+      "source_unit_id": "seg-32:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "No.",
+        "This fox is still one step ahead of the hounds.",
+        "The reason I came to see you today, Jack, it's time for Fox to clear its name."
+      ],
+      "target": "What are you talking about?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-35:unit-1:clean",
+      "source_unit_id": "seg-35:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "What are you talking about?",
+        "The situation has changed.",
+        "We still got a chance to come out of this one alive."
+      ],
+      "target": "Yeah, what kind of chance?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-39:unit-1:clean",
+      "source_unit_id": "seg-39:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Don't get too excited.",
+        "Here, have a cigar.",
+        "It's Cuba."
+      ],
+      "target": "This morning I had a meeting with the CIA.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-48:unit-1:clean",
+      "source_unit_id": "seg-48:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Yes, I hear you, Mr.",
+        "Chairman.",
+        "It was a hotline call from Khrushchev to President Johnson."
+      ],
+      "target": "From the head of the Soviet Union?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-60:unit-1:clean",
+      "source_unit_id": "seg-60:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "With the help of your predecessor, I was able to survive the Cuban incident.",
+        "But my power is not as great as it once was.",
+        "If I am to survive this crisis, I must have your full cooperation."
+      ],
+      "target": "I should have contacted you myself.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-63:unit-1:clean",
+      "source_unit_id": "seg-63:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I should have contacted you myself.",
+        "Did you know that one of our soldiers defected to your country a week ago?",
+        "No."
+      ],
+      "target": "So you haven't heard that.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-64:unit-1:clean",
+      "source_unit_id": "seg-64:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Did you know that one of our soldiers defected to your country a week ago?",
+        "No.",
+        "So you haven't heard that."
+      ],
+      "target": "The man who arranged the defection was a group colonel by the name of Yevgeny Borisovich Volgin.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-79:unit-1:clean",
+      "source_unit_id": "seg-79:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "And she took two miniature nuclear shells along with her.",
+        "The Boss took two miniature nuclear shells.",
+        "I'm afraid so."
+      ],
+      "target": "I believe they were a gift for her new hosts.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-81:unit-1:clean",
+      "source_unit_id": "seg-81:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I'm afraid so.",
+        "I believe they were a gift for her new hosts.",
+        "The Davy Crockett atomic battle group delivery system was completed two years ago."
+      ],
+      "target": "Serious problems were found with the launchers' range and precision.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-82:unit-1:clean",
+      "source_unit_id": "seg-82:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I believe they were a gift for her new hosts.",
+        "The Davy Crockett atomic battle group delivery system was completed two years ago.",
+        "Serious problems were found with the launchers' range and precision."
+      ],
+      "target": "Although they were mass-produced, they've never been deployed in battle.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-83:unit-1:clean",
+      "source_unit_id": "seg-83:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "The Davy Crockett atomic battle group delivery system was completed two years ago.",
+        "Serious problems were found with the launchers' range and precision.",
+        "Although they were mass-produced, they've never been deployed in battle."
+      ],
+      "target": "But Sokolov's research facility was completely wiped out.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-84:unit-1:clean",
+      "source_unit_id": "seg-84:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Serious problems were found with the launchers' range and precision.",
+        "Although they were mass-produced, they've never been deployed in battle.",
+        "But Sokolov's research facility was completely wiped out."
+      ],
+      "target": "The whole area is polluted.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-85:unit-1:clean",
+      "source_unit_id": "seg-85:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Although they were mass-produced, they've never been deployed in battle.",
+        "But Sokolov's research facility was completely wiped out.",
+        "The whole area is polluted."
+      ],
+      "target": "I can only offer you my deepest condolences over this terrible tragedy.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-96:unit-1:clean",
+      "source_unit_id": "seg-96:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "And the American government denies any involvement in the affair.",
+        "Is that right as well?",
+        "That's correct."
+      ],
+      "target": "We were not involved in any way.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-102:unit-1:clean",
+      "source_unit_id": "seg-102:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "It was clearly in a violation of our airspace, and yet you say it was not acting under your orders.",
+        "That's correct.",
+        "You expect me to believe that this was all the work of a single soldier?"
+      ],
+      "target": "I don't know what else to tell you.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-103:unit-1:clean",
+      "source_unit_id": "seg-103:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "That's correct.",
+        "You expect me to believe that this was all the work of a single soldier?",
+        "I don't know what else to tell you."
+      ],
+      "target": "The army insists that this is all a ploy on your part.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-104:unit-1:clean",
+      "source_unit_id": "seg-104:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "You expect me to believe that this was all the work of a single soldier?",
+        "I don't know what else to tell you.",
+        "The army insists that this is all a ploy on your part."
+      ],
+      "target": "I've said it once, and I'll say it again: our government had nothing to do with it.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-105:unit-1:clean",
+      "source_unit_id": "seg-105:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I don't know what else to tell you.",
+        "The army insists that this is all a ploy on your part.",
+        "I've said it once, and I'll say it again: our government had nothing to do with it."
+      ],
+      "target": "And I would like dearly to believe you.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-106:unit-1:clean",
+      "source_unit_id": "seg-106:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "The army insists that this is all a ploy on your part.",
+        "I've said it once, and I'll say it again: our government had nothing to do with it.",
+        "And I would like dearly to believe you."
+      ],
+      "target": "However, I'm afraid my power over the military has weakened since the Cuban incident.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-107:unit-1:clean",
+      "source_unit_id": "seg-107:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I've said it once, and I'll say it again: our government had nothing to do with it.",
+        "And I would like dearly to believe you.",
+        "However, I'm afraid my power over the military has weakened since the Cuban incident."
+      ],
+      "target": "I will need some kind of proof that this was not the action of the American government.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-109:unit-1:clean",
+      "source_unit_id": "seg-109:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "However, I'm afraid my power over the military has weakened since the Cuban incident.",
+        "I will need some kind of proof that this was not the action of the American government.",
+        "You have one week."
+      ],
+      "target": "You must catch the boss yourselves and recover the remaining nuclear device.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-110:unit-1:clean",
+      "source_unit_id": "seg-110:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I will need some kind of proof that this was not the action of the American government.",
+        "You have one week.",
+        "You must catch the boss yourselves and recover the remaining nuclear device."
+      ],
+      "target": "Then you must find some way to prove your innocence.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-112:unit-1:clean",
+      "source_unit_id": "seg-112:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "You must catch the boss yourselves and recover the remaining nuclear device.",
+        "Then you must find some way to prove your innocence.",
+        "Prove our innocence?"
+      ],
+      "target": "Yes, preferably something painful.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-113:unit-1:clean",
+      "source_unit_id": "seg-113:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Then you must find some way to prove your innocence.",
+        "Prove our innocence?",
+        "Yes, preferably something painful."
+      ],
+      "target": "Prove to me that this is not merely another one of your tricks.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-114:unit-1:clean",
+      "source_unit_id": "seg-114:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Prove our innocence?",
+        "Yes, preferably something painful.",
+        "Prove to me that this is not merely another one of your tricks."
+      ],
+      "target": "The boss should be close to Colonel Volgin.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-115:unit-1:clean",
+      "source_unit_id": "seg-115:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Yes, preferably something painful.",
+        "Prove to me that this is not merely another one of your tricks.",
+        "The boss should be close to Colonel Volgin."
+      ],
+      "target": "How about a little co-action?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-116:unit-1:clean",
+      "source_unit_id": "seg-116:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Prove to me that this is not merely another one of your tricks.",
+        "The boss should be close to Colonel Volgin.",
+        "How about a little co-action?"
+      ],
+      "target": "I would not expect too much if I were you.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-119:unit-1:clean",
+      "source_unit_id": "seg-119:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I would not expect too much if I were you.",
+        "The political situation here is unstable, and Colonel Volgin is a member of the Brezhnev faction, which seeks seeks to topple my government.",
+        "One week, you have only one week, and if it is not too much to ask, do something about Volgin as well."
+      ],
+      "target": "What is that supposed to mean?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-122:unit-1:clean",
+      "source_unit_id": "seg-122:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "What is that supposed to mean?",
+        "Nothing.",
+        "It means nothing."
+      ],
+      "target": "Call it a modest gentleman's agreement to ensure our continued relationship.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-123:unit-1:clean",
+      "source_unit_id": "seg-123:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Nothing.",
+        "It means nothing.",
+        "Call it a modest gentleman's agreement to ensure our continued relationship."
+      ],
+      "target": "What if we can't prove our innocence?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-124:unit-1:clean",
+      "source_unit_id": "seg-124:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "It means nothing.",
+        "Call it a modest gentleman's agreement to ensure our continued relationship.",
+        "What if we can't prove our innocence?"
+      ],
+      "target": "Then I will be unable to restrain the military.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-125:unit-1:clean",
+      "source_unit_id": "seg-125:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Call it a modest gentleman's agreement to ensure our continued relationship.",
+        "What if we can't prove our innocence?",
+        "Then I will be unable to restrain the military."
+      ],
+      "target": "I will be ousted, and they will seek their revenge.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-126:unit-1:clean",
+      "source_unit_id": "seg-126:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "What if we can't prove our innocence?",
+        "Then I will be unable to restrain the military.",
+        "I will be ousted, and they will seek their revenge."
+      ],
+      "target": "A nuclear attack on the United States?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-127:unit-1:clean",
+      "source_unit_id": "seg-127:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Then I will be unable to restrain the military.",
+        "I will be ousted, and they will seek their revenge.",
+        "A nuclear attack on the United States?"
+      ],
+      "target": "I leave the disposal of this situation entirely to your discretion, Mr.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-130:unit-1:clean",
+      "source_unit_id": "seg-130:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "I leave the disposal of this situation entirely to your discretion, Mr.",
+        "President.",
+        "Disposal?"
+      ],
+      "target": "If you fail, it will mean the beginning of a new world war.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-131:unit-1:clean",
+      "source_unit_id": "seg-131:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "President.",
+        "Disposal?",
+        "If you fail, it will mean the beginning of a new world war."
+      ],
+      "target": "To put it simply, in order to avoid a full-scale nuclear conflict, we have to prove that America was not involved in that explosion.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-132:unit-1:clean",
+      "source_unit_id": "seg-132:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Disposal?",
+        "If you fail, it will mean the beginning of a new world war.",
+        "To put it simply, in order to avoid a full-scale nuclear conflict, we have to prove that America was not involved in that explosion."
+      ],
+      "target": "And eliminating the boss ourselves will prove America's innocence.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-134:unit-1:clean",
+      "source_unit_id": "seg-134:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "To put it simply, in order to avoid a full-scale nuclear conflict, we have to prove that America was not involved in that explosion.",
+        "And eliminating the boss ourselves will prove America's innocence.",
+        "Right."
+      ],
+      "target": "The higher ups have decided that you're the only one capable of pulling this off.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-135:unit-1:clean",
+      "source_unit_id": "seg-135:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "And eliminating the boss ourselves will prove America's innocence.",
+        "Right.",
+        "The higher ups have decided that you're the only one capable of pulling this off."
+      ],
+      "target": "You were her last apprentice.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-136:unit-1:clean",
+      "source_unit_id": "seg-136:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Right.",
+        "The higher ups have decided that you're the only one capable of pulling this off.",
+        "You were her last apprentice."
+      ],
+      "target": "Screw this one up, and we'll both be six feet under.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-138:unit-1:clean",
+      "source_unit_id": "seg-138:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "You were her last apprentice.",
+        "Screw this one up, and we'll both be six feet under.",
+        "There's no choice."
+      ],
+      "target": "Are the Russians going to be helping us?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-139:unit-1:clean",
+      "source_unit_id": "seg-139:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Screw this one up, and we'll both be six feet under.",
+        "There's no choice.",
+        "Are the Russians going to be helping us?"
+      ],
+      "target": "The KGB has promised to lend us one of their communications satellites so that you and I can talk to each other.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-141:unit-1:clean",
+      "source_unit_id": "seg-141:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "Are the Russians going to be helping us?",
+        "The KGB has promised to lend us one of their communications satellites so that you and I can talk to each other.",
+        "That's it."
+      ],
+      "target": "They've also put us in touch with a couple of insiders.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-143:unit-1:clean",
+      "source_unit_id": "seg-143:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "That's it.",
+        "They've also put us in touch with a couple of insiders.",
+        "Insiders."
+      ],
+      "target": "There was a defection in September 1960.",
+      "acceptable": []
+    },
+    {
+      "id": "seg-146:unit-1:clean",
+      "source_unit_id": "seg-146:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "There was a defection in September 1960.",
+        "Do",
+        "you remember it?"
+      ],
+      "target": "You mean the two NSA codebreakers who went over to the Soviet Union?",
+      "acceptable": []
+    },
+    {
+      "id": "seg-148:unit-1:clean",
+      "source_unit_id": "seg-148:unit-1",
+      "label": "clean",
+      "category": "clean",
+      "context": [
+        "you remember it?",
+        "You mean the two NSA codebreakers who went over to the Soviet Union?",
+        "Precisely."
+      ],
+      "target": "Since then, they've apparently been training with the KGB for exactly this kind of situation.",
+      "acceptable": []
+    }
+  ]
+}
