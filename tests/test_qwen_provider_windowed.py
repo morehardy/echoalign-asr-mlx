@@ -495,10 +495,12 @@ class QwenProviderWindowedTest(unittest.TestCase):
             self.assertNotIn("end_time", kwargs)
             self.assertIn("quality", diagnostic)
 
-        self.assertTrue(diagnostics[0]["quality"]["passed"])
-        self.assertTrue(diagnostics[-1]["quality"]["passed"])
-        self.assertLess(diagnostics[0]["quality"]["boundary_disagreement_score"], 1.0)
-        self.assertLess(diagnostics[-1]["quality"]["boundary_disagreement_score"], 1.0)
+        # These mocked transcripts disagree in their shared audio intervals.
+        self.assertFalse(diagnostics[0]["quality"]["passed"])
+        self.assertFalse(diagnostics[-1]["quality"]["passed"])
+        self.assertEqual(diagnostics[0]["quality"]["boundary_disagreement_score"], 1.0)
+        self.assertEqual(diagnostics[-1]["quality"]["boundary_disagreement_score"], 1.0)
+        self.assertEqual(doc.status, "partial")
 
     def test_vad_window_run_carries_alignment_unit_display_bounds(self) -> None:
         provider, _, _ = self._build_provider_with_models(

@@ -43,45 +43,50 @@ def process_media_file(
     ):
         prepared_path = media_preparer.prepare(source_path)
 
-    speech_plan = disabled_speech_plan()
-    if vad_enabled:
-        preprocessor = vad_preprocessor or SileroVadPreprocessor()
-        speech_plan = _run_vad_preprocessor(
-            preprocessor=preprocessor,
-            prepared_path=prepared_path,
-            observer=observer,
-            run_id=run_id,
-            file_id=file_id,
-            source_path=str(source_path),
-        )
-
-    if speech_plan.status == "ok" and not speech_plan.alignment_units:
-        document = TranscriptionDocument(
-            source_path=str(prepared_path),
-            provider_name=provider.name,
-            segments=[],
-        )
-    else:
-        with observe_step(
-            observer,
-            run_id=run_id,
-            file_id=file_id,
-            source_path=str(source_path),
-            step="transcribe",
-        ):
-            document = _transcribe_provider(
-                provider=provider,
+    try:
+        speech_plan = disabled_speech_plan()
+        if vad_enabled:
+            preprocessor = vad_preprocessor or SileroVadPreprocessor()
+            speech_plan = _run_vad_preprocessor(
+                preprocessor=preprocessor,
                 prepared_path=prepared_path,
-                speech_plan=speech_plan,
+                observer=observer,
+                run_id=run_id,
+                file_id=file_id,
+                source_path=str(source_path),
             )
 
-    _attach_source_metadata(
-        document=document,
-        source_path=source_path,
-        prepared_path=prepared_path,
-        speech_plan=speech_plan,
-    )
-    return document
+        if speech_plan.status == "ok" and not speech_plan.alignment_units:
+            document = TranscriptionDocument(
+                source_path=str(prepared_path),
+                provider_name=provider.name,
+                segments=[],
+            )
+        else:
+            with observe_step(
+                observer,
+                run_id=run_id,
+                file_id=file_id,
+                source_path=str(source_path),
+                step="transcribe",
+            ):
+                document = _transcribe_provider(
+                    provider=provider,
+                    prepared_path=prepared_path,
+                    speech_plan=speech_plan,
+                )
+
+        _attach_source_metadata(
+            document=document,
+            source_path=source_path,
+            prepared_path=prepared_path,
+            speech_plan=speech_plan,
+        )
+        return document
+    finally:
+        cleanup = getattr(media_preparer, "cleanup", None)
+        if callable(cleanup):
+            cleanup(prepared_path)
 
 
 def _transcribe_provider(

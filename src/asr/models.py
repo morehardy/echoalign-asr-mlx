@@ -27,10 +27,13 @@ class Segment:
     language: Optional[str]
     tokens: List[Token] = field(default_factory=list)
     speaker: Optional[str] = None
+    timing_source: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         payload = asdict(self)
         payload["tokens"] = [token.to_dict() for token in self.tokens]
+        if self.timing_source is None:
+            payload.pop("timing_source")
         return payload
 
 
@@ -41,6 +44,8 @@ class TranscriptionDocument:
     segments: List[Segment]
     source_media: Optional[Dict[str, Any]] = None
     detected_language: Optional[str] = None
+    status: str = "ok"
+    warnings: List[str] = field(default_factory=list)
 
     def ensure_source_media(self) -> Dict[str, Any]:
         if self.source_media is None:
@@ -48,10 +53,14 @@ class TranscriptionDocument:
         return self.source_media
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        payload = {
             "source_path": self.source_path,
             "provider_name": self.provider_name,
             "source_media": self.source_media,
             "detected_language": self.detected_language,
             "segments": [segment.to_dict() for segment in self.segments],
         }
+        if self.status != "ok" or self.warnings:
+            payload["status"] = self.status
+            payload["warnings"] = list(self.warnings)
+        return payload

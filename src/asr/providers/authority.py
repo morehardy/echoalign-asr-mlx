@@ -5,10 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 import math
 import re
+import unicodedata
 from difflib import SequenceMatcher
 from typing import List, Literal, Optional
 
 from asr.models import Token
+from asr.providers.language import normalize_language as _normalize_language
 
 TimingSource = Literal["aligner", "estimated", "unresolved"]
 
@@ -35,8 +37,17 @@ def build_transcript_tokens(text: str, language: Optional[str]) -> List[Token]:
         return []
 
     normalized_language = _normalize_language(language)
-    if _is_zh_language(normalized_language):
-        units = [char for char in stripped if not char.isspace()]
+    if _is_zh_language(normalized_language) or _contains_cjk(stripped):
+        pieces = re.findall(
+            r"[\u3400-\u9fff]|[^\s\u3400-\u9fff\u3002\uff0c\uff01\uff1f\uff1b\uff1a]+|[^\s]",
+            stripped,
+        )
+        units: list[str] = []
+        for piece in pieces:
+            if units and all(unicodedata.category(char).startswith("P") for char in piece):
+                units[-1] += piece
+            else:
+                units.append(piece)
     else:
         units = stripped.split()
 
@@ -45,7 +56,7 @@ def build_transcript_tokens(text: str, language: Optional[str]) -> List[Token]:
             text=unit,
             start_time=0.0,
             end_time=0.0,
-            unit="token",
+            unit="char" if _contains_cjk(unit) else "word",
             language=normalized_language,
         )
         for unit in units
@@ -393,13 +404,6 @@ def _valid_token_timing(token: Token) -> bool:
         and math.isfinite(token.end_time)
         and token.end_time >= token.start_time
     )
-
-
-def _normalize_language(language: Optional[str]) -> Optional[str]:
-    if language is None:
-        return None
-    normalized = str(language).strip()
-    return normalized or None
 
 
 def _is_zh_language(language: Optional[str]) -> bool:
