@@ -20,13 +20,16 @@ def format_timestamp(seconds: float, decimal_separator: str = ",") -> str:
 
 
 def _entry_from_segment(segment: Segment) -> Dict[str, Any]:
-    return {
+    entry = {
         "id": segment.id,
         "text": segment.text,
         "start_time": segment.start_time,
         "end_time": segment.end_time,
         "language": segment.language,
     }
+    if segment.timing_source is not None:
+        entry["timing_source"] = segment.timing_source
+    return entry
 
 
 def _entry_from_token(segment: Segment, token: Token, index: int) -> Dict[str, Any]:
@@ -43,6 +46,12 @@ def render_items(document: TranscriptionDocument, granularity: str = "sentence")
     if granularity == "token":
         items: List[Dict[str, Any]] = []
         for segment in document.segments:
+            if not segment.tokens:
+                entry = _entry_from_segment(segment)
+                entry["unit"] = "segment"
+                entry["timing_source"] = segment.timing_source or "unavailable"
+                items.append(entry)
+                continue
             for index, token in enumerate(segment.tokens, start=1):
                 items.append(_entry_from_token(segment, token, index))
         return items

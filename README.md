@@ -171,6 +171,12 @@ under that input root:
 
 Use `--output-dir` to choose another output root.
 
+Before processing starts, `easr` checks all output paths for collisions. Inputs
+such as `demo.mp3` and `demo.wav` in the same directory would produce the same
+files, so the command lists the conflicting paths and exits without writing
+outputs. Rename the inputs or process them separately into different output
+directories. Existing outputs for a single source are still overwritten.
+
 ## JSON Output
 
 The JSON export keeps the readable transcript and the alignment data used to
@@ -190,6 +196,19 @@ Each segment includes text, start/end timestamps, language metadata, optional
 speaker metadata, and token timing when available. `source_media` includes the
 prepared audio path, VAD metadata, and provider diagnostics such as processing
 strategy, duration, window counts, quality pass counts, and window diagnostics.
+The prepared audio path is diagnostic: its temporary WAV is removed after
+transcription, including when processing fails or finds no speech.
+
+Language metadata uses codes such as `zh` and `en`; Chinese text is split into
+characters while English words within mixed text remain words.
+
+Partial results include top-level `status: "partial"` and `warnings` explaining
+the affected windows. When recognition succeeds but alignment fails, its text
+is retained in short subtitle cues with `timing_source: "estimated"` and empty
+`tokens`. Long unaligned text is distributed across the available window;
+these cue times are estimates, not acoustic alignment. With `--granularity
+token`, unaligned cues remain visible as coarse items marked `unit: "segment"`
+and `timing_source`, alongside any available aligned tokens.
 
 ## CLI Options
 
@@ -221,6 +240,10 @@ easr ./demo.mp4 --no-vad
 If VAD fails, `easr` falls back to full-duration processing. If VAD succeeds and
 finds no speech, `easr` writes successful empty subtitle outputs.
 
+Silero VAD can miss singing in music recordings. If a song produces empty or
+incomplete subtitles, rerun it with `--no-vad`. Forced alignment can still have
+low quality on singing; inspect partial-result warnings and timing diagnostics.
+
 ## Shell Completion
 
 Fish shell users can generate or install completions:
@@ -241,11 +264,13 @@ Existing completion files at that path are overwritten.
 ## Runtime Behavior
 
 - exit code `0`: all discovered files processed successfully
-- exit code `1`: no supported input was found, environment preflight failed, or
-  at least one file failed in a batch
+- exit code `1`: no supported input was found, output paths collide, environment
+  preflight failed, or at least one file failed or produced a partial result
 - batch files are processed one by one
 - failures are reported per file to stderr
 - other files continue processing after a per-file failure
+- partial transcription still writes available text and reports failed or
+  degraded windows to stderr; alignment quality failures are not silent successes
 - the first run may be slower because model files are downloaded and cached
 
 ## Troubleshooting
