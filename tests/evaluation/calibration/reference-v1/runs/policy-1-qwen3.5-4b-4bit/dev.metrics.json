@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "benchmark_version": "reference-v1",
+  "manifest_sha256": "c8a03391344f6ac2c0d991ffbaa5851401b0a1e2aecd36021265f3fd699cb6e0",
+  "normalization_version": "english-lexical-v1",
+  "partition": "dev",
+  "sample_count": 24,
+  "baseline": {
+    "errors": 14,
+    "substitutions": 9,
+    "deletions": 2,
+    "insertions": 3,
+    "reference_words": 517,
+    "wer": 0.027079303675048357
+  },
+  "normalization_review_clips": 1,
+  "interpretation": "Descriptive lexical pilot only; no semantic-correction precision or release pass/fail is inferred",
+  "cases": [
+    {
+      "id": "fleurs-en-dev-1519-16685771406658302555",
+      "reference": "In many cases, enrolling on a gap-year course abroad can actually improve your chances of moving into higher education back in your home country.",
+      "baseline_text": "In many cases, enrolling on a gap year course abroad can actually improve your chances of moving into higher education back in your home country.",
+      "normalization_review_required": false,
+      "baseline_sha256": "b1ae9a096ae2a20f3af9a07b58337e856f1e55ff48f972828a473d91badd1a80",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 25,
+        "wer": 0.0
+      },
+      "candidate_text": "In many cases, enrolling on a gap year course abroad can actually improve your chances of moving into higher education back in your home country.",
+      "candidate_sha256": "b1ae9a096ae2a20f3af9a07b58337e856f1e55ff48f972828a473d91badd1a80",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 25,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1521-11840539862172308240",
+      "reference": "The satellite in space gets the call and then reflects it back down, almost instantly.",
+      "baseline_text": "The satellite in space gets the call and then reflects it back down almost instantly.",
+      "normalization_review_required": false,
+      "baseline_sha256": "77810f6255cee9eb7cecf87ec4befc25b387c22418dd14fb5ace2732c1ab68cb",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 15,
+        "wer": 0.0
+      },
+      "candidate_text": "The satellite in space gets the call and then reflects it back down almost instantly.",
+      "candidate_sha256": "77810f6255cee9eb7cecf87ec4befc25b387c22418dd14fb5ace2732c1ab68cb",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 15,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1522-8364006913180567866",
+      "reference": "Technology offers the solution with virtual field trips. Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.",
+      "baseline_text": "Technology offers a solution with virtual field trips. Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.",
+      "normalization_review_required": false,
+      "baseline_sha256": "9988c4801abf79445f506a576999f1cac66640faeb032c9365d251c76a4bea7a",
+      "baseline": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 26,
+        "wer": 0.038461538461538464
+      },
+      "candidate_text": "Technology offers a solution with virtual field trips. Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.",
+      "candidate_sha256": "9988c4801abf79445f506a576999f1cac66640faeb032c9365d251c76a4bea7a",
+      "candidate": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 26,
+        "wer": 0.038461538461538464
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1534-7552355741824675369",
+      "reference": "Combined with its relative inaccessibility, \"Timbuktu\" has come to be used as a metaphor for exotic, distant lands.",
+      "baseline_text": "Combined with its relative inaccessibility, Timbuktu has come to be used as a metaphor for exotic, distant lands.",
+      "normalization_review_required": false,
+      "baseline_sha256": "950168bd99b3cd1ad2f7b3c67b8b531fd3dc64e700ee96c30da86548935ca80d",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 18,
+        "wer": 0.0
+      },
+      "candidate_text": "Combined with its relative inaccessibility, Timbuktu has come to be used as a metaphor for exotic, distant lands.",
+      "candidate_sha256": "950168bd99b3cd1ad2f7b3c67b8b531fd3dc64e700ee96c30da86548935ca80d",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 18,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1535-16038225777468807850",
+      "reference": "It uses satellite-based technology as opposed to older ground-radar-based technology to allow air traffic controllers to pinpoint aircraft with greater precision and give pilots more accurate information.",
+      "baseline_text": "It uses satellite-based technology, as opposed to older ground radar-based technology, to allow air traffic controllers to pinpoint aircraft with greater precision and give pilots more accurate information.",
+      "normalization_review_required": false,
+      "baseline_sha256": "fdd1f0cd26f5d87fbcc2ff9b7cf2db8129dff1b4af19dea1cb21a0587c409ef4",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 30,
+        "wer": 0.0
+      },
+      "candidate_text": "It uses satellite-based technology, as opposed to older ground radar-based technology, to allow air traffic controllers to pinpoint aircraft with greater precision and give pilots more accurate information.",
+      "candidate_sha256": "fdd1f0cd26f5d87fbcc2ff9b7cf2db8129dff1b4af19dea1cb21a0587c409ef4",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 30,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1543-15171241960492149561",
+      "reference": "The patient had been to Nigeria, where some cases of the Ebola virus have occurred.",
+      "baseline_text": "The patient had been to Nigeria, where some cases of the Ebola virus have occurred.",
+      "normalization_review_required": false,
+      "baseline_sha256": "714fa50119defe6519e2dc20e2283e15546512ebe362538380956668973a94f7",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 15,
+        "wer": 0.0
+      },
+      "candidate_text": "The patient had been to Nigeria, where some cases of the Ebola virus have occurred.",
+      "candidate_sha256": "714fa50119defe6519e2dc20e2283e15546512ebe362538380956668973a94f7",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 15,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1545-5260885647261312884",
+      "reference": "A curry can be either \"dry\" or \"wet\" depending on the amount of liquid.",
+      "baseline_text": "A curry can be either dry or wet, depending on the amount of liquid.",
+      "normalization_review_required": false,
+      "baseline_sha256": "f158727ae99c9d78392fc9d17c8089e7cf520cc6aad0d7cf21ad95a34ffeb7d7",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 14,
+        "wer": 0.0
+      },
+      "candidate_text": "A curry can be either dry or wet, depending on the amount of liquid.",
+      "candidate_sha256": "f158727ae99c9d78392fc9d17c8089e7cf520cc6aad0d7cf21ad95a34ffeb7d7",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 14,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1551-4023494736730069902",
+      "reference": "They are still trying to determine just how large the crash was and how the Earth will be affected.",
+      "baseline_text": "They are still trying to determine just how large the crash was, and how the Earth will be affected.",
+      "normalization_review_required": false,
+      "baseline_sha256": "1a761fe1e76bf418bc3c3080482d4b81a69029d6b5b3699efafc7cb9574b122d",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 19,
+        "wer": 0.0
+      },
+      "candidate_text": "They are still trying to determine just how large the crash was, and how the Earth will be affected.",
+      "candidate_sha256": "1a761fe1e76bf418bc3c3080482d4b81a69029d6b5b3699efafc7cb9574b122d",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 19,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1555-6037648224035961543",
+      "reference": "In the churchyard, there are interesting marble sculptures of doves over some tombs.",
+      "baseline_text": "In the churchyard, there are interesting marble sculptures of some of doves over some tombs.",
+      "normalization_review_required": false,
+      "baseline_sha256": "109beaa63d9dc773e4056b8061ed6236c4bf15822ab9c03911b5bdf8bd791b3b",
+      "baseline": {
+        "errors": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 2,
+        "reference_words": 13,
+        "wer": 0.15384615384615385
+      },
+      "candidate_text": "In the churchyard, there are interesting marble sculptures of some of doves over some tombs.",
+      "candidate_sha256": "109beaa63d9dc773e4056b8061ed6236c4bf15822ab9c03911b5bdf8bd791b3b",
+      "candidate": {
+        "errors": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 2,
+        "reference_words": 13,
+        "wer": 0.15384615384615385
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1565-9466009236386247443",
+      "reference": "Science’s main goal is to figure out the way the world works through the scientific method. This method in fact guides most scientific research.",
+      "baseline_text": "Science's main goal is to figure out the way the world works through the scientific method. This method, in fact, guides most scientific research.",
+      "normalization_review_required": false,
+      "baseline_sha256": "f2efedc7ddd7da229e57cabe8467d9e7fc8aedf60a278bd90a4b16d6b93f10ff",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 24,
+        "wer": 0.0
+      },
+      "candidate_text": "Science's main goal is to figure out the way the world works through the scientific method. This method, in fact, guides most scientific research.",
+      "candidate_sha256": "f2efedc7ddd7da229e57cabe8467d9e7fc8aedf60a278bd90a4b16d6b93f10ff",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 24,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1566-9005815195429653356",
+      "reference": "Yet eighty percent of our goods were taxed through tariffs in Central American countries. we treat you.",
+      "baseline_text": "Yet 80% of our goods were taxed through tariffs in Central American countries. We treat you.",
+      "normalization_review_required": true,
+      "baseline_sha256": "20dad282a3e2f0a2fec1c4472eb69e0e5b59a5a5d0b01ac2821a15e76a17579c",
+      "baseline": {
+        "errors": 2,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "reference_words": 17,
+        "wer": 0.11764705882352941
+      },
+      "candidate_text": "Yet 80% of our goods were taxed through tariffs in Central American countries. We treat you.",
+      "candidate_sha256": "20dad282a3e2f0a2fec1c4472eb69e0e5b59a5a5d0b01ac2821a15e76a17579c",
+      "candidate": {
+        "errors": 2,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "reference_words": 17,
+        "wer": 0.11764705882352941
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1569-6698602092091460070",
+      "reference": "The Report opens with plea for open debate and the formation of a consensus in the United States about the policy towards the Middle East.",
+      "baseline_text": "The report opens with plea for open debate and the formation of a consensus in the United States about the policy towards the Middle East.",
+      "normalization_review_required": false,
+      "baseline_sha256": "539328b1139a11d7d6ff25f8f75f781e99f4a1dceb6ba2b298dfc185e94e11b5",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 25,
+        "wer": 0.0
+      },
+      "candidate_text": "The report opens with plea for open debate and the formation of a consensus in the United States about the policy towards the Middle East.",
+      "candidate_sha256": "539328b1139a11d7d6ff25f8f75f781e99f4a1dceb6ba2b298dfc185e94e11b5",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 25,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1573-10606824155904794190",
+      "reference": "A satellite phone is not generally a replacement for a mobile phone, as you have to be outdoors with clear line of sight to the satellite to make a phone call.",
+      "baseline_text": "A satellite phone is not generally a replacement for a mobile phone, as you have to be outdoors with clear line of sight to the satellite to make a phone call.",
+      "normalization_review_required": false,
+      "baseline_sha256": "f81f98f49802e1b15484c894e75afde23c6a6b95fb6319e0be9e7bd0c14d3949",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 31,
+        "wer": 0.0
+      },
+      "candidate_text": "A satellite phone is not generally a replacement for a mobile phone, as you have to be outdoors with clear line of sight to the satellite to make a phone call.",
+      "candidate_sha256": "f81f98f49802e1b15484c894e75afde23c6a6b95fb6319e0be9e7bd0c14d3949",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 31,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1574-4418066175314133039",
+      "reference": "The winter can be deceptively chilly: temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.",
+      "baseline_text": "The winter can be deceptively chilly. Temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.",
+      "normalization_review_required": false,
+      "baseline_sha256": "94b41205f9b5003edaab4f7590a7254bcf8c3bc56ee35372a265751108b69abe",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 27,
+        "wer": 0.0
+      },
+      "candidate_text": "The winter can be deceptively chilly. Temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.",
+      "candidate_sha256": "94b41205f9b5003edaab4f7590a7254bcf8c3bc56ee35372a265751108b69abe",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 27,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1577-5546513999592253497",
+      "reference": "That didn't seem to make sense to me; it certainly wasn't fair.",
+      "baseline_text": "That didn't seem to make sense to me. It certainly wasn't fair.",
+      "normalization_review_required": false,
+      "baseline_sha256": "ff3377334968aff526efd74e4aeaffff877eb57408e99b8d30c9de544dc79f0b",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 12,
+        "wer": 0.0
+      },
+      "candidate_text": "That didn't seem to make sense to me. It certainly wasn't fair.",
+      "candidate_sha256": "ff3377334968aff526efd74e4aeaffff877eb57408e99b8d30c9de544dc79f0b",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 12,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1583-10493474598526206030",
+      "reference": "She came to this conclusion due to the multitude of positive comments and encouragement sent to her by both female and male individuals urging that contraception medication be considered a medical necessity.",
+      "baseline_text": "She came to this conclusion due to the multitude of positive comments and encouragement sent to her by both female and male individuals, urging that contraception medication be considered a medical necessity.",
+      "normalization_review_required": false,
+      "baseline_sha256": "3bac548a5be93ec895f745a812fff9f78ab6339b48957dd9ffcdc52d75a42bc9",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 32,
+        "wer": 0.0
+      },
+      "candidate_text": "She came to this conclusion due to the multitude of positive comments and encouragement sent to her by both female and male individuals, urging that contraception medication be considered a medical necessity.",
+      "candidate_sha256": "3bac548a5be93ec895f745a812fff9f78ab6339b48957dd9ffcdc52d75a42bc9",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 32,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1587-1105184381995491301",
+      "reference": "The first cases of the disease this season were reported in late July.",
+      "baseline_text": "The first cases of the disease this season were reported in late July.",
+      "normalization_review_required": false,
+      "baseline_sha256": "35ccf626f742e00f06a17ddd8a425a04a95ad0dd4f322016848a9030246df47f",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 13,
+        "wer": 0.0
+      },
+      "candidate_text": "The first cases of the disease this season were reported in late July.",
+      "candidate_sha256": "35ccf626f742e00f06a17ddd8a425a04a95ad0dd4f322016848a9030246df47f",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 13,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1591-13837548118133175593",
+      "reference": "Former House Speaker Newt Gingrich, Texas governor Rick Perry, and Congresswoman Michele Bachmann finished in fourth, fifth, and sixth place, respectively.",
+      "baseline_text": "Former House Speaker Newt Gingrich, Texas Governor Rick Perry, and Congresswoman Michelle Bachmann finished in fourth, fifth, and sixth place, respectively.",
+      "normalization_review_required": false,
+      "baseline_sha256": "de3b69b11c3071c82f3d4a0162080c9b4151bddf10ffebc36a04d23adb36ac57",
+      "baseline": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 21,
+        "wer": 0.047619047619047616
+      },
+      "candidate_text": "Former House Speaker Newt Gingrich, Texas Governor Rick Perry, and Congresswoman Michelle Bachmann finished in fourth, fifth, and sixth place, respectively.",
+      "candidate_sha256": "de3b69b11c3071c82f3d4a0162080c9b4151bddf10ffebc36a04d23adb36ac57",
+      "candidate": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 21,
+        "wer": 0.047619047619047616
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1595-14225189458852066857",
+      "reference": "The Tibetan Buddhism is based on the teachings of Buddha, but were extended by the mahayana path of love and by a lot of techniques from Indian Yoga.",
+      "baseline_text": "The Tibetan Buddhism is based on the teachings of Buddha, but were extended by the Mahayana path of love and by a lot of techniques from Indian yoga.",
+      "normalization_review_required": false,
+      "baseline_sha256": "a23f9951e34e15f6a1e62e2ddc0f4201e26a3e33af5f712034ac068b959457a4",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 28,
+        "wer": 0.0
+      },
+      "candidate_text": "The Tibetan Buddhism is based on the teachings of Buddha, but were extended by the Mahayana path of love and by a lot of techniques from Indian yoga.",
+      "candidate_sha256": "a23f9951e34e15f6a1e62e2ddc0f4201e26a3e33af5f712034ac068b959457a4",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 28,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1602-15006047853740326323",
+      "reference": "Majorcan cuisine, like that of similar zones in the Mediterranean, is based on bread, vegetables and meat (specially pork), and uses olive oil throughout.",
+      "baseline_text": "Majorcan cuisine, like that of similar zones in Mediterranean, is based on bread, vegetables and meat, specifically pork, and uses olive oil throughout.",
+      "normalization_review_required": false,
+      "baseline_sha256": "0fae05aa5aa52cf32dcad381e20731d3f674d0c8bec5bce8f4e823f54fa11be6",
+      "baseline": {
+        "errors": 2,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "reference_words": 24,
+        "wer": 0.08333333333333333
+      },
+      "candidate_text": "Majorcan cuisine, like that of similar zones in Mediterranean, is based on bread, vegetables and meat, specifically pork, and uses olive oil throughout.",
+      "candidate_sha256": "0fae05aa5aa52cf32dcad381e20731d3f674d0c8bec5bce8f4e823f54fa11be6",
+      "candidate": {
+        "errors": 2,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "reference_words": 24,
+        "wer": 0.08333333333333333
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1605-10511964668971448587",
+      "reference": "Due to the long distance from the continent mammals were unable to make the journey making the giant tortoise the primary grazing animal in the Galapagos.",
+      "baseline_text": "Due to the long distance from the continent, mammals were unable to make the journey, making the giant tortoise the primary grazing animal in the Gobios.",
+      "normalization_review_required": false,
+      "baseline_sha256": "8c18853302e805360de8c38ccfc00a9f577d914dd25be04aff94b475f4fa7b14",
+      "baseline": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 26,
+        "wer": 0.038461538461538464
+      },
+      "candidate_text": "Due to the long distance from the continent, mammals were unable to make the journey, making the giant tortoise the primary grazing animal in the Gobios.",
+      "candidate_sha256": "8c18853302e805360de8c38ccfc00a9f577d914dd25be04aff94b475f4fa7b14",
+      "candidate": {
+        "errors": 1,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 26,
+        "wer": 0.038461538461538464
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1611-7644436983984138819",
+      "reference": ". Scientists say this animal's plumage was chestnut-brown on top with a pale or carotenoid-colored underside.",
+      "baseline_text": "Scientists say this animal's plumage was chestnut brown on top, with a pale or carotenoid-colored underside.",
+      "normalization_review_required": false,
+      "baseline_sha256": "44093bac34067d08433c3a59b4568f7a37fdf50be22ce482e4bfc8f22bf605e5",
+      "baseline": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 17,
+        "wer": 0.0
+      },
+      "candidate_text": "Scientists say this animal's plumage was chestnut brown on top, with a pale or carotenoid-colored underside.",
+      "candidate_sha256": "44093bac34067d08433c3a59b4568f7a37fdf50be22ce482e4bfc8f22bf605e5",
+      "candidate": {
+        "errors": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 17,
+        "wer": 0.0
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1614-16807981165307472350",
+      "reference": "They can see very well in the dark with night vision, and move very stealthily, too. Ocelots hunt their prey by blending in with their surroundings then pouncing on their prey.",
+      "baseline_text": "They can see very well in the dark with night vision, and move very stealthily too. Also, lots hunt their prey by blending in with their surroundings and pouncing on their prey.",
+      "normalization_review_required": false,
+      "baseline_sha256": "bb0d24839fd0cf6accb789a98bcfbf045828aace2d9a5c615fadc95db0d8996d",
+      "baseline": {
+        "errors": 3,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 1,
+        "reference_words": 31,
+        "wer": 0.0967741935483871
+      },
+      "candidate_text": "They can see very well in the dark with night vision, and move very stealthily too. Also, lots hunt their prey by blending in with their surroundings and pouncing on their prey.",
+      "candidate_sha256": "bb0d24839fd0cf6accb789a98bcfbf045828aace2d9a5c615fadc95db0d8996d",
+      "candidate": {
+        "errors": 3,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 1,
+        "reference_words": 31,
+        "wer": 0.0967741935483871
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    },
+    {
+      "id": "fleurs-en-dev-1625-7383904139424536248",
+      "reference": "Famous singers across the country presented bhajans, or devotional songs, to Shri Shyam's feet.",
+      "baseline_text": "Famous singers across the country presented bhajans or devotional songs to Sheer Shah's feet.",
+      "normalization_review_required": false,
+      "baseline_sha256": "f4848427e6b9acb213314801c7ac302ba7e1a5911b29f62a375e23855eaf3aa4",
+      "baseline": {
+        "errors": 2,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 14,
+        "wer": 0.14285714285714285
+      },
+      "candidate_text": "Famous singers across the country presented bhajans or devotional songs to Sheer Shah's feet.",
+      "candidate_sha256": "f4848427e6b9acb213314801c7ac302ba7e1a5911b29f62a375e23855eaf3aa4",
+      "candidate": {
+        "errors": 2,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "reference_words": 14,
+        "wer": 0.14285714285714285
+      },
+      "error_reduction": 0,
+      "lexically_changed": false,
+      "outcome": "tied"
+    }
+  ],
+  "candidate": {
+    "errors": 14,
+    "substitutions": 9,
+    "deletions": 2,
+    "insertions": 3,
+    "reference_words": 517,
+    "wer": 0.027079303675048357
+  },
+  "net_word_error_reduction": 0,
+  "wer_reduction_percentage_points": 0.0,
+  "improved_clips": 0,
+  "regressed_clips": 0,
+  "tied_clips": 24,
+  "changed_but_tied_clips": 0,
+  "baseline_clean_clips": 16,
+  "clean_clips_damaged": 0,
+  "clean_clip_damage_rate": 0.0
+}

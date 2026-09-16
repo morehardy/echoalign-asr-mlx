@@ -1,0 +1,603 @@
+{
+  "status": "success",
+  "source_path": "tests/e2e/Metal Gear Solid Delta.mp3",
+  "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+  "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+  "policy_version": "1",
+  "corrected_units": [
+    {
+      "unit_id": "seg-109:unit-1",
+      "segment_id": "seg-109",
+      "original_text": "You must catch the boss yourselves and recover the remaining nuclear device.",
+      "corrected_text": "You must catch the power yourselves and recover the remaining nuclear device.",
+      "applied": [
+        {
+          "start": 19,
+          "end": 23,
+          "source": "boss",
+          "replacement": "power",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-117:unit-1",
+      "segment_id": "seg-117",
+      "original_text": "The political situation here is unstable, and Colonel Volgin is a member of the Brezhnev faction, which seeks seeks to topple my government.",
+      "corrected_text": "The political situation here is unstable, and Colonel Volgin is a member of the Brezhnev faction, which seek seeks to topple my government.",
+      "applied": [
+        {
+          "start": 104,
+          "end": 109,
+          "source": "seeks",
+          "replacement": "seek",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-155:unit-1",
+      "segment_id": "seg-155",
+      "original_text": "Estimated airspeed exceeding mod three.",
+      "corrected_text": "Estimated airspeed exceeding m three.",
+      "applied": [
+        {
+          "start": 29,
+          "end": 32,
+          "source": "mod",
+          "replacement": "m",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-205:unit-1",
+      "segment_id": "seg-205",
+      "original_text": "In fact, I even ordered the the actual film from the movie company.",
+      "corrected_text": "In fact, I even ordered a the actual film from the movie company.",
+      "applied": [
+        {
+          "start": 24,
+          "end": 27,
+          "source": "the",
+          "replacement": "a",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-212:unit-1",
+      "segment_id": "seg-212",
+      "original_text": "From Square Zero, my frequency is one four zero point eight five.",
+      "corrected_text": "From Square One, my frequency is one four zero point eight five.",
+      "applied": [
+        {
+          "start": 12,
+          "end": 16,
+          "source": "Zero",
+          "replacement": "One",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-227:unit-1",
+      "segment_id": "seg-227",
+      "original_text": "Mister Sigent, got it.",
+      "corrected_text": "Mister Sargent, got it.",
+      "applied": [
+        {
+          "start": 7,
+          "end": 13,
+          "source": "Sigent",
+          "replacement": "Sargent",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-263:unit-1",
+      "segment_id": "seg-263",
+      "original_text": "There's a gaco, and",
+      "corrected_text": "There's a gago, and",
+      "applied": [
+        {
+          "start": 10,
+          "end": 14,
+          "source": "gaco",
+          "replacement": "gago",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-544:unit-1",
+      "segment_id": "seg-544",
+      "original_text": "I can't be gone for too long.",
+      "corrected_text": "I can't be gone for long long.",
+      "applied": [
+        {
+          "start": 20,
+          "end": 23,
+          "source": "too",
+          "replacement": "long",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-613:unit-1",
+      "segment_id": "seg-613",
+      "original_text": "If he does, we're just gonna fight everyone with the AK forty-seven.",
+      "corrected_text": "If he does, we're just gonna fight everyone with the AK-47.",
+      "applied": [
+        {
+          "start": 53,
+          "end": 67,
+          "source": "AK forty-seven",
+          "replacement": "AK-47",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-630:unit-1",
+      "segment_id": "seg-630",
+      "original_text": "So we'll swap to the AK forty-seven.",
+      "corrected_text": "So we'll swap to the AK-47 forty-seven.",
+      "applied": [
+        {
+          "start": 21,
+          "end": 23,
+          "source": "AK",
+          "replacement": "AK-47",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-718:unit-1",
+      "segment_id": "seg-718",
+      "original_text": "then we've got a gakko and a keratin frog.",
+      "corrected_text": "then we've got a gaggle and a keratin frog.",
+      "applied": [
+        {
+          "start": 17,
+          "end": 22,
+          "source": "gakko",
+          "replacement": "gaggle",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-736:unit-1",
+      "segment_id": "seg-736",
+      "original_text": "And up here, there's a gaco.",
+      "corrected_text": "And up here, there's a gato.",
+      "applied": [
+        {
+          "start": 23,
+          "end": 27,
+          "source": "gaco",
+          "replacement": "gato",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-738:unit-1",
+      "segment_id": "seg-738",
+      "original_text": "Let's let's see if the snake's in here.",
+      "corrected_text": "Let let see if the snake's in here.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 5,
+          "source": "Let's",
+          "replacement": "Let",
+          "score": 5
+        },
+        {
+          "start": 6,
+          "end": 11,
+          "source": "let's",
+          "replacement": "let",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-791:unit-1",
+      "segment_id": "seg-791",
+      "original_text": "Okay, and then we've got a gaco,",
+      "corrected_text": "Okay, and then we've got a guy,",
+      "applied": [
+        {
+          "start": 27,
+          "end": 31,
+          "source": "gaco",
+          "replacement": "guy",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-808:unit-1",
+      "segment_id": "seg-808",
+      "original_text": "And there's also a gaco right there.",
+      "corrected_text": "And there's also a guy right there.",
+      "applied": [
+        {
+          "start": 19,
+          "end": 23,
+          "source": "gaco",
+          "replacement": "guy",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-922:unit-1",
+      "segment_id": "seg-922",
+      "original_text": "Let's take out that gaco, and then there's also a frog.",
+      "corrected_text": "Let's take out that gator, and then there's also a frog.",
+      "applied": [
+        {
+          "start": 20,
+          "end": 24,
+          "source": "gaco",
+          "replacement": "gator",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1007:unit-1",
+      "segment_id": "seg-1007",
+      "original_text": "There's a gaco",
+      "corrected_text": "There's a gauge",
+      "applied": [
+        {
+          "start": 10,
+          "end": 14,
+          "source": "gaco",
+          "replacement": "gauge",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1063:unit-1",
+      "segment_id": "seg-1063",
+      "original_text": "And we got get down.",
+      "corrected_text": "And we go get down.",
+      "applied": [
+        {
+          "start": 7,
+          "end": 10,
+          "source": "got",
+          "replacement": "go",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1137:unit-1",
+      "segment_id": "seg-1137",
+      "original_text": "we got some AKMO.",
+      "corrected_text": "we got some AK-47.",
+      "applied": [
+        {
+          "start": 12,
+          "end": 16,
+          "source": "AKMO",
+          "replacement": "AK-47",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1142:unit-1",
+      "segment_id": "seg-1142",
+      "original_text": "We just got too many items, and we got a gatko up there.",
+      "corrected_text": "We just got too many items, and we got a gato up there.",
+      "applied": [
+        {
+          "start": 41,
+          "end": 46,
+          "source": "gatko",
+          "replacement": "gato",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1219:unit-1",
+      "segment_id": "seg-1219",
+      "original_text": "I'm gonna take this opportunity to get the gako and the frog here.",
+      "corrected_text": "I'm gonna take this opportunity to get the glock and the frog here.",
+      "applied": [
+        {
+          "start": 43,
+          "end": 47,
+          "source": "gako",
+          "replacement": "glock",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1220:unit-1",
+      "segment_id": "seg-1220",
+      "original_text": "So there's a gako over there, super well hidden.",
+      "corrected_text": "So there's a glock over there, super well hidden.",
+      "applied": [
+        {
+          "start": 13,
+          "end": 17,
+          "source": "gako",
+          "replacement": "glock",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1300:unit-1",
+      "segment_id": "seg-1300",
+      "original_text": "Snake, it's a movie, not a report out of Los Alamos.",
+      "corrected_text": "Snake, it's a movie, not a report out of Los Los.",
+      "applied": [
+        {
+          "start": 45,
+          "end": 51,
+          "source": "Alamos",
+          "replacement": "Los",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1305:unit-1",
+      "segment_id": "seg-1305",
+      "original_text": "Siraizawa develops a new type of weapon, but meanwhile, Godzilla is getting closer and closer to Tokyo, obliterating everything in his",
+      "corrected_text": "Siraizawa develops a new type of weapon, but meanwhile, Godzilla is getting closer and closer to Tokyo, obliterating everything in path",
+      "applied": [
+        {
+          "start": 131,
+          "end": 134,
+          "source": "his",
+          "replacement": "path",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "unit_id": "seg-1315:unit-1",
+      "segment_id": "seg-1315",
+      "original_text": "It might even win awards awards all across the globe in sixty years.",
+      "corrected_text": "It might even win win awards all across the globe in sixty years.",
+      "applied": [
+        {
+          "start": 18,
+          "end": 24,
+          "source": "awards",
+          "replacement": "win",
+          "score": 5
+        }
+      ]
+    }
+  ],
+  "rejected_proposals": [
+    {
+      "unit_id": "seg-6:unit-1",
+      "proposal": {
+        "start": 6,
+        "end": 9,
+        "source": "oil",
+        "replacement": "oil",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-28:unit-1",
+      "proposal": {
+        "start": 15,
+        "end": 18,
+        "source": "Fox",
+        "replacement": "Fox",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-57:unit-1",
+      "proposal": {
+        "start": 17,
+        "end": 33,
+        "source": "predecessor",
+        "replacement": "predecessor",
+        "score": 5
+      },
+      "code": "source_mismatch"
+    },
+    {
+      "unit_id": "seg-80:unit-1",
+      "proposal": {
+        "start": 68,
+        "end": 71,
+        "source": "two",
+        "replacement": "two",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-106:unit-1",
+      "proposal": {
+        "start": 23,
+        "end": 28,
+        "source": "power",
+        "replacement": "power",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-218:unit-1",
+      "proposal": {
+        "start": 58,
+        "end": 61,
+        "source": "one",
+        "replacement": "one",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-222:unit-1",
+      "proposal": {
+        "start": 12,
+        "end": 18,
+        "source": "Mister",
+        "replacement": "Mister",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-258:unit-1",
+      "proposal": {
+        "start": 21,
+        "end": 27,
+        "source": "shroom",
+        "replacement": "shroom",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-264:unit-1",
+      "proposal": {
+        "start": 13,
+        "end": 22,
+        "source": "keratin",
+        "replacement": "gago",
+        "score": 5
+      },
+      "code": "source_mismatch"
+    },
+    {
+      "unit_id": "seg-463:unit-1",
+      "proposal": {
+        "start": 8,
+        "end": 14,
+        "source": "Volgin",
+        "replacement": "Volgin",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-796:unit-1",
+      "proposal": {
+        "start": 18,
+        "end": 25,
+        "source": "Russian",
+        "replacement": "Russian",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-803:unit-1",
+      "proposal": {
+        "start": 22,
+        "end": 28,
+        "source": "shroom",
+        "replacement": "shroom",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-817:unit-1",
+      "proposal": {
+        "start": 27,
+        "end": 32,
+        "source": "green",
+        "replacement": "green",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-817:unit-1",
+      "proposal": {
+        "start": 33,
+        "end": 37,
+        "source": "tree",
+        "replacement": "tree",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-817:unit-1",
+      "proposal": {
+        "start": 38,
+        "end": 44,
+        "source": "python",
+        "replacement": "python",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-857:unit-1",
+      "proposal": {
+        "start": 3,
+        "end": 8,
+        "source": "Otten",
+        "replacement": "Otten",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-858:unit-1",
+      "proposal": {
+        "start": 8,
+        "end": 11,
+        "source": "two",
+        "replacement": "two",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-872:unit-1",
+      "proposal": {
+        "start": 8,
+        "end": 11,
+        "source": "two",
+        "replacement": "two",
+        "score": 5
+      },
+      "code": "no_change"
+    },
+    {
+      "unit_id": "seg-983:unit-1",
+      "proposal": {
+        "start": 20,
+        "end": 24,
+        "source": "uniform",
+        "replacement": "uniform",
+        "score": 5
+      },
+      "code": "source_mismatch"
+    }
+  ],
+  "unit_errors": []
+}

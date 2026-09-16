@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-16",
+  "project_git_commit": "98c54f3c02b1c48d5e2b8f7fb870ee9026017d45",
+  "partition": "dev",
+  "source_split": "validation",
+  "calibration_enabled": false,
+  "reference_provided_to_models": false,
+  "vad_enabled": true,
+  "model_downloads_enabled": false,
+  "command": "HF_HUB_OFFLINE=1 PYTHONPATH=src .venv/bin/easr tests/evaluation/calibration/reference-v1/audio/dev --output-dir tests/evaluation/calibration/reference-v1/runs/raw-asr/dev --verbose",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.4",
+  "packages": {
+    "echoalign-asr-mlx": "0.5.1.dev1+gaded5a5bd.d20260731",
+    "mlx": "0.32.0",
+    "mlx-audio": "0.4.4",
+    "mlx-vlm": "0.6.8",
+    "silero-vad": "6.2.1",
+    "torch": "2.11.0",
+    "transformers": "5.14.1"
+  },
+  "models": [
+    {
+      "model_id": "mlx-community/Qwen3-ASR-1.7B-bf16",
+      "cached_revision": "e1f6c266914abc5a46e8756e02580f834a6cf8a7"
+    },
+    {
+      "model_id": "mlx-community/Qwen3-ForcedAligner-0.6B-bf16",
+      "cached_revision": "53c8c0e46733eec430e4b53dd6471d0e5dee45f8"
+    }
+  ],
+  "manifest_sha256": "c8a03391344f6ac2c0d991ffbaa5851401b0a1e2aecd36021265f3fd699cb6e0",
+  "scorer_sha256": "02507c52caed6e46c8c4fe22bbb38f5776eb6376d02985d61f0a8c4d83ce55f9",
+  "models_revision_evidence": "Cached refs/main recorded for an HF_HUB_OFFLINE=1 run; references are not supplied to ASR."
+}

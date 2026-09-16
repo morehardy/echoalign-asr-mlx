@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+  "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+  "policy_version": "1",
+  "source": "tests/e2e/outputs/Metal Gear Solid Delta.json",
+  "segment_count": 1334,
+  "model_request_count": 1336,
+  "retry_count": 0,
+  "retry_distribution": {},
+  "corrected_unit_count": 25,
+  "applied_proposal_count": 26,
+  "applied_score_distribution": {
+    "5": 26
+  },
+  "rejected_proposal_count": 19,
+  "rejection_code_distribution": {
+    "no_change": 16,
+    "source_mismatch": 3
+  },
+  "unit_error_count": 0,
+  "unit_error_code_distribution": {}
+}

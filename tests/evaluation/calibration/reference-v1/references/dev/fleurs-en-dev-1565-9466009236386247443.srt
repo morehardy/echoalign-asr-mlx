@@ -1,0 +1,4 @@
+1
+00:00:00,000 --> 00:00:07,200
+Science’s main goal is to figure out the way the world works through the scientific method. This method in fact guides most scientific research.
+

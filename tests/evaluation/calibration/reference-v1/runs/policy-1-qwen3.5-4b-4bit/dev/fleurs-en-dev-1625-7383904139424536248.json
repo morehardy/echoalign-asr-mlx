@@ -1,0 +1,208 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1625-7383904139424536248.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 10.76,
+      "quality_pass_count": 1,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 10.76,
+          "context_start": 0.0,
+          "context_end": 10.76,
+          "token_count": 14,
+          "timing_source_counts": {
+            "aligner": 14,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 10.76,
+          "quality": {
+            "passed": true,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-unq3_akw/fleurs-en-dev-1625-7383904139424536248.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 10.76,
+      "raw_span_count": 2,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.2,
+          "speech_end": 10.76,
+          "input_start": 0.0,
+          "input_end": 10.76,
+          "source_span_count": 2
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "Famous singers across the country presented bhajans or devotional songs to Sheer Shah's",
+      "start_time": 1.44,
+      "end_time": 8.12,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Famous",
+          "start_time": 1.44,
+          "end_time": 1.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "singers",
+          "start_time": 1.76,
+          "end_time": 2.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "across",
+          "start_time": 2.24,
+          "end_time": 2.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 2.64,
+          "end_time": 2.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "country",
+          "start_time": 2.72,
+          "end_time": 3.12,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "presented",
+          "start_time": 3.12,
+          "end_time": 3.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "bhajans",
+          "start_time": 4.16,
+          "end_time": 5.12,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "or",
+          "start_time": 5.28,
+          "end_time": 5.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "devotional",
+          "start_time": 5.44,
+          "end_time": 6.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "songs",
+          "start_time": 6.0,
+          "end_time": 6.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 7.04,
+          "end_time": 7.12,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Sheer",
+          "start_time": 7.12,
+          "end_time": 7.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Shah's",
+          "start_time": 7.68,
+          "end_time": 8.0,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "feet.",
+      "start_time": 9.28,
+      "end_time": 9.719999999999999,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "feet.",
+          "start_time": 9.28,
+          "end_time": 9.6,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "Famous singers across the country presented bhajans or devotional songs to Sheer Shah's",
+      "start_time": 1.44,
+      "end_time": 8.12,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "feet.",
+      "start_time": 9.28,
+      "end_time": 9.719999999999999,
+      "language": "['English']"
+    }
+  ]
+}

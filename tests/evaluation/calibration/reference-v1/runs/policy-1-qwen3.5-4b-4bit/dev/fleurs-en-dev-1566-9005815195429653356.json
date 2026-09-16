@@ -1,0 +1,222 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1566-9005815195429653356.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 8.46,
+      "quality_pass_count": 0,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 8.46,
+          "context_start": 0.0,
+          "context_end": 8.46,
+          "token_count": 16,
+          "timing_source_counts": {
+            "aligner": 15,
+            "estimated": 1,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 8.46,
+          "quality": {
+            "passed": false,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0625,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0625,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-d0tcztra/fleurs-en-dev-1566-9005815195429653356.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 8.46,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 8.3,
+          "input_start": 0.0,
+          "input_end": 8.46,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "Yet 80% of our goods were taxed through tariffs in Central American countries.",
+      "start_time": 1.12,
+      "end_time": 5.8,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Yet",
+          "start_time": 1.12,
+          "end_time": 1.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "80%",
+          "start_time": 1.3800000000000001,
+          "end_time": 1.4800000000000002,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "of",
+          "start_time": 2.08,
+          "end_time": 2.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "our",
+          "start_time": 2.24,
+          "end_time": 2.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "goods",
+          "start_time": 2.32,
+          "end_time": 2.56,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "were",
+          "start_time": 2.72,
+          "end_time": 2.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "taxed",
+          "start_time": 2.96,
+          "end_time": 3.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "through",
+          "start_time": 3.28,
+          "end_time": 3.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "tariffs",
+          "start_time": 3.6,
+          "end_time": 4.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "in",
+          "start_time": 4.0,
+          "end_time": 4.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Central",
+          "start_time": 4.16,
+          "end_time": 4.56,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "American",
+          "start_time": 4.56,
+          "end_time": 4.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "countries.",
+          "start_time": 5.28,
+          "end_time": 5.68,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "We treat you.",
+      "start_time": 6.32,
+      "end_time": 6.92,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "We",
+          "start_time": 6.32,
+          "end_time": 6.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "treat",
+          "start_time": 6.4,
+          "end_time": 6.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "you.",
+          "start_time": 6.72,
+          "end_time": 6.8,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "Yet 80% of our goods were taxed through tariffs in Central American countries.",
+      "start_time": 1.12,
+      "end_time": 5.8,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "We treat you.",
+      "start_time": 6.32,
+      "end_time": 6.92,
+      "language": "['English']"
+    }
+  ]
+}

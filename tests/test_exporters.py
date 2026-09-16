@@ -61,6 +61,43 @@ class ExporterTest(unittest.TestCase):
         self.assertEqual(payload["items"][1]["text"], "好")
         self.assertIn("source_media", payload)
 
+    def test_changed_segment_exposes_original_text_while_tokens_remain_original(
+        self,
+    ) -> None:
+        document = TranscriptionDocument(
+            source_path="demo.wav",
+            provider_name="fake",
+            segments=[
+                Segment(
+                    id="seg-1",
+                    text="I want to go.",
+                    original_text="I want two go.",
+                    start_time=0.0,
+                    end_time=1.0,
+                    language="en",
+                    tokens=[
+                        Token(
+                            text="two",
+                            start_time=0.3,
+                            end_time=0.5,
+                            unit="word",
+                            language="en",
+                        )
+                    ],
+                )
+            ],
+        )
+
+        sentence_payload = json.loads(render_json(document))
+        token_payload = json.loads(render_json(document, granularity="token"))
+
+        self.assertEqual(
+            sentence_payload["segments"][0]["original_text"],
+            "I want two go.",
+        )
+        self.assertEqual(sentence_payload["items"][0]["text"], "I want to go.")
+        self.assertEqual(token_payload["items"][0]["text"], "two")
+
     def test_json_tokens_do_not_expose_provider_timing_source(self) -> None:
         document = TranscriptionDocument(
             source_path="demo.wav",

@@ -1,0 +1,4 @@
+1
+00:00:00,000 --> 00:00:12,480
+The winter can be deceptively chilly: temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.
+

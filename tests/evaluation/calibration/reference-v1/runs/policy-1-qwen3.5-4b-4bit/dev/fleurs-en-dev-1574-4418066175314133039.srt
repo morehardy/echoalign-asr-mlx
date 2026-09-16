@@ -1,0 +1,7 @@
+1
+00:00:01,120 --> 00:00:03,160
+The winter can be deceptively chilly.
+
+2
+00:00:03,600 --> 00:00:09,800
+Temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.

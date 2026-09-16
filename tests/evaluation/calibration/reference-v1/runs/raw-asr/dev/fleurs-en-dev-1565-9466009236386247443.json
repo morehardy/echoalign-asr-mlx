@@ -1,0 +1,278 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1565-9466009236386247443.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 7.2,
+      "quality_pass_count": 0,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 7.2,
+          "context_start": 0.0,
+          "context_end": 7.2,
+          "token_count": 24,
+          "timing_source_counts": {
+            "aligner": 24,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 7.2,
+          "quality": {
+            "passed": false,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.08333333333333333,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-6k5p6t18/fleurs-en-dev-1565-9466009236386247443.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 7.2,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 7.2,
+          "input_start": 0.0,
+          "input_end": 7.2,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "Science's main goal is to figure out the way the world works through the scientific method.",
+      "start_time": 0.32,
+      "end_time": 3.8000000000000003,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Science's",
+          "start_time": 0.32,
+          "end_time": 0.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "main",
+          "start_time": 0.8,
+          "end_time": 0.96,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "goal",
+          "start_time": 1.04,
+          "end_time": 1.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "is",
+          "start_time": 1.2,
+          "end_time": 1.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 1.36,
+          "end_time": 1.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "figure",
+          "start_time": 1.44,
+          "end_time": 1.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "out",
+          "start_time": 1.68,
+          "end_time": 1.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 1.84,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "way",
+          "start_time": 1.92,
+          "end_time": 2.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 2.08,
+          "end_time": 2.16,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "world",
+          "start_time": 2.24,
+          "end_time": 2.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "works",
+          "start_time": 2.48,
+          "end_time": 2.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "through",
+          "start_time": 2.8,
+          "end_time": 2.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 2.88,
+          "end_time": 2.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "scientific",
+          "start_time": 3.04,
+          "end_time": 3.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "method.",
+          "start_time": 3.6,
+          "end_time": 3.68,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "This method, in fact, guides most scientific research.",
+      "start_time": 4.32,
+      "end_time": 6.5200000000000005,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "This",
+          "start_time": 4.32,
+          "end_time": 4.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "method,",
+          "start_time": 4.48,
+          "end_time": 4.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "in",
+          "start_time": 4.72,
+          "end_time": 4.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "fact,",
+          "start_time": 4.88,
+          "end_time": 5.04,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "guides",
+          "start_time": 5.12,
+          "end_time": 5.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "most",
+          "start_time": 5.36,
+          "end_time": 5.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "scientific",
+          "start_time": 5.6,
+          "end_time": 5.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "research.",
+          "start_time": 6.16,
+          "end_time": 6.4,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "Science's main goal is to figure out the way the world works through the scientific method.",
+      "start_time": 0.32,
+      "end_time": 3.8000000000000003,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "This method, in fact, guides most scientific research.",
+      "start_time": 4.32,
+      "end_time": 6.5200000000000005,
+      "language": "['English']"
+    }
+  ]
+}

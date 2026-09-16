@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "run": {
+    "run_id": "run-e395d988",
+    "started_at": "2026-07-31T13:31:33.259877+00:00",
+    "ended_at": null,
+    "duration_ms": null,
+    "steps": [
+      {
+        "name": "preflight",
+        "status": "ok",
+        "started_at": "2026-07-31T13:31:33.260379+00:00",
+        "ended_at": "2026-07-31T13:31:33.339998+00:00",
+        "duration_ms": 79.65450000483543,
+        "error": null,
+        "meta": {}
+      }
+    ]
+  },
+  "file": {
+    "file_id": "1",
+    "source_path": "/tmp/easr-calibration-smoke.wav",
+    "status": "ok"
+  },
+  "steps": [
+    {
+      "name": "prepare",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:33.341508+00:00",
+      "ended_at": "2026-07-31T13:31:33.584026+00:00",
+      "duration_ms": 242.54383298102766,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "preprocess_vad",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:33.584140+00:00",
+      "ended_at": "2026-07-31T13:31:35.845493+00:00",
+      "duration_ms": 2261.335458024405,
+      "error": null,
+      "meta": {
+        "enabled": true,
+        "status": "ok",
+        "duration_sec": 30.0,
+        "raw_span_count": 3,
+        "alignment_unit_count": 2
+      }
+    },
+    {
+      "name": "provider_plan_windows",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:45.643036+00:00",
+      "ended_at": "2026-07-31T13:31:45.728744+00:00",
+      "duration_ms": 85.72312502656132,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "provider_window",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:45.730163+00:00",
+      "ended_at": "2026-07-31T13:31:49.759853+00:00",
+      "duration_ms": 4029.6464579878375,
+      "error": null,
+      "meta": {
+        "window_index": 1,
+        "window_count": 2,
+        "alignment_unit_index": 0
+      }
+    },
+    {
+      "name": "provider_window",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:49.759951+00:00",
+      "ended_at": "2026-07-31T13:31:50.985988+00:00",
+      "duration_ms": 1226.0324580129236,
+      "error": null,
+      "meta": {
+        "window_index": 2,
+        "window_count": 2,
+        "alignment_unit_index": 1
+      }
+    },
+    {
+      "name": "provider_merge",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:50.986350+00:00",
+      "ended_at": "2026-07-31T13:31:50.988363+00:00",
+      "duration_ms": 2.0186660112813115,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "transcribe",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:35.845530+00:00",
+      "ended_at": "2026-07-31T13:31:50.988888+00:00",
+      "duration_ms": 15143.179834005423,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "calibration_model_load",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:50.994572+00:00",
+      "ended_at": "2026-07-31T13:31:59.608181+00:00",
+      "duration_ms": 8613.518042024225,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "calibrate_text",
+      "status": "ok",
+      "started_at": "2026-07-31T13:31:50.994304+00:00",
+      "ended_at": "2026-07-31T13:32:31.259299+00:00",
+      "duration_ms": 40264.53587500146,
+      "error": null,
+      "meta": {
+        "counts": {
+          "eligible_unit_count": 5,
+          "model_request_count": 5,
+          "retry_count": 0,
+          "low_confidence_discard_count": 0,
+          "applied_proposal_count": 0,
+          "corrected_unit_count": 0,
+          "rejected_proposal_count": 0,
+          "unit_error_count": 0
+        }
+      }
+    },
+    {
+      "name": "render_srt",
+      "status": "ok",
+      "started_at": "2026-07-31T13:32:31.259366+00:00",
+      "ended_at": "2026-07-31T13:32:31.259470+00:00",
+      "duration_ms": 0.10312499944120646,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_vtt",
+      "status": "ok",
+      "started_at": "2026-07-31T13:32:31.259478+00:00",
+      "ended_at": "2026-07-31T13:32:31.259503+00:00",
+      "duration_ms": 0.02600002335384488,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_json",
+      "status": "ok",
+      "started_at": "2026-07-31T13:32:31.259510+00:00",
+      "ended_at": "2026-07-31T13:32:31.259753+00:00",
+      "duration_ms": 0.24374999338760972,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_calibration_json",
+      "status": "ok",
+      "started_at": "2026-07-31T13:32:31.259760+00:00",
+      "ended_at": "2026-07-31T13:32:31.259781+00:00",
+      "duration_ms": 0.023292028345167637,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "write_outputs",
+      "status": "ok",
+      "started_at": "2026-07-31T13:32:31.259788+00:00",
+      "ended_at": "2026-07-31T13:32:31.261583+00:00",
+      "duration_ms": 1.7973330104723573,
+      "error": null,
+      "meta": {}
+    }
+  ],
+  "provider": {
+    "window_count": 2,
+    "window_steps": [
+      {
+        "window_index": 1,
+        "window_count": 2,
+        "status": "ok",
+        "duration_ms": 4029.6464579878375,
+        "error": null
+      },
+      {
+        "window_index": 2,
+        "window_count": 2,
+        "status": "ok",
+        "duration_ms": 1226.0324580129236,
+        "error": null
+      }
+    ],
+    "merge_duration_ms": 2.0186660112813115
+  }
+}

@@ -1,0 +1,4 @@
+1
+00:00:00,000 --> 00:00:09,540
+In the churchyard, there are interesting marble sculptures of doves over some tombs.
+

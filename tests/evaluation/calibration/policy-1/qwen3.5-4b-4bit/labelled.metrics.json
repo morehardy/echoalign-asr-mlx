@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+  "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+  "policy_version": "1",
+  "fixture": "tests/evaluation/calibration/policy-1/labelled.json",
+  "case_count": 100,
+  "correctable_count": 50,
+  "clean_count": 50,
+  "correct_applied_proposals": 32,
+  "total_applied_proposals": 42,
+  "applied_proposal_precision": 0.7619047619047619,
+  "recalled_correctable_cases": 32,
+  "correctable_error_recall": 0.64,
+  "clean_modified_cases": 1,
+  "clean_false_modification_rate": 0.02,
+  "structure_or_timestamp_changes": 0,
+  "retry_exhausted_units": 0,
+  "thresholds": {
+    "applied_proposal_precision": false,
+    "correctable_error_recall": false,
+    "clean_false_modification_rate": true,
+    "structure_or_timestamp_changes": true,
+    "retry_exhausted_units": true
+  },
+  "passed": false
+}

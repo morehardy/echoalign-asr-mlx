@@ -1,0 +1,7 @@
+1
+00:00:01,360 --> 00:00:09,280
+It uses satellite-based technology, as opposed to older ground radar-based technology, to allow air traffic controllers to pinpoint
+
+2
+00:00:09,280 --> 00:00:13,800
+aircraft with greater precision and give pilots more accurate information.

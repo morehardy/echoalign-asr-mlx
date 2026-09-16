@@ -10,19 +10,26 @@ import subprocess
 import sys
 import uuid
 from pathlib import Path
-from typing import Iterable, List, Literal, Sequence, Tuple
+from typing import Iterable, List, Literal, Protocol, Sequence, Tuple
 
 import click
 import typer
 
 from asr import __version__
+from asr.calibration import (
+    CalibrationResult,
+    TextCorrector,
+    calibrate_document,
+    render_calibration_json,
+)
 from asr.discovery import discover_media_files
 from asr.exporters import render_json, render_srt, render_vtt
 from asr.media import FfmpegMediaPreparer
+from asr.models import TranscriptionDocument
 from asr.observability.console import ConsoleProgressObserver
 from asr.observability.events import ObservabilityEvent
 from asr.observability.metrics import MetricsCollectorObserver
-from asr.observability.observer import ObserverMux
+from asr.observability.observer import Observer, ObserverMux
 from asr.observability.timing import observe_step
 from asr.output import build_output_path, default_output_root, validate_output_paths
 from asr.pipeline import process_media_file
@@ -36,8 +43,24 @@ _MLX_RUNTIME_INSTALL_HINT = (
     "MLX runtime is not installed. Install with `pip install 'echoalign-asr-mlx[mlx]'` "
     "(published package) or `pip install '.[mlx]'` from a source checkout."
 )
-_ROOT_FLAG_OPTIONS = frozenset({"--recursive", "--verbose", "--no-vad", "--version"})
+_ROOT_FLAG_OPTIONS = frozenset(
+    {"--recursive", "--verbose", "--no-vad", "--calibrate", "--version"}
+)
 _ROOT_OPTIONS_WITH_VALUES = frozenset({"--output-dir", "--granularity"})
+
+
+class CalibrationRuntime(TextCorrector, Protocol):
+    def bind_observer(
+        self,
+        *,
+        observer: Observer,
+        run_id: str,
+        file_id: str,
+        source_path: str,
+    ) -> None: ...
+
+    def clear_observer(self) -> None: ...
+
 
 app = typer.Typer(
     name="easr",
@@ -90,6 +113,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--verbose",
         action="store_true",
         help="Print detailed progress information.",
+    )
+    parser.add_argument(
+        "--calibrate",
+        action="store_true",
+        help="Calibrate English ASR errors with the pinned local MLX model.",
     )
     return parser
 
@@ -228,6 +256,41 @@ def run_completion_install_fish() -> int:
     return 0
 
 
+def _calibrate_for_cli(
+    document: TranscriptionDocument,
+    *,
+    corrector: CalibrationRuntime,
+    observer: Observer,
+    run_id: str,
+    file_id: str,
+    source_path: str,
+) -> tuple[TranscriptionDocument, CalibrationResult]:
+    calibration_counts: dict[str, int] = {}
+    corrector.bind_observer(
+        observer=observer,
+        run_id=run_id,
+        file_id=file_id,
+        source_path=source_path,
+    )
+    try:
+        with observe_step(
+            observer,
+            run_id=run_id,
+            file_id=file_id,
+            source_path=source_path,
+            step="calibrate_text",
+            meta={"counts": calibration_counts},
+        ):
+            calibrated, result = calibrate_document(
+                document,
+                corrector=corrector,
+            )
+            calibration_counts.update(result.metrics.to_dict())
+            return calibrated, result
+    finally:
+        corrector.clear_observer()
+
+
 def _run_transcription(
     inputs: Sequence[str],
     recursive: bool,
@@ -235,6 +298,7 @@ def _run_transcription(
     granularity: str,
     verbose: bool,
     vad_enabled: bool,
+    calibrate: bool,
 ) -> int:
     run_id = f"run-{uuid.uuid4().hex[:8]}"
     collector = MetricsCollectorObserver() if verbose else None
@@ -256,6 +320,8 @@ def _run_transcription(
         suffixes = [".srt", ".vtt", ".json"]
         if verbose:
             suffixes.append(".metrics.json")
+        if calibrate:
+            suffixes.append(".calibration.json")
         try:
             validate_output_paths(discovered_sources, output_dir=output_dir, suffixes=suffixes)
         except ValueError as exc:
@@ -276,6 +342,7 @@ def _run_transcription(
 
         provider = create_default_provider()
         media_preparer = FfmpegMediaPreparer()
+        corrector = create_calibration_corrector() if calibrate else None
         had_error = False
 
         for index, (source_path, input_root) in enumerate(discovered_sources, start=1):
@@ -316,6 +383,30 @@ def _run_transcription(
                     print(f"[easr] transcription {document.status} for {source_path}", file=sys.stderr)
                     for warning in document.warnings:
                         print(f"[easr] {warning}", file=sys.stderr)
+                calibration_result: CalibrationResult | None = None
+                file_status = document.status
+                if corrector is not None:
+                    document, calibration_result = _calibrate_for_cli(
+                        document,
+                        corrector=corrector,
+                        observer=observer,
+                        run_id=run_id,
+                        file_id=file_id,
+                        source_path=str(source_path),
+                    )
+                    calibration_result.source_path = str(source_path)
+                    if calibration_result.status != "success":
+                        had_error = True
+                        file_status = calibration_result.status
+                        message = calibration_result.error or (
+                            f"{len(calibration_result.unit_errors)} unit(s) "
+                            "could not be calibrated"
+                        )
+                        print(
+                            f"[easr] calibration {calibration_result.status} "
+                            f"for {source_path}: {message}",
+                            file=sys.stderr,
+                        )
                 with observe_step(
                     observer,
                     run_id=run_id,
@@ -340,6 +431,18 @@ def _run_transcription(
                     step="render_json",
                 ):
                     json_content = render_json(document, granularity=granularity)
+                calibration_content: str | None = None
+                if calibration_result is not None:
+                    with observe_step(
+                        observer,
+                        run_id=run_id,
+                        file_id=file_id,
+                        source_path=str(source_path),
+                        step="render_calibration_json",
+                    ):
+                        calibration_content = render_calibration_json(
+                            calibration_result
+                        )
 
                 with observe_step(
                     observer,
@@ -353,6 +456,8 @@ def _run_transcription(
                         ".vtt": vtt_content,
                         ".json": json_content,
                     }
+                    if calibration_content is not None:
+                        rendered_outputs[".calibration.json"] = calibration_content
                     for suffix, content in rendered_outputs.items():
                         target = build_output_path(
                             source=source_path,
@@ -369,7 +474,7 @@ def _run_transcription(
                         run_id=run_id,
                         file_id=file_id,
                         source_path=str(source_path),
-                        meta={"status": document.status},
+                        meta={"status": file_status},
                     )
                 )
                 if collector is not None:
@@ -435,6 +540,14 @@ def _write_metrics_json(
         )
 
 
+def create_calibration_corrector() -> CalibrationRuntime:
+    """Create the lazy runtime only for an explicitly requested run."""
+
+    from asr.calibration_mlx import MlxVlmCorrector
+
+    return MlxVlmCorrector()
+
+
 @app.callback(invoke_without_command=True)
 def root(
     ctx: typer.Context,
@@ -455,6 +568,11 @@ def root(
         "--no-vad",
         help="Disable voice activity detection preprocessing.",
     ),
+    calibrate: bool = typer.Option(
+        False,
+        "--calibrate",
+        help="Calibrate English ASR errors with the pinned local MLX model.",
+    ),
     version: bool = typer.Option(
         False,
         "--version",
@@ -473,6 +591,7 @@ def root(
         granularity=granularity,
         verbose=verbose,
         vad_enabled=not no_vad,
+        calibrate=calibrate,
     )
     raise typer.Exit(code=code)
 

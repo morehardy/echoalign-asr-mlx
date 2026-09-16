@@ -1,0 +1,7 @@
+1
+00:00:00,800 --> 00:00:04,360
+Technology offers a solution with virtual field trips.
+
+2
+00:00:04,640 --> 00:00:12,520
+Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.

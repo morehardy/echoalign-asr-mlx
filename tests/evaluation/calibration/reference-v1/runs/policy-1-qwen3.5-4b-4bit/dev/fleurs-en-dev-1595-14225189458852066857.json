@@ -1,0 +1,306 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1595-14225189458852066857.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 10.02,
+      "quality_pass_count": 1,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 10.02,
+          "context_start": 0.0,
+          "context_end": 10.02,
+          "token_count": 28,
+          "timing_source_counts": {
+            "aligner": 27,
+            "estimated": 1,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 10.02,
+          "quality": {
+            "passed": true,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.03571428571428571,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-w0mz2er0/fleurs-en-dev-1595-14225189458852066857.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 10.02,
+      "raw_span_count": 2,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 10.0,
+          "input_start": 0.0,
+          "input_end": 10.02,
+          "source_span_count": 2
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "The Tibetan Buddhism is based on the teachings of Buddha, but were extended by the Mahayana path",
+      "start_time": 0.4,
+      "end_time": 4.8,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "The",
+          "start_time": 0.4,
+          "end_time": 0.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Tibetan",
+          "start_time": 0.56,
+          "end_time": 0.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Buddhism",
+          "start_time": 0.88,
+          "end_time": 1.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "is",
+          "start_time": 1.52,
+          "end_time": 1.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "based",
+          "start_time": 1.68,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "on",
+          "start_time": 1.92,
+          "end_time": 2.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 2.0,
+          "end_time": 2.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "teachings",
+          "start_time": 2.24,
+          "end_time": 2.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "of",
+          "start_time": 2.64,
+          "end_time": 2.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Buddha,",
+          "start_time": 2.8,
+          "end_time": 3.04,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "but",
+          "start_time": 3.28,
+          "end_time": 3.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "were",
+          "start_time": 3.36,
+          "end_time": 3.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "extended",
+          "start_time": 3.52,
+          "end_time": 3.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "by",
+          "start_time": 4.0,
+          "end_time": 4.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 4.16,
+          "end_time": 4.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Mahayana",
+          "start_time": 4.32,
+          "end_time": 4.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "path",
+          "start_time": 4.5,
+          "end_time": 4.68,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "of love and by a lot of techniques from Indian yoga.",
+      "start_time": 6.96,
+      "end_time": 9.399999999999999,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "of",
+          "start_time": 6.96,
+          "end_time": 7.04,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "love",
+          "start_time": 7.12,
+          "end_time": 7.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "and",
+          "start_time": 7.28,
+          "end_time": 7.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "by",
+          "start_time": 7.52,
+          "end_time": 7.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "a",
+          "start_time": 7.68,
+          "end_time": 7.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "lot",
+          "start_time": 7.76,
+          "end_time": 7.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "of",
+          "start_time": 7.92,
+          "end_time": 8.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "techniques",
+          "start_time": 8.08,
+          "end_time": 8.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "from",
+          "start_time": 8.48,
+          "end_time": 8.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "Indian",
+          "start_time": 8.72,
+          "end_time": 8.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "yoga.",
+          "start_time": 9.12,
+          "end_time": 9.28,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "The Tibetan Buddhism is based on the teachings of Buddha, but were extended by the Mahayana path",
+      "start_time": 0.4,
+      "end_time": 4.8,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "of love and by a lot of techniques from Indian yoga.",
+      "start_time": 6.96,
+      "end_time": 9.399999999999999,
+      "language": "['English']"
+    }
+  ]
+}

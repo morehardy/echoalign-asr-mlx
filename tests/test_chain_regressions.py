@@ -96,13 +96,13 @@ class LanguageContractTest(unittest.TestCase):
 
 
 class PartialTranscriptionTest(unittest.TestCase):
-    def run_cli(self, provider, source):
+    def run_cli(self, provider, source, extra_args=()):
         stdout, stderr = io.StringIO(), io.StringIO()
         with patch("asr.cli.run_environment_preflight", return_value=(True, "")), \
              patch("asr.cli.create_default_provider", return_value=provider), \
              patch("asr.cli.FfmpegMediaPreparer", return_value=IdentityPreparer()), \
              contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
-            code = main([str(source), "--no-vad"])
+            code = main([str(source), "--no-vad", *extra_args])
         return code, stderr.getvalue()
 
     def test_aligner_exception_preserves_recognition_and_cli_reports_partial(self):
@@ -147,6 +147,33 @@ class PartialTranscriptionTest(unittest.TestCase):
         document = provider.transcribe(Path("probe.wav"))
         self.assertEqual(document.segments, [])
         self.assertEqual(provider._aligner_model.calls, [])
+
+    def test_successful_calibration_keeps_alignment_failure_and_estimated_timing(self):
+        provider = make_provider(
+            [SimpleNamespace(text="We want two go.", language=["English"])],
+            [RuntimeError("alignment failed")],
+        )
+        corrector = Mock()
+        corrector.generate.return_value = json.dumps({"proposals": [{
+            "start": 8, "end": 11, "source": "two", "replacement": "to", "score": 5,
+        }]})
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "probe.wav"
+            source.touch()
+            with patch("asr.cli.create_calibration_corrector", return_value=corrector):
+                code, stderr = self.run_cli(provider, source, ["--calibrate", "--verbose"])
+            output = source.parent / "outputs"
+            payload = json.loads((output / "probe.json").read_text())
+            metrics = json.loads((output / "probe.metrics.json").read_text())
+            audit = json.loads((output / "probe.calibration.json").read_text())
+        self.assertEqual(code, 1)
+        self.assertIn("alignment failed", stderr)
+        self.assertEqual(payload["status"], "partial")
+        self.assertEqual(metrics["file"]["status"], "partial")
+        self.assertEqual(audit["status"], "success")
+        self.assertEqual(payload["segments"][0]["text"], "We want to go.")
+        self.assertEqual(payload["segments"][0]["original_text"], "We want two go.")
+        self.assertEqual(payload["segments"][0]["timing_source"], "estimated")
 
 
 class WindowBoundaryRegressionTest(unittest.TestCase):
@@ -227,6 +254,10 @@ class OutputCollisionRegressionTest(unittest.TestCase):
     def test_metrics_sidecar_cannot_overwrite_another_transcript(self):
         with tempfile.TemporaryDirectory() as directory:
             self.assert_collision(directory, ["demo.mp3", "demo.metrics.wav"], ["--verbose"])
+
+    def test_calibration_sidecar_cannot_overwrite_another_transcript(self):
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_collision(directory, ["demo.mp3", "demo.calibration.wav"], ["--calibrate"])
 
     def test_case_only_output_names_are_collisions_on_macos(self):
         with tempfile.TemporaryDirectory() as directory:

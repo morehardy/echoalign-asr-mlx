@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "run": {
+    "run_id": "run-bf45cc49",
+    "started_at": "2026-09-16T06:45:36.215746+00:00",
+    "ended_at": null,
+    "duration_ms": null,
+    "steps": [
+      {
+        "name": "preflight",
+        "status": "ok",
+        "started_at": "2026-09-16T06:45:36.216494+00:00",
+        "ended_at": "2026-09-16T06:45:36.307227+00:00",
+        "duration_ms": 90.73895800975151,
+        "error": null,
+        "meta": {}
+      }
+    ]
+  },
+  "file": {
+    "file_id": "3",
+    "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1522-8364006913180567866.wav",
+    "status": "ok"
+  },
+  "steps": [
+    {
+      "name": "prepare",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:50.111858+00:00",
+      "ended_at": "2026-09-16T06:45:50.196942+00:00",
+      "duration_ms": 85.14004200696945,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "preprocess_vad",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:50.197103+00:00",
+      "ended_at": "2026-09-16T06:45:50.387634+00:00",
+      "duration_ms": 190.57237499509938,
+      "error": null,
+      "meta": {
+        "enabled": true,
+        "status": "ok",
+        "duration_sec": 13.38,
+        "raw_span_count": 1,
+        "alignment_unit_count": 1
+      }
+    },
+    {
+      "name": "provider_plan_windows",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:50.387893+00:00",
+      "ended_at": "2026-09-16T06:45:50.469510+00:00",
+      "duration_ms": 81.69812499545515,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "provider_window",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:50.470004+00:00",
+      "ended_at": "2026-09-16T06:45:52.755673+00:00",
+      "duration_ms": 2285.670499986736,
+      "error": null,
+      "meta": {
+        "window_index": 1,
+        "window_count": 1,
+        "alignment_unit_index": 0
+      }
+    },
+    {
+      "name": "provider_merge",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:52.756014+00:00",
+      "ended_at": "2026-09-16T06:45:52.756116+00:00",
+      "duration_ms": 0.10154099436476827,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "transcribe",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:50.387743+00:00",
+      "ended_at": "2026-09-16T06:45:52.756574+00:00",
+      "duration_ms": 2368.8205830112565,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_srt",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:52.759081+00:00",
+      "ended_at": "2026-09-16T06:45:52.759135+00:00",
+      "duration_ms": 0.05408300785347819,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_vtt",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:52.759146+00:00",
+      "ended_at": "2026-09-16T06:45:52.759160+00:00",
+      "duration_ms": 0.014166987966746092,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "render_json",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:52.759166+00:00",
+      "ended_at": "2026-09-16T06:45:52.759417+00:00",
+      "duration_ms": 0.2622499887365848,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "name": "write_outputs",
+      "status": "ok",
+      "started_at": "2026-09-16T06:45:52.759453+00:00",
+      "ended_at": "2026-09-16T06:45:52.760531+00:00",
+      "duration_ms": 1.0814160050358623,
+      "error": null,
+      "meta": {}
+    }
+  ],
+  "provider": {
+    "window_count": 1,
+    "window_steps": [
+      {
+        "window_index": 1,
+        "window_count": 1,
+        "status": "ok",
+        "duration_ms": 2285.670499986736,
+        "error": null
+      }
+    ],
+    "merge_duration_ms": 0.10154099436476827
+  }
+}

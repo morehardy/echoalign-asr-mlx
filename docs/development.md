@@ -65,6 +65,65 @@ Run a local transcription smoke test against your own media:
 uv run --python 3.14 --extra mlx easr /path/to/demo.mp4 --verbose --output-dir tmp/easr-smoke
 ```
 
+## Local Calibration Evaluation
+
+For the audio/reference benchmark, start with
+[the v1 evaluation contract](evaluation/text-calibration-benchmark-v1.md) and
+`tests/evaluation/calibration/reference-v1/README.md`. It uses fixed FLEURS
+recordings with publisher-validated references, separates an internal development
+and holdout partition, and scores saved ASR JSON without giving the reference
+text to the models. The commands below retain the older synthetic-error fixture
+for regression comparisons; that fixture is not independent audio ground truth.
+
+Real calibration-model evaluation runs locally on Apple Silicon and is not part
+of the Ubuntu GitHub workflow. Install the expanded MLX extra first:
+
+```bash
+uv sync --extra mlx
+```
+
+Rebuild the deterministic 100-case fixture only when intentionally reviewing
+the labelled baseline:
+
+```bash
+PYTHONPATH=src uv run --python 3.14 --extra mlx \
+  python tools/build_calibration_fixture.py
+```
+
+Run the labelled quality gate:
+
+```bash
+PYTHONPATH=src uv run --python 3.14 --extra mlx \
+  python tools/evaluate_calibration.py labelled \
+  tests/evaluation/calibration/policy-1/labelled.json \
+  tests/evaluation/calibration/policy-1/qwen3.5-4b-4bit
+```
+
+Run the full saved-ASR observation without retranscribing the 88-minute audio:
+
+```bash
+PYTHONPATH=src uv run --python 3.14 --extra mlx \
+  python tools/evaluate_calibration.py full \
+  "tests/e2e/outputs/Metal Gear Solid Delta.json" \
+  tests/evaluation/calibration/policy-1/qwen3.5-4b-4bit
+```
+
+For the short end-to-end check, make a temporary audio slice and run the public
+CLI:
+
+```bash
+ffmpeg -y -i "tests/e2e/out1/Metal Gear Solid Delta.mp3" \
+  -t 30 -c:a pcm_s16le /tmp/easr-calibration-smoke.wav
+uv run --python 3.14 --extra mlx easr /tmp/easr-calibration-smoke.wav \
+  --calibrate --verbose \
+  --output-dir tests/evaluation/calibration/policy-1/qwen3.5-4b-4bit/short-e2e
+```
+
+Commit the labelled fixture, compact results, aggregate metrics, and short E2E
+outputs. Do not commit model weights/cache, prompt bodies, raw model responses,
+retry response bodies, or hidden reasoning. A model revision or policy change
+gets a new sibling baseline directory rather than overwriting the prior one.
+
 ## Build Distributions
 
 Build source and wheel artifacts:

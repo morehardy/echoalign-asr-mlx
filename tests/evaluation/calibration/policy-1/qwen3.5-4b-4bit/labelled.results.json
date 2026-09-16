@@ -1,0 +1,1626 @@
+{
+  "metrics": {
+    "schema_version": 1,
+    "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+    "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+    "policy_version": "1",
+    "fixture": "tests/evaluation/calibration/policy-1/labelled.json",
+    "case_count": 100,
+    "correctable_count": 50,
+    "clean_count": 50,
+    "correct_applied_proposals": 32,
+    "total_applied_proposals": 42,
+    "applied_proposal_precision": 0.7619047619047619,
+    "recalled_correctable_cases": 32,
+    "correctable_error_recall": 0.64,
+    "clean_modified_cases": 1,
+    "clean_false_modification_rate": 0.02,
+    "structure_or_timestamp_changes": 0,
+    "retry_exhausted_units": 0,
+    "thresholds": {
+      "applied_proposal_precision": false,
+      "correctable_error_recall": false,
+      "clean_false_modification_rate": true,
+      "structure_or_timestamp_changes": true,
+      "retry_exhausted_units": true
+    },
+    "passed": false
+  },
+  "cases": [
+    {
+      "id": "seg-1:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Hey everone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+      "calibrated_text": "Hey everyone, and welcome back to Metal Gear Solid Delta Snake Eater.",
+      "applied": [
+        {
+          "start": 4,
+          "end": 11,
+          "source": "everone",
+          "replacement": "everyone",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-2:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "On this video, we're doing Mission Two, Opertion Snake Eater.",
+      "calibrated_text": "On this video, we're doing Mission 2, Opertion Snake Eater.",
+      "applied": [
+        {
+          "start": 35,
+          "end": 38,
+          "source": "Two",
+          "replacement": "2",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-3:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Currntly flying over the Arctic Ocean, altitude thirty thousand feet.",
+      "calibrated_text": "Currently flying over the Arctic Ocean, altitude thirty thousand feet.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Currntly",
+          "replacement": "Currently",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-4:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Approching Soviet airspace.",
+      "calibrated_text": "Approching Soviet airspace.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-5:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Arriing at the designated drone launch point.",
+      "calibrated_text": "Arriving at the designated drone launch point.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 7,
+          "source": "Arriing",
+          "replacement": "Arriving",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-6:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Drone oil presure and voltage are nominal.",
+      "calibrated_text": "Drone oil pressure and voltage are nominal.",
+      "applied": [
+        {
+          "start": 10,
+          "end": 17,
+          "source": "presure",
+          "replacement": "pressure",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-8:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Power supply to payload anti-reeze system shows no problems.",
+      "calibrated_text": "Power supply to payload freeze system shows no problems.",
+      "applied": [
+        {
+          "start": 24,
+          "end": 34,
+          "source": "anti-reeze",
+          "replacement": "freeze",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-10:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "All systems go for drone detacment.",
+      "calibrated_text": "All systems go for decontamination detacment.",
+      "applied": [
+        {
+          "start": 19,
+          "end": 24,
+          "source": "drone",
+          "replacement": "decontamination",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-12:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Airsace security has gotten tighter since we were last here.",
+      "calibrated_text": "Airspace security has gotten tighter since we were last here.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 7,
+          "source": "Airsace",
+          "replacement": "Airspace",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-13:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "We can't get as close to the ground as we did during the virtous mission.",
+      "calibrated_text": "We can't get as close to the ground as we did during the virtuous mission.",
+      "applied": [
+        {
+          "start": 57,
+          "end": 64,
+          "source": "virtous",
+          "replacement": "virtuous",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-18:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "If you fail, you'll be back in a hosptal bed again, waiting for the firing squad.",
+      "calibrated_text": "If you fail, you'll be back in a hosptal bed again, waiting for the firing squad.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [
+        {
+          "unit_id": "target:unit-1",
+          "proposal": {
+            "start": 31,
+            "end": 40,
+            "source": "hosptal",
+            "replacement": "hospital",
+            "score": 5
+          },
+          "code": "source_mismatch"
+        }
+      ],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-19:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "So how does it feel to be a patient in one of the most advaced ICUs in the world?",
+      "calibrated_text": "So how does it feel to be a patient in one of the most advanced ICUs in the world?",
+      "applied": [
+        {
+          "start": 55,
+          "end": 62,
+          "source": "advaced",
+          "replacement": "advanced",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-20:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Would you do me a favor and tell the suits about visiing hours?",
+      "calibrated_text": "Would you do me a favor and tell the suits about visiting hours?",
+      "applied": [
+        {
+          "start": 49,
+          "end": 56,
+          "source": "visiing",
+          "replacement": "visiting",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-21:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "I'll never get better with them assauting me day and night with their questions.",
+      "calibrated_text": "I'll never get better with them assaulting me day and night with their questions.",
+      "applied": [
+        {
+          "start": 32,
+          "end": 41,
+          "source": "assauting",
+          "replacement": "assaulting",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-23:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "More like an interrgation.",
+      "calibrated_text": "More like an interrogation.",
+      "applied": [
+        {
+          "start": 13,
+          "end": 25,
+          "source": "interrgation",
+          "replacement": "interrogation",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-24:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Accoding to them, I'm a traitor and an accomplice to the boss's defection.",
+      "calibrated_text": "According to them, I'm a traitor and an accomplice to the boss's defection.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Accoding",
+          "replacement": "According",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-25:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "They're just looking for a scapgoat.",
+      "calibrated_text": "They're just looking for a scapegoat.",
+      "applied": [
+        {
+          "start": 27,
+          "end": 35,
+          "source": "scapgoat",
+          "replacement": "scapegoat",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-27:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Let's just say neither one of us is going to be made a natinal hero out of this.",
+      "calibrated_text": "Let's just say neither one of us is going to be made a national hero out of this.",
+      "applied": [
+        {
+          "start": 55,
+          "end": 62,
+          "source": "natinal",
+          "replacement": "national",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-33:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "The sitution has changed.",
+      "calibrated_text": "The situation has changed.",
+      "applied": [
+        {
+          "start": 4,
+          "end": 12,
+          "source": "sitution",
+          "replacement": "situation",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-43:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Yestrday, the White House received an unexpected call.",
+      "calibrated_text": "Yesterday, the White House received an unexpected call.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Yestrday",
+          "replacement": "Yesterday",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-47:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "It was a hotline call from Khruschev to President Johnson.",
+      "calibrated_text": "It was a hotline call from Khrushchev to President Johnson.",
+      "applied": [
+        {
+          "start": 27,
+          "end": 36,
+          "source": "Khruschev",
+          "replacement": "Khrushchev",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-54:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Does any of this sound famiiar to you?",
+      "calibrated_text": "Does any of this sound familiar to you?",
+      "applied": [
+        {
+          "start": 23,
+          "end": 30,
+          "source": "famiiar",
+          "replacement": "familiar",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-55:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "In retalation, I have placed our armed forces on secondary alert.",
+      "calibrated_text": "In retaliation, I have placed our armed forces on secondary alert.",
+      "applied": [
+        {
+          "start": 3,
+          "end": 13,
+          "source": "retalation",
+          "replacement": "retaliation",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-56:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "Depeding on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon.",
+      "calibrated_text": "Depending on your response, I may be left with no choice but to order the military to maximum alert and unleash Armageddon.",
+      "applied": [
+        {
+          "start": 0,
+          "end": 8,
+          "source": "Depeding",
+          "replacement": "Depending",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-57:unit-1:spelling",
+      "label": "correctable",
+      "category": "spelling",
+      "status": "success",
+      "original_text": "With the help of your predeessor, I was able to survive the Cuban incident.",
+      "calibrated_text": "With the help of your decessor, I was able to survive the Cuban incident.",
+      "applied": [
+        {
+          "start": 22,
+          "end": 32,
+          "source": "predeessor",
+          "replacement": "decessor",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-14:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "So instead, we'll be using won of our newest weapons.",
+      "calibrated_text": "So instead, we'll be using one of our newest weapons.",
+      "applied": [
+        {
+          "start": 27,
+          "end": 30,
+          "source": "won",
+          "replacement": "one",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-15:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "Snake, your being given an honor on par with Alan Shepard.",
+      "calibrated_text": "Snake, your being given an honor on par with Alan Shepard.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-28:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "Does this mean Fox is going two die?",
+      "calibrated_text": "Does this mean Fox is going to die?",
+      "applied": [
+        {
+          "start": 28,
+          "end": 31,
+          "source": "two",
+          "replacement": "to",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-30:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "This fox is still won step ahead of the hounds.",
+      "calibrated_text": "This fox is still on step ahead of the hounds.",
+      "applied": [
+        {
+          "start": 18,
+          "end": 21,
+          "source": "won",
+          "replacement": "on",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-31:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "The reason I came two see you today, Jack, it's time for Fox to clear its name.",
+      "calibrated_text": "The reason I came to see you today, Jack, it's time for Fox to clear its name.",
+      "applied": [
+        {
+          "start": 18,
+          "end": 21,
+          "source": "two",
+          "replacement": "to",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-34:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "We still got a chance two come out of this one alive.",
+      "calibrated_text": "We still got a chance to come out of this one alive.",
+      "applied": [
+        {
+          "start": 22,
+          "end": 25,
+          "source": "two",
+          "replacement": "to",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-40:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "They decided when they're going two execute us?",
+      "calibrated_text": "They decided when they're going to execute us?",
+      "applied": [
+        {
+          "start": 32,
+          "end": 35,
+          "source": "two",
+          "replacement": "to",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-59:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "If I am two survive this crisis, I must have your full cooperation.",
+      "calibrated_text": "If I am to survive this crisis, I must have your full cooperation.",
+      "applied": [
+        {
+          "start": 8,
+          "end": 11,
+          "source": "two",
+          "replacement": "to",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-61:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "Did you no that one of our soldiers defected to your country a week ago?",
+      "calibrated_text": "Did you know that one of our soldiers defected to your country a week ago?",
+      "applied": [
+        {
+          "start": 8,
+          "end": 10,
+          "source": "no",
+          "replacement": "know",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-71:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "During World War II, she was the won who led us to victory in that war.",
+      "calibrated_text": "During World War II, she was the one who led us to victory in that war.",
+      "applied": [
+        {
+          "start": 33,
+          "end": 36,
+          "source": "won",
+          "replacement": "one",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-72:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "In Russia, you no her as Voyevoda.",
+      "calibrated_text": "In Russia, you know her as Voyevoda.",
+      "applied": [
+        {
+          "start": 15,
+          "end": 17,
+          "source": "no",
+          "replacement": "know",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-74:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "the Boss, the mother of you're special forces?",
+      "calibrated_text": "the Boss, the mother of you're special forces?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-76:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "And she took too miniature nuclear shells along with her.",
+      "calibrated_text": "And she took too miniature nuclear shells along with her.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [
+        {
+          "unit_id": "target:unit-1",
+          "proposal": {
+            "start": 13,
+            "end": 26,
+            "source": "miniature",
+            "replacement": "micro",
+            "score": 5
+          },
+          "code": "source_mismatch"
+        },
+        {
+          "unit_id": "target:unit-1",
+          "proposal": {
+            "start": 27,
+            "end": 34,
+            "source": "nuclear",
+            "replacement": "nuclear",
+            "score": 5
+          },
+          "code": "no_change"
+        }
+      ],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-77:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "The Boss took too miniature nuclear shells.",
+      "calibrated_text": "The Boss took two miniature nuclear shells.",
+      "applied": [
+        {
+          "start": 14,
+          "end": 17,
+          "source": "too",
+          "replacement": "two",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-80:unit-1:homophone",
+      "label": "correctable",
+      "category": "homophone",
+      "status": "success",
+      "original_text": "The Davy Crockett atomic battle group delivery system was completed too years ago.",
+      "calibrated_text": "The Davy Crockett atomic battle group delivery system was completed two years ago.",
+      "applied": [
+        {
+          "start": 68,
+          "end": 71,
+          "source": "too",
+          "replacement": "two",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-58:unit-1:wrong_word_or_phrase",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "status": "success",
+      "original_text": "But my flower is not as great as it once was.",
+      "calibrated_text": "But my force is not as great as it once was.",
+      "applied": [
+        {
+          "start": 7,
+          "end": 13,
+          "source": "flower",
+          "replacement": "force",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-93:unit-1:wrong_word_or_phrase",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "status": "success",
+      "original_text": "And the American governor denies any involvement in the affair.",
+      "calibrated_text": "And the American governor denies any involvement in the affair.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-98:unit-1:wrong_word_or_phrase",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "status": "success",
+      "original_text": "mystery aircraft doing on our radar screen?",
+      "calibrated_text": "mystery aircraft doing on our radar screen?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-99:unit-1:wrong_word_or_phrase",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "status": "success",
+      "original_text": "It was clearly in a violation of our air place, and yet you say it was not acting under your orders.",
+      "calibrated_text": "It was clearly in a violation of our air place, and yet you say it was not acting under your orders.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [
+        {
+          "unit_id": "target:unit-1",
+          "proposal": {
+            "start": 41,
+            "end": 46,
+            "source": "air",
+            "replacement": "space",
+            "score": 5
+          },
+          "code": "source_mismatch"
+        }
+      ],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-101:unit-1:wrong_word_or_phrase",
+      "label": "correctable",
+      "category": "wrong_word_or_phrase",
+      "status": "success",
+      "original_text": "You expect me to believe that this was all the work of a single shoulder?",
+      "calibrated_text": "You expect me to believe that this was all the work of a shoulder shoulder?",
+      "applied": [
+        {
+          "start": 57,
+          "end": 63,
+          "source": "single",
+          "replacement": "shoulder",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-2:unit-1:proper_name",
+      "label": "correctable",
+      "category": "proper_name",
+      "status": "success",
+      "original_text": "On this video, we're doing Mission Two, Operation Snape Eater.",
+      "calibrated_text": "On this video, we're doing Mission 2, Operation Snape Eater.",
+      "applied": [
+        {
+          "start": 35,
+          "end": 38,
+          "source": "Two",
+          "replacement": "2",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-31:unit-1:proper_name",
+      "label": "correctable",
+      "category": "proper_name",
+      "status": "success",
+      "original_text": "The reason I came to see you today, Jack, it's time for Fawkes to clear its name.",
+      "calibrated_text": "The reason I came to see you today, Jack, it's time for Fawkes to clear its name.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-117:unit-1:proper_name",
+      "label": "correctable",
+      "category": "proper_name",
+      "status": "success",
+      "original_text": "The political situation here is unstable, and Colonel Vulcan is a member of the Brezhnev faction, which seeks seeks to topple my government.",
+      "calibrated_text": "The political situation here is unstable, and Colonel Vulcan is a member of the Brezhnev faction, which seek seeks to topple my government.",
+      "applied": [
+        {
+          "start": 104,
+          "end": 109,
+          "source": "seeks",
+          "replacement": "seek",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-118:unit-1:proper_name",
+      "label": "correctable",
+      "category": "proper_name",
+      "status": "success",
+      "original_text": "One week, you have only one week, and if it is not too much to ask, do something about Vulcan as well.",
+      "calibrated_text": "One week, you have only one week, and if it is not too much to ask, do something about Volgin as well.",
+      "applied": [
+        {
+          "start": 87,
+          "end": 93,
+          "source": "Vulcan",
+          "replacement": "Volgin",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-150:unit-1:proper_name",
+      "label": "correctable",
+      "category": "proper_name",
+      "status": "success",
+      "original_text": "I've been told that Atom has infiltrated Volgin's ranks.",
+      "calibrated_text": "I've been told that Adam has infiltrated Volgin's ranks.",
+      "applied": [
+        {
+          "start": 20,
+          "end": 24,
+          "source": "Atom",
+          "replacement": "Adam",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 1,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-7:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Payload oxygen supply is nominal.",
+      "calibrated_text": "Payload oxygen supply is nominal.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-11:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Snake, we can't risk a halo jump this time around.",
+      "calibrated_text": "Snake, we can't risk a halo jump this time around.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-22:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Must be part of the top brass's inquiry.",
+      "calibrated_text": "Must be part of the top brass's inquiry.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-26:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Does that mean they're after you too?",
+      "calibrated_text": "Does that mean they're after you too?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-32:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "What are you talking about?",
+      "calibrated_text": "What are you talking about?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-35:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Yeah, what kind of chance?",
+      "calibrated_text": "Yeah, what kind of chance?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-39:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "This morning I had a meeting with the CIA.",
+      "calibrated_text": "This morning I had a meeting with the CIA.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-48:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "From the head of the Soviet Union?",
+      "calibrated_text": "From the head of the Soviet Union?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-60:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I should have contacted you myself.",
+      "calibrated_text": "I should have contacted you myself.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-63:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "So you haven't heard that.",
+      "calibrated_text": "So you haven't heard that.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-64:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The man who arranged the defection was a group colonel by the name of Yevgeny Borisovich Volgin.",
+      "calibrated_text": "The man who arranged the defection was a group colonel by the name of Yevgeny Borisovich Volgin.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-79:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I believe they were a gift for her new hosts.",
+      "calibrated_text": "I believe they were a gift for her new hosts.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-81:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Serious problems were found with the launchers' range and precision.",
+      "calibrated_text": "Serious problems were found with the launchers' range and precision.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-82:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Although they were mass-produced, they've never been deployed in battle.",
+      "calibrated_text": "Although they were mass-produced, they've never been deployed in battle.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-83:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "But Sokolov's research facility was completely wiped out.",
+      "calibrated_text": "But Sokolov's research facility was completely wiped out.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-84:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The whole area is polluted.",
+      "calibrated_text": "The whole area is polluted.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-85:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I can only offer you my deepest condolences over this terrible tragedy.",
+      "calibrated_text": "I can only offer you my deepest condolences over this terrible tragedy.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-96:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "We were not involved in any way.",
+      "calibrated_text": "We were not involved in any way.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-102:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I don't know what else to tell you.",
+      "calibrated_text": "I don't know what else to tell you.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-103:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The army insists that this is all a ploy on your part.",
+      "calibrated_text": "The army insists that this is all a ploy on your part.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-104:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I've said it once, and I'll say it again: our government had nothing to do with it.",
+      "calibrated_text": "I've said it once, and I'll say it again: our government had nothing to do with it.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-105:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "And I would like dearly to believe you.",
+      "calibrated_text": "And I would like dearly to believe you.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-106:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "However, I'm afraid my power over the military has weakened since the Cuban incident.",
+      "calibrated_text": "However, I'm afraid my power over the military has weakened since the Cuban incident.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [
+        {
+          "unit_id": "target:unit-1",
+          "proposal": {
+            "start": 23,
+            "end": 28,
+            "source": "power",
+            "replacement": "power",
+            "score": 5
+          },
+          "code": "no_change"
+        }
+      ],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-107:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I will need some kind of proof that this was not the action of the American government.",
+      "calibrated_text": "I will need some kind of proof that this was not the action of the American government.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-109:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "You must catch the boss yourselves and recover the remaining nuclear device.",
+      "calibrated_text": "You must catch the power yourselves and recover the remaining nuclear device.",
+      "applied": [
+        {
+          "start": 19,
+          "end": 23,
+          "source": "boss",
+          "replacement": "power",
+          "score": 5
+        }
+      ],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-110:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Then you must find some way to prove your innocence.",
+      "calibrated_text": "Then you must find some way to prove your innocence.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-112:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Yes, preferably something painful.",
+      "calibrated_text": "Yes, preferably something painful.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-113:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Prove to me that this is not merely another one of your tricks.",
+      "calibrated_text": "Prove to me that this is not merely another one of your tricks.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-114:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The boss should be close to Colonel Volgin.",
+      "calibrated_text": "The boss should be close to Colonel Volgin.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-115:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "How about a little co-action?",
+      "calibrated_text": "How about a little co-action?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-116:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I would not expect too much if I were you.",
+      "calibrated_text": "I would not expect too much if I were you.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-119:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "What is that supposed to mean?",
+      "calibrated_text": "What is that supposed to mean?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-122:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Call it a modest gentleman's agreement to ensure our continued relationship.",
+      "calibrated_text": "Call it a modest gentleman's agreement to ensure our continued relationship.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-123:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "What if we can't prove our innocence?",
+      "calibrated_text": "What if we can't prove our innocence?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-124:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Then I will be unable to restrain the military.",
+      "calibrated_text": "Then I will be unable to restrain the military.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-125:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I will be ousted, and they will seek their revenge.",
+      "calibrated_text": "I will be ousted, and they will seek their revenge.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-126:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "A nuclear attack on the United States?",
+      "calibrated_text": "A nuclear attack on the United States?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-127:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "I leave the disposal of this situation entirely to your discretion, Mr.",
+      "calibrated_text": "I leave the disposal of this situation entirely to your discretion, Mr.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-130:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "If you fail, it will mean the beginning of a new world war.",
+      "calibrated_text": "If you fail, it will mean the beginning of a new world war.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-131:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "To put it simply, in order to avoid a full-scale nuclear conflict, we have to prove that America was not involved in that explosion.",
+      "calibrated_text": "To put it simply, in order to avoid a full-scale nuclear conflict, we have to prove that America was not involved in that explosion.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-132:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "And eliminating the boss ourselves will prove America's innocence.",
+      "calibrated_text": "And eliminating the boss ourselves will prove America's innocence.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-134:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The higher ups have decided that you're the only one capable of pulling this off.",
+      "calibrated_text": "The higher ups have decided that you're the only one capable of pulling this off.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-135:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "You were her last apprentice.",
+      "calibrated_text": "You were her last apprentice.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-136:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Screw this one up, and we'll both be six feet under.",
+      "calibrated_text": "Screw this one up, and we'll both be six feet under.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-138:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Are the Russians going to be helping us?",
+      "calibrated_text": "Are the Russians going to be helping us?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-139:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "The KGB has promised to lend us one of their communications satellites so that you and I can talk to each other.",
+      "calibrated_text": "The KGB has promised to lend us one of their communications satellites so that you and I can talk to each other.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-141:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "They've also put us in touch with a couple of insiders.",
+      "calibrated_text": "They've also put us in touch with a couple of insiders.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-143:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "There was a defection in September 1960.",
+      "calibrated_text": "There was a defection in September 1960.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-146:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "You mean the two NSA codebreakers who went over to the Soviet Union?",
+      "calibrated_text": "You mean the two NSA codebreakers who went over to the Soviet Union?",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    },
+    {
+      "id": "seg-148:unit-1:clean",
+      "label": "clean",
+      "category": "clean",
+      "status": "success",
+      "original_text": "Since then, they've apparently been training with the KGB for exactly this kind of situation.",
+      "calibrated_text": "Since then, they've apparently been training with the KGB for exactly this kind of situation.",
+      "applied": [],
+      "matched_acceptable_count": 0,
+      "rejected_proposals": [],
+      "unit_errors": []
+    }
+  ]
+}

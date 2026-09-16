@@ -28,10 +28,13 @@ class Segment:
     tokens: List[Token] = field(default_factory=list)
     speaker: Optional[str] = None
     timing_source: Optional[str] = None
+    original_text: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         payload = asdict(self)
         payload["tokens"] = [token.to_dict() for token in self.tokens]
+        if self.original_text is None:
+            payload.pop("original_text")
         if self.timing_source is None:
             payload.pop("timing_source")
         return payload

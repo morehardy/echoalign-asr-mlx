@@ -1,0 +1,292 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1522-8364006913180567866.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 13.38,
+      "quality_pass_count": 1,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 13.38,
+          "context_start": 0.0,
+          "context_end": 13.38,
+          "token_count": 26,
+          "timing_source_counts": {
+            "aligner": 26,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 13.38,
+          "quality": {
+            "passed": true,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-8qm8rev6/fleurs-en-dev-1522-8364006913180567866.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 13.38,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 13.38,
+          "input_start": 0.0,
+          "input_end": 13.38,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "Technology offers a solution with virtual field trips.",
+      "start_time": 0.8,
+      "end_time": 4.36,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Technology",
+          "start_time": 0.8,
+          "end_time": 1.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "offers",
+          "start_time": 1.44,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "a",
+          "start_time": 1.92,
+          "end_time": 2.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "solution",
+          "start_time": 2.0,
+          "end_time": 2.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "with",
+          "start_time": 2.64,
+          "end_time": 2.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "virtual",
+          "start_time": 2.88,
+          "end_time": 3.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "field",
+          "start_time": 3.28,
+          "end_time": 3.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "trips.",
+          "start_time": 3.68,
+          "end_time": 4.24,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.",
+      "start_time": 4.64,
+      "end_time": 12.52,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Students",
+          "start_time": 4.64,
+          "end_time": 5.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "can",
+          "start_time": 5.2,
+          "end_time": 5.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "look",
+          "start_time": 5.44,
+          "end_time": 5.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "at",
+          "start_time": 5.68,
+          "end_time": 5.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "museum",
+          "start_time": 5.92,
+          "end_time": 6.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "artifacts,",
+          "start_time": 6.48,
+          "end_time": 7.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "visit",
+          "start_time": 7.52,
+          "end_time": 7.84,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "an",
+          "start_time": 8.08,
+          "end_time": 8.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "aquarium,",
+          "start_time": 8.32,
+          "end_time": 8.96,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "or",
+          "start_time": 9.2,
+          "end_time": 9.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "admire",
+          "start_time": 9.36,
+          "end_time": 9.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "beautiful",
+          "start_time": 9.76,
+          "end_time": 10.32,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "art",
+          "start_time": 10.32,
+          "end_time": 10.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "while",
+          "start_time": 10.72,
+          "end_time": 10.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "sitting",
+          "start_time": 10.88,
+          "end_time": 11.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "with",
+          "start_time": 11.36,
+          "end_time": 11.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "their",
+          "start_time": 11.52,
+          "end_time": 11.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "class.",
+          "start_time": 11.68,
+          "end_time": 12.4,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "Technology offers a solution with virtual field trips.",
+      "start_time": 0.8,
+      "end_time": 4.36,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "Students can look at museum artifacts, visit an aquarium, or admire beautiful art while sitting with their class.",
+      "start_time": 4.64,
+      "end_time": 12.52,
+      "language": "['English']"
+    }
+  ]
+}

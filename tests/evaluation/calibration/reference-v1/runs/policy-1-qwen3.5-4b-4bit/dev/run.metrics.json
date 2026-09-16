@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-09-16T07:35:03.255029+00:00",
+  "ended_at_utc": "2026-09-16T07:39:39.798014+00:00",
+  "status": "success",
+  "baseline_dir": "tests/evaluation/calibration/reference-v1/runs/raw-asr/dev",
+  "reference_provided_to_model": false,
+  "asr_rerun": false,
+  "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+  "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+  "policy_version": "1",
+  "project_git_commit": "98c54f3c02b1c48d5e2b8f7fb870ee9026017d45",
+  "source_sha256": {
+    "src/asr/calibration.py": "7f0f91475bae0e2390d67a66be793829f0bcfe9aa7ba848e7b9d0ee5934bd894",
+    "src/asr/calibration_mlx.py": "b2a70d90ee35b3ab91288287d21eb692bdb6ab9c5c416cf684a2c9b991945b1c",
+    "tools/run_reference_calibration.py": "603486a41ee0acb0457bb10477203e33c4285f7c2534fc3c3fc99c175f48f8ae"
+  },
+  "python_version": "3.14.4",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "mlx": "0.32.0",
+    "mlx-vlm": "0.6.8",
+    "transformers": "5.14.1"
+  },
+  "metrics": {
+    "eligible_unit_count": 40,
+    "model_request_count": 40,
+    "retry_count": 0,
+    "low_confidence_discard_count": 0,
+    "applied_proposal_count": 0,
+    "corrected_unit_count": 0,
+    "rejected_proposal_count": 1,
+    "unit_error_count": 0
+  },
+  "cases": [
+    {
+      "id": "fleurs-en-dev-1519-16685771406658302555",
+      "baseline_sha256": "b1ae9a096ae2a20f3af9a07b58337e856f1e55ff48f972828a473d91badd1a80",
+      "status": "success",
+      "duration_seconds": 16.977999833994545,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1521-11840539862172308240",
+      "baseline_sha256": "77810f6255cee9eb7cecf87ec4befc25b387c22418dd14fb5ace2732c1ab68cb",
+      "status": "success",
+      "duration_seconds": 5.862036792008439,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1522-8364006913180567866",
+      "baseline_sha256": "9988c4801abf79445f506a576999f1cac66640faeb032c9365d251c76a4bea7a",
+      "status": "success",
+      "duration_seconds": 11.702447833988117,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1534-7552355741824675369",
+      "baseline_sha256": "950168bd99b3cd1ad2f7b3c67b8b531fd3dc64e700ee96c30da86548935ca80d",
+      "status": "success",
+      "duration_seconds": 11.47553166700527,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1535-16038225777468807850",
+      "baseline_sha256": "fdd1f0cd26f5d87fbcc2ff9b7cf2db8129dff1b4af19dea1cb21a0587c409ef4",
+      "status": "success",
+      "duration_seconds": 15.038382625003578,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1543-15171241960492149561",
+      "baseline_sha256": "714fa50119defe6519e2dc20e2283e15546512ebe362538380956668973a94f7",
+      "status": "success",
+      "duration_seconds": 8.547661500022514,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1545-5260885647261312884",
+      "baseline_sha256": "f158727ae99c9d78392fc9d17c8089e7cf520cc6aad0d7cf21ad95a34ffeb7d7",
+      "status": "success",
+      "duration_seconds": 7.899246124987258,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1551-4023494736730069902",
+      "baseline_sha256": "1a761fe1e76bf418bc3c3080482d4b81a69029d6b5b3699efafc7cb9574b122d",
+      "status": "success",
+      "duration_seconds": 8.68007875001058,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1555-6037648224035961543",
+      "baseline_sha256": "109beaa63d9dc773e4056b8061ed6236c4bf15822ab9c03911b5bdf8bd791b3b",
+      "status": "success",
+      "duration_seconds": 15.095299000007799,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1565-9466009236386247443",
+      "baseline_sha256": "f2efedc7ddd7da229e57cabe8467d9e7fc8aedf60a278bd90a4b16d6b93f10ff",
+      "status": "success",
+      "duration_seconds": 13.229776541993488,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1566-9005815195429653356",
+      "baseline_sha256": "20dad282a3e2f0a2fec1c4472eb69e0e5b59a5a5d0b01ac2821a15e76a17579c",
+      "status": "success",
+      "duration_seconds": 11.018389624980045,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1569-6698602092091460070",
+      "baseline_sha256": "539328b1139a11d7d6ff25f8f75f781e99f4a1dceb6ba2b298dfc185e94e11b5",
+      "status": "success",
+      "duration_seconds": 7.473616249975748,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 1,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1573-10606824155904794190",
+      "baseline_sha256": "f81f98f49802e1b15484c894e75afde23c6a6b95fb6319e0be9e7bd0c14d3949",
+      "status": "success",
+      "duration_seconds": 7.250823084003059,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1574-4418066175314133039",
+      "baseline_sha256": "94b41205f9b5003edaab4f7590a7254bcf8c3bc56ee35372a265751108b69abe",
+      "status": "success",
+      "duration_seconds": 11.846480665990384,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1577-5546513999592253497",
+      "baseline_sha256": "ff3377334968aff526efd74e4aeaffff877eb57408e99b8d30c9de544dc79f0b",
+      "status": "success",
+      "duration_seconds": 10.60066295802244,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1583-10493474598526206030",
+      "baseline_sha256": "3bac548a5be93ec895f745a812fff9f78ab6339b48957dd9ffcdc52d75a42bc9",
+      "status": "success",
+      "duration_seconds": 12.41741162497783,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1587-1105184381995491301",
+      "baseline_sha256": "35ccf626f742e00f06a17ddd8a425a04a95ad0dd4f322016848a9030246df47f",
+      "status": "success",
+      "duration_seconds": 5.884193250007229,
+      "metrics": {
+        "eligible_unit_count": 1,
+        "model_request_count": 1,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1591-13837548118133175593",
+      "baseline_sha256": "de3b69b11c3071c82f3d4a0162080c9b4151bddf10ffebc36a04d23adb36ac57",
+      "status": "success",
+      "duration_seconds": 11.510877167020226,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1595-14225189458852066857",
+      "baseline_sha256": "a23f9951e34e15f6a1e62e2ddc0f4201e26a3e33af5f712034ac068b959457a4",
+      "status": "success",
+      "duration_seconds": 16.32875920899096,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1602-15006047853740326323",
+      "baseline_sha256": "0fae05aa5aa52cf32dcad381e20731d3f674d0c8bec5bce8f4e823f54fa11be6",
+      "status": "success",
+      "duration_seconds": 16.51953041701927,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1605-10511964668971448587",
+      "baseline_sha256": "8c18853302e805360de8c38ccfc00a9f577d914dd25be04aff94b475f4fa7b14",
+      "status": "success",
+      "duration_seconds": 15.333243457978824,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1611-7644436983984138819",
+      "baseline_sha256": "44093bac34067d08433c3a59b4568f7a37fdf50be22ce482e4bfc8f22bf605e5",
+      "status": "success",
+      "duration_seconds": 11.533476417011116,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1614-16807981165307472350",
+      "baseline_sha256": "bb0d24839fd0cf6accb789a98bcfbf045828aace2d9a5c615fadc95db0d8996d",
+      "status": "success",
+      "duration_seconds": 12.740175584011013,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    },
+    {
+      "id": "fleurs-en-dev-1625-7383904139424536248",
+      "baseline_sha256": "f4848427e6b9acb213314801c7ac302ba7e1a5911b29f62a375e23855eaf3aa4",
+      "status": "success",
+      "duration_seconds": 11.53299400000833,
+      "metrics": {
+        "eligible_unit_count": 2,
+        "model_request_count": 2,
+        "retry_count": 0,
+        "low_confidence_discard_count": 0,
+        "applied_proposal_count": 0,
+        "corrected_unit_count": 0,
+        "rejected_proposal_count": 0,
+        "unit_error_count": 0
+      }
+    }
+  ]
+}
