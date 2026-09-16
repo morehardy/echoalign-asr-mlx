@@ -1,0 +1,3 @@
+1
+00:00:00,960 --> 00:00:05,720
+A curry can be either dry or wet, depending on the amount of liquid.

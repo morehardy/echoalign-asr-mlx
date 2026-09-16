@@ -1,0 +1,306 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1535-16038225777468807850.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 15.78,
+      "quality_pass_count": 0,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 15.78,
+          "context_start": 0.0,
+          "context_end": 15.78,
+          "token_count": 28,
+          "timing_source_counts": {
+            "aligner": 28,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 15.549999999999999,
+          "quality": {
+            "passed": false,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.07142857142857142,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-vszem1es/fleurs-en-dev-1535-16038225777468807850.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 15.78,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.2,
+          "speech_end": 15.2,
+          "input_start": 0.0,
+          "input_end": 15.78,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "It uses satellite-based technology, as opposed to older ground radar-based technology, to allow air traffic controllers to pinpoint",
+      "start_time": 1.36,
+      "end_time": 9.28,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "It",
+          "start_time": 1.36,
+          "end_time": 1.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "uses",
+          "start_time": 1.52,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "satellite-based",
+          "start_time": 2.56,
+          "end_time": 2.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "technology,",
+          "start_time": 2.96,
+          "end_time": 3.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "as",
+          "start_time": 3.52,
+          "end_time": 3.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "opposed",
+          "start_time": 3.84,
+          "end_time": 4.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 4.16,
+          "end_time": 4.16,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "older",
+          "start_time": 4.24,
+          "end_time": 4.56,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "ground",
+          "start_time": 4.64,
+          "end_time": 4.96,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "radar-based",
+          "start_time": 5.04,
+          "end_time": 5.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "technology,",
+          "start_time": 5.76,
+          "end_time": 6.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 6.8,
+          "end_time": 6.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "allow",
+          "start_time": 6.88,
+          "end_time": 7.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "air",
+          "start_time": 7.36,
+          "end_time": 7.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "traffic",
+          "start_time": 7.68,
+          "end_time": 7.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "controllers",
+          "start_time": 8.0,
+          "end_time": 8.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 8.64,
+          "end_time": 8.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "pinpoint",
+          "start_time": 8.8,
+          "end_time": 9.2,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "aircraft with greater precision and give pilots more accurate information.",
+      "start_time": 9.28,
+      "end_time": 13.799999999999999,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "aircraft",
+          "start_time": 9.28,
+          "end_time": 9.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "with",
+          "start_time": 10.08,
+          "end_time": 10.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "greater",
+          "start_time": 10.32,
+          "end_time": 10.56,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "precision",
+          "start_time": 10.72,
+          "end_time": 11.12,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "and",
+          "start_time": 11.36,
+          "end_time": 11.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "give",
+          "start_time": 11.52,
+          "end_time": 11.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "pilots",
+          "start_time": 11.76,
+          "end_time": 11.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "more",
+          "start_time": 12.24,
+          "end_time": 12.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "accurate",
+          "start_time": 12.48,
+          "end_time": 12.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "information.",
+          "start_time": 13.04,
+          "end_time": 13.68,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "It uses satellite-based technology, as opposed to older ground radar-based technology, to allow air traffic controllers to pinpoint",
+      "start_time": 1.36,
+      "end_time": 9.28,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "aircraft with greater precision and give pilots more accurate information.",
+      "start_time": 9.28,
+      "end_time": 13.799999999999999,
+      "language": "['English']"
+    }
+  ]
+}

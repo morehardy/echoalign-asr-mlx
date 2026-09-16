@@ -1,0 +1,4 @@
+1
+00:00:00,000 --> 00:00:05,760
+The patient had been to Nigeria, where some cases of the Ebola virus have occurred.
+

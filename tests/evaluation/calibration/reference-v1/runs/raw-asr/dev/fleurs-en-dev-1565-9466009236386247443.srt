@@ -1,0 +1,7 @@
+1
+00:00:00,320 --> 00:00:03,800
+Science's main goal is to figure out the way the world works through the scientific method.
+
+2
+00:00:04,320 --> 00:00:06,520
+This method, in fact, guides most scientific research.

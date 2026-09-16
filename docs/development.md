@@ -67,6 +67,14 @@ uv run --python 3.14 --extra mlx easr /path/to/demo.mp4 --verbose --output-dir t
 
 ## Local Calibration Evaluation
 
+For the audio/reference benchmark, start with
+[the v1 evaluation contract](evaluation/text-calibration-benchmark-v1.md) and
+`tests/evaluation/calibration/reference-v1/README.md`. It uses fixed FLEURS
+recordings with publisher-validated references, separates an internal development
+and holdout partition, and scores saved ASR JSON without giving the reference
+text to the models. The commands below retain the older synthetic-error fixture
+for regression comparisons; that fixture is not independent audio ground truth.
+
 Real calibration-model evaluation runs locally on Apple Silicon and is not part
 of the Ubuntu GitHub workflow. Install the expanded MLX extra first:
 

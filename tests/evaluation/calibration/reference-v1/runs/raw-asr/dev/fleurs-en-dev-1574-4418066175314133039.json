@@ -1,0 +1,299 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1574-4418066175314133039.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 12.48,
+      "quality_pass_count": 0,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 12.3,
+          "context_start": 0.0,
+          "context_end": 12.3,
+          "token_count": 27,
+          "timing_source_counts": {
+            "aligner": 27,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 11.85,
+          "quality": {
+            "passed": false,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.07407407407407407,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-n3lrfidy/fleurs-en-dev-1574-4418066175314133039.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 12.48,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 11.5,
+          "input_start": 0.0,
+          "input_end": 12.3,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "The winter can be deceptively chilly.",
+      "start_time": 1.12,
+      "end_time": 3.16,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "The",
+          "start_time": 1.12,
+          "end_time": 1.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "winter",
+          "start_time": 1.28,
+          "end_time": 1.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "can",
+          "start_time": 1.76,
+          "end_time": 1.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "be",
+          "start_time": 1.92,
+          "end_time": 2.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "deceptively",
+          "start_time": 2.0,
+          "end_time": 2.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "chilly.",
+          "start_time": 2.88,
+          "end_time": 3.04,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    },
+    {
+      "id": "seg-2",
+      "text": "Temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.",
+      "start_time": 3.6,
+      "end_time": 9.799999999999999,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "Temperatures",
+          "start_time": 3.6,
+          "end_time": 4.0,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "rarely",
+          "start_time": 4.16,
+          "end_time": 4.48,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "go",
+          "start_time": 4.56,
+          "end_time": 4.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "below",
+          "start_time": 4.72,
+          "end_time": 4.96,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "freezing,",
+          "start_time": 5.12,
+          "end_time": 5.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "but",
+          "start_time": 5.6,
+          "end_time": 5.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 5.76,
+          "end_time": 5.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "wind",
+          "start_time": 5.76,
+          "end_time": 6.16,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "and",
+          "start_time": 6.16,
+          "end_time": 6.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "humidity",
+          "start_time": 6.4,
+          "end_time": 6.8,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "combine",
+          "start_time": 6.88,
+          "end_time": 7.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "to",
+          "start_time": 7.28,
+          "end_time": 7.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "make",
+          "start_time": 7.44,
+          "end_time": 7.6,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "it",
+          "start_time": 7.6,
+          "end_time": 7.68,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "feel",
+          "start_time": 7.76,
+          "end_time": 7.92,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "colder",
+          "start_time": 8.08,
+          "end_time": 8.4,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "than",
+          "start_time": 8.48,
+          "end_time": 8.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "what",
+          "start_time": 8.64,
+          "end_time": 8.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 8.8,
+          "end_time": 8.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "thermometer",
+          "start_time": 8.96,
+          "end_time": 9.36,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "says.",
+          "start_time": 9.6,
+          "end_time": 9.68,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "The winter can be deceptively chilly.",
+      "start_time": 1.12,
+      "end_time": 3.16,
+      "language": "['English']"
+    },
+    {
+      "id": "seg-2",
+      "text": "Temperatures rarely go below freezing, but the wind and humidity combine to make it feel colder than what the thermometer says.",
+      "start_time": 3.6,
+      "end_time": 9.799999999999999,
+      "language": "['English']"
+    }
+  ]
+}

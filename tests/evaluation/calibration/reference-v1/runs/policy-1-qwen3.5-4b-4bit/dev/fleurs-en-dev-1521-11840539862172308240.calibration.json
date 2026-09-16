@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1521-11840539862172308240.wav",
+  "model": "mlx-community/Qwen3.5-4B-MLX-4bit",
+  "model_revision": "32f3e8ecf65426fc3306969496342d504bfa13f3",
+  "policy_version": "1",
+  "corrected_units": [],
+  "rejected_proposals": [],
+  "unit_errors": []
+}

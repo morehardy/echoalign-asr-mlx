@@ -1,0 +1,198 @@
+{
+  "source_path": "tests/evaluation/calibration/reference-v1/audio/dev/fleurs-en-dev-1521-11840539862172308240.wav",
+  "provider_name": "qwen-mlx",
+  "source_media": {
+    "provider_metadata": {
+      "processing_strategy": "vad_alignment_unit_bounded_alignment",
+      "window_count": 1,
+      "duration_sec": 5.52,
+      "quality_pass_count": 1,
+      "failed_window_count": 0,
+      "window_diagnostics": [
+        {
+          "index": 0,
+          "status": "completed",
+          "core_start": 0.0,
+          "core_end": 5.52,
+          "context_start": 0.0,
+          "context_end": 5.52,
+          "token_count": 15,
+          "timing_source_counts": {
+            "aligner": 15,
+            "estimated": 0,
+            "unresolved": 0
+          },
+          "has_timing_anchor": true,
+          "alignment_unit_index": 0,
+          "display_start": 0.0,
+          "display_end": 5.52,
+          "quality": {
+            "passed": true,
+            "monotonic_timestamp_ratio": 1.0,
+            "zero_or_flat_timestamp_ratio": 0.0,
+            "boundary_disagreement_score": 0.0,
+            "core_context_text_divergence": 0.0,
+            "estimated_token_ratio": 0.0,
+            "unresolved_token_ratio": 0.0
+          }
+        }
+      ],
+      "alignment_unit_count": 1
+    },
+    "prepared_audio_path": "/var/folders/xy/0x3613wd08q0hmhjyrjz4sp00000gn/T/asr-media-kcr0gc8v/fleurs-en-dev-1521-11840539862172308240.wav",
+    "vad": {
+      "enabled": true,
+      "status": "ok",
+      "duration_sec": 5.52,
+      "raw_span_count": 1,
+      "alignment_unit_count": 1,
+      "config": {
+        "threshold": 0.25,
+        "min_speech_duration_ms": 80,
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 1200,
+        "merge_gap_sec": 3.0,
+        "input_padding_sec": 0.8,
+        "max_alignment_unit_sec": 180.0
+      },
+      "alignment_units": [
+        {
+          "index": 0,
+          "speech_start": 0.0,
+          "speech_end": 5.5,
+          "input_start": 0.0,
+          "input_end": 5.52,
+          "source_span_count": 1
+        }
+      ]
+    }
+  },
+  "detected_language": "['English']",
+  "segments": [
+    {
+      "id": "seg-1",
+      "text": "The satellite in space gets the call and then reflects it back down almost instantly.",
+      "start_time": 0.8,
+      "end_time": 4.76,
+      "language": "['English']",
+      "tokens": [
+        {
+          "text": "The",
+          "start_time": 0.8,
+          "end_time": 0.88,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "satellite",
+          "start_time": 0.96,
+          "end_time": 1.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "in",
+          "start_time": 1.44,
+          "end_time": 1.52,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "space",
+          "start_time": 1.6,
+          "end_time": 1.84,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "gets",
+          "start_time": 2.0,
+          "end_time": 2.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "the",
+          "start_time": 2.16,
+          "end_time": 2.24,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "call",
+          "start_time": 2.24,
+          "end_time": 2.56,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "and",
+          "start_time": 2.56,
+          "end_time": 2.64,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "then",
+          "start_time": 2.64,
+          "end_time": 2.72,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "reflects",
+          "start_time": 2.88,
+          "end_time": 3.2,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "it",
+          "start_time": 3.2,
+          "end_time": 3.28,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "back",
+          "start_time": 3.28,
+          "end_time": 3.44,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "down",
+          "start_time": 3.52,
+          "end_time": 3.76,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "almost",
+          "start_time": 3.84,
+          "end_time": 4.08,
+          "unit": "word",
+          "language": "['English']"
+        },
+        {
+          "text": "instantly.",
+          "start_time": 4.4,
+          "end_time": 4.64,
+          "unit": "word",
+          "language": "['English']"
+        }
+      ],
+      "speaker": null
+    }
+  ],
+  "granularity": "sentence",
+  "items": [
+    {
+      "id": "seg-1",
+      "text": "The satellite in space gets the call and then reflects it back down almost instantly.",
+      "start_time": 0.8,
+      "end_time": 4.76,
+      "language": "['English']"
+    }
+  ]
+}
