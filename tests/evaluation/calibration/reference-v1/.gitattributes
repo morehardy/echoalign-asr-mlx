@@ -1,0 +1,7 @@
+# Preserve the frozen SRT cue separators without whitespace-check noise.
+references/**/*.srt whitespace=-blank-at-eof
+
+# Keep captured run evidence available while making the code review readable.
+runs/**/*.json linguist-generated=true
+runs/**/*.srt linguist-generated=true
+runs/**/*.vtt linguist-generated=true

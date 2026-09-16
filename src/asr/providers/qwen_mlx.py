@@ -20,6 +20,7 @@ from asr.providers.authority import (
     project_timing_onto_transcript_detailed,
     repair_unmatched_timings,
 )
+from asr.providers.language import aligner_language, normalize_language
 from asr.providers.media_probe import parse_silence_anchors, probe_duration_sec
 from asr.providers.quality import QualityResult, QualityThresholds, evaluate_quality
 from asr.providers.timing_validation import (
@@ -59,6 +60,7 @@ class WindowRun:
     core_text: str = ""
     quality: Optional[QualityResult] = None
     error: Optional[str] = None
+    alignment_error: Optional[str] = None
     projected_tokens: List[ProjectedToken] = field(default_factory=list)
     timing_source_counts: dict[str, int] = field(default_factory=dict)
     has_timing_anchor: bool = False
@@ -380,18 +382,31 @@ class QwenMlxProvider:
         transcription = self._asr_model.generate(context_input, **context_kwargs)
         text = getattr(transcription, "text", "").strip()
         language = self._normalize_language(getattr(transcription, "language", None))
+        if not text:
+            return WindowRun(
+                window=window,
+                language=language,
+                display_bounds=display_bounds,
+                speech_spans=list(speech_spans or []),
+            )
 
         align_kwargs = dict(context_kwargs)
         align_kwargs["text"] = text
-        if language:
-            align_kwargs["language"] = language
+        backend_language = aligner_language(language)
+        if backend_language:
+            align_kwargs["language"] = backend_language
 
-        aligned_items = list(self._aligner_model.generate(context_input, **align_kwargs))
-        aligner_tokens = [
-            self._item_to_token(item, language=language)
-            for item in aligned_items
-            if getattr(item, "text", "").strip()
-        ]
+        alignment_error = None
+        try:
+            aligned_items = list(self._aligner_model.generate(context_input, **align_kwargs))
+            aligner_tokens = [
+                self._item_to_token(item, language=language)
+                for item in aligned_items
+                if getattr(item, "text", "").strip()
+            ]
+        except Exception as exc:
+            alignment_error = str(exc) or type(exc).__name__
+            aligner_tokens = []
         transcript_tokens = self._build_authoritative_tokens(text, language)
         repaired_projected_tokens = repair_unmatched_timings(
             project_timing_onto_transcript_detailed(
@@ -446,6 +461,7 @@ class QwenMlxProvider:
             has_timing_anchor=has_timing_anchor,
             display_bounds=display_bounds,
             speech_spans=list(speech_spans or []),
+            alignment_error=alignment_error,
         )
 
     def _execute_window(
@@ -479,7 +495,7 @@ class QwenMlxProvider:
         except Exception as exc:
             return WindowRun(
                 window=window,
-                error=str(exc),
+                error=str(exc) or type(exc).__name__,
                 display_bounds=display_bounds,
                 speech_spans=list(speech_spans or []),
             )
@@ -508,25 +524,31 @@ class QwenMlxProvider:
         window_runs: List[WindowRun],
         index: int,
     ) -> tuple[List[Token], List[Token]]:
-        comparisons: List[tuple[List[Token], List[Token]]] = []
+        comparisons: List[tuple[WindowRun, WindowRun]] = []
         current = window_runs[index]
         previous = self._adjacent_successful_neighbor(window_runs, index, step=-1)
         following = self._adjacent_successful_neighbor(window_runs, index, step=1)
 
         if previous is not None:
-            comparisons.append(
-                (previous.right_overlap_tokens, current.left_overlap_tokens)
-            )
+            comparisons.append((previous, current))
         if following is not None:
-            comparisons.append(
-                (current.right_overlap_tokens, following.left_overlap_tokens)
-            )
+            comparisons.append((current, following))
 
         left_tokens: List[Token] = []
         right_tokens: List[Token] = []
-        for left_comparison, right_comparison in comparisons:
-            if not left_comparison or not right_comparison:
+        for left_run, right_run in comparisons:
+            overlap_start = max(left_run.window.context_start, right_run.window.context_start)
+            overlap_end = min(left_run.window.context_end, right_run.window.context_end)
+            if overlap_end <= overlap_start:
                 continue
+            left_comparison = [
+                token for token in left_run.tokens
+                if token_overlaps_core(token, core_start=overlap_start, core_end=overlap_end)
+            ]
+            right_comparison = [
+                token for token in right_run.tokens
+                if token_overlaps_core(token, core_start=overlap_start, core_end=overlap_end)
+            ]
             left_tokens.extend(left_comparison)
             right_tokens.extend(right_comparison)
 
@@ -1071,6 +1093,7 @@ class QwenMlxProvider:
                     language=segment.language,
                     tokens=list(segment.tokens),
                     speaker=segment.speaker,
+                    timing_source=segment.timing_source,
                 )
             )
         merged.sort(key=lambda segment: (segment.start_time, segment.end_time))
@@ -1110,6 +1133,30 @@ class QwenMlxProvider:
             detected_language=detected_language,
             segments=segments,
         )
+        degraded_window_count = 0
+        for run in window_runs:
+            location = (
+                f"window {run.window.index + 1} "
+                f"({run.window.core_start:.2f}-{run.window.core_end:.2f}s)"
+            )
+            if run.error is not None:
+                document.warnings.append(f"{location}: recognition failed: {run.error}")
+            elif run.alignment_error is not None:
+                degraded_window_count += 1
+                document.warnings.append(
+                    f"{location}: alignment failed: {run.alignment_error}; "
+                    "text retained with estimated timing"
+                )
+            elif run.text.strip() and (run.quality is None or not run.quality.passed):
+                degraded_window_count += 1
+                document.warnings.append(
+                    f"{location}: alignment quality checks failed; timing is degraded"
+                )
+            elif not run.text.strip() and run.speech_spans:
+                degraded_window_count += 1
+                document.warnings.append(f"{location}: no transcript returned for detected speech")
+        if document.warnings:
+            document.status = "partial"
         provider_metadata = {
             "processing_strategy": (
                 "vad_alignment_unit_bounded_alignment"
@@ -1122,6 +1169,7 @@ class QwenMlxProvider:
                 1 for run in window_runs if run.quality is not None and run.quality.passed
             ),
             "failed_window_count": sum(1 for run in window_runs if run.error is not None),
+            "degraded_window_count": degraded_window_count,
             "window_diagnostics": [
                 self._build_window_diagnostic(run) for run in window_runs
             ],
@@ -1245,6 +1293,8 @@ class QwenMlxProvider:
         if window_run.error is not None:
             diagnostic["error"] = window_run.error
             return diagnostic
+        if window_run.alignment_error is not None:
+            diagnostic["alignment_error"] = window_run.alignment_error
 
         diagnostic["quality"] = {
             "passed": window_run.quality.passed if window_run.quality is not None else False,
@@ -1284,17 +1334,45 @@ class QwenMlxProvider:
             if window_run.error is not None or not window_run.text.strip():
                 continue
             start_time = self._fallback_start_time(window_run)
-            end_time = self._fallback_end_time(window_run, start_time)
-            segments.append(
-                Segment(
-                    id=f"seg-{len(segments) + 1}",
-                    text=window_run.text,
-                    start_time=start_time,
-                    end_time=end_time,
-                    language=window_run.language,
-                    tokens=[],
-                )
+            end_time = window_run.window.core_end
+            if window_run.display_bounds is not None:
+                end_time = min(end_time, window_run.display_bounds.end_time)
+            if end_time <= start_time:
+                continue
+            reading_duration = self._estimate_fallback_text_duration(
+                window_run.text, window_run.language
             )
+            if reading_duration <= 6.0:
+                end_time = min(end_time, start_time + reading_duration)
+
+            # These private slots only lay out readable cues; no token timing is exported.
+            tokens = self._build_authoritative_tokens(window_run.text, window_run.language)
+            weights = [
+                self._estimate_local_fallback_text_duration(token.text, token.language)
+                for token in tokens
+            ]
+            total_weight = sum(weights)
+            if total_weight <= 0.0:
+                continue
+            cursor = 0.0
+            for token, weight in zip(tokens, weights):
+                token.start_time = start_time + (end_time - start_time) * cursor / total_weight
+                cursor += weight
+                token.end_time = min(
+                    end_time,
+                    start_time + (end_time - start_time) * cursor / total_weight,
+                    token.start_time + 6.0,
+                )
+            cues = self._tokens_to_segments(
+                tokens,
+                target_max_segment_duration_sec=6.0,
+                target_max_segment_chars=28 if self._contains_cjk(window_run.text) else 64,
+            )
+            for cue in cues:
+                cue.id = f"seg-{len(segments) + 1}"
+                cue.tokens = []
+                cue.timing_source = "estimated"
+                segments.append(cue)
         return segments
 
     def _unresolved_fallback_segments_from_windows(
@@ -1425,6 +1503,7 @@ class QwenMlxProvider:
             end_time=end_time,
             language=window_run.language,
             tokens=[],
+            timing_source="estimated",
         )
 
     def _nearest_timed_projected_token(
@@ -1489,19 +1568,6 @@ class QwenMlxProvider:
             return max(window_run.display_bounds.start_time, window_run.window.core_start)
         return window_run.window.core_start
 
-    def _fallback_end_time(self, window_run: WindowRun, start_time: float) -> float:
-        max_duration = 6.0
-        estimated_duration = min(
-            max_duration,
-            self._estimate_fallback_text_duration(window_run.text, window_run.language),
-        )
-        end_time = start_time + estimated_duration
-        if window_run.display_bounds is not None:
-            end_time = min(end_time, window_run.display_bounds.end_time)
-        else:
-            end_time = min(end_time, window_run.window.core_end)
-        return max(start_time, end_time)
-
     def _estimate_fallback_text_duration(
         self, text: str, language: Optional[str]
     ) -> float:
@@ -1533,6 +1599,7 @@ class QwenMlxProvider:
                 language=segment.language,
                 tokens=list(segment.tokens),
                 speaker=segment.speaker,
+                timing_source=segment.timing_source,
             )
             for segment in segments
         ]
@@ -1552,7 +1619,9 @@ class QwenMlxProvider:
                 if index + 1 < len(stabilized)
                 else total_duration_sec
             )
-            padded_end = segment.end_time + tail_padding_sec
+            padded_end = segment.end_time + (
+                0.0 if segment.timing_source == "estimated" else tail_padding_sec
+            )
             segment.end_time = min(total_duration_sec, max(segment.end_time, min(padded_end, next_start)))
             segment.end_time = max(segment.start_time, segment.end_time)
 
@@ -1623,25 +1692,22 @@ class QwenMlxProvider:
         )
 
     def _infer_unit(self, *, text: str, language: Optional[str]) -> str:
-        normalized = (language or "").lower()
-        if normalized.startswith("zh") or "chinese" in normalized or self._contains_cjk(text):
+        if self._contains_cjk(text):
             return "char"
         return "word"
 
     def _contains_cjk(self, text: str) -> bool:
         return any("\u4e00" <= char <= "\u9fff" for char in text)
 
-    def _normalize_language(self, language: Optional[str]) -> Optional[str]:
-        if language is None:
-            return None
-        normalized = str(language).strip()
-        return normalized or None
+    def _normalize_language(self, language: object) -> Optional[str]:
+        return normalize_language(language)
 
     def _tokens_to_segments(
         self,
         tokens: Iterable[Token],
         *,
         target_max_segment_duration_sec: float = 8.0,
+        target_max_segment_chars: int | None = None,
     ) -> List[Segment]:
         segments: List[Segment] = []
         current_tokens: List[Token] = []
@@ -1658,6 +1724,11 @@ class QwenMlxProvider:
                     current_tokens
                     and token.end_time - current_tokens[0].start_time
                     > target_max_segment_duration_sec
+                ):
+                    should_break = True
+                if (
+                    target_max_segment_chars is not None
+                    and len(self._join_tokens([*current_tokens, token])) > target_max_segment_chars
                 ):
                     should_break = True
             if should_break:

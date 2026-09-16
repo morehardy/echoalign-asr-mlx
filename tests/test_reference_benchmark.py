@@ -4,7 +4,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from asr.exporters import render_json
+from asr.models import Segment, TranscriptionDocument
 from tools.prepare_reference_benchmark import eligible, select_rows
+from tools.run_reference_calibration import load_document
 from tools.score_reference_benchmark import score, word_errors, words
 
 
@@ -104,6 +107,40 @@ class ReferenceComparisonTest(unittest.TestCase):
         report = self.evaluate()
         self.assertIsNone(report["clean_clip_damage_rate"])
         self.assertEqual(report["normalization_review_clips"], 1)
+
+    def test_candidate_cannot_hide_partial_status_warnings_or_estimated_timing(self):
+        self.add_case("partial", "correct text", "wrong text", "correct text")
+        baseline_path = self.baseline / "partial.json"
+        candidate_path = self.candidate / "partial.json"
+        for key, value in [("status", "partial"), ("warnings", ["alignment failed"]),
+                           ("timing_source", "estimated")]:
+            with self.subTest(key=key):
+                baseline = json.loads(baseline_path.read_text())
+                candidate = json.loads(candidate_path.read_text())
+                before = baseline["segments"][0] if key == "timing_source" else baseline
+                after = candidate["segments"][0] if key == "timing_source" else candidate
+                before[key] = value
+                baseline_path.write_text(json.dumps(baseline))
+                with self.assertRaisesRegex(ValueError, key):
+                    self.evaluate()
+                after[key] = value
+                candidate_path.write_text(json.dumps(candidate))
+                self.assertEqual(self.evaluate()["improved_clips"], 1)
+
+
+class SavedDocumentTest(unittest.TestCase):
+    def test_loading_for_calibration_preserves_partial_result_metadata(self):
+        document = TranscriptionDocument(
+            source_path="demo.wav", provider_name="fake", status="partial",
+            warnings=["alignment failed"], detected_language="en",
+            segments=[Segment(id="seg-1", text="We want two go.", start_time=0.0,
+                              end_time=3.0, language="en", timing_source="estimated")],
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "demo.json"
+            path.write_text(render_json(document))
+            restored = load_document(path)
+        self.assertEqual(json.loads(render_json(restored)), json.loads(render_json(document)))
 
 
 if __name__ == "__main__":

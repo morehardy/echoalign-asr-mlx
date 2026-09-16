@@ -31,7 +31,7 @@ from asr.observability.events import ObservabilityEvent
 from asr.observability.metrics import MetricsCollectorObserver
 from asr.observability.observer import Observer, ObserverMux
 from asr.observability.timing import observe_step
-from asr.output import build_output_path, default_output_root
+from asr.output import build_output_path, default_output_root, validate_output_paths
 from asr.pipeline import process_media_file
 from asr.providers import create_default_provider
 
@@ -317,6 +317,17 @@ def _run_transcription(
             print("No supported media files found.", file=sys.stderr)
             return 1
 
+        suffixes = [".srt", ".vtt", ".json"]
+        if verbose:
+            suffixes.append(".metrics.json")
+        if calibrate:
+            suffixes.append(".calibration.json")
+        try:
+            validate_output_paths(discovered_sources, output_dir=output_dir, suffixes=suffixes)
+        except ValueError as exc:
+            print(f"[easr] {exc}", file=sys.stderr)
+            return 1
+
         with observe_step(
             observer,
             run_id=run_id,
@@ -367,8 +378,13 @@ def _run_transcription(
                 finally:
                     if hasattr(provider, "clear_observer"):
                         provider.clear_observer()
+                if document.status != "ok":
+                    had_error = True
+                    print(f"[easr] transcription {document.status} for {source_path}", file=sys.stderr)
+                    for warning in document.warnings:
+                        print(f"[easr] {warning}", file=sys.stderr)
                 calibration_result: CalibrationResult | None = None
-                file_status = "ok"
+                file_status = document.status
                 if corrector is not None:
                     document, calibration_result = _calibrate_for_cli(
                         document,

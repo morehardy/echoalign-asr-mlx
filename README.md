@@ -4,17 +4,23 @@
 
 # echoalign-asr-mlx
 
+[![CI](https://github.com/morehardy/echoalign-asr-mlx/actions/workflows/ci.yml/badge.svg)](https://github.com/morehardy/echoalign-asr-mlx/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/echoalign-asr-mlx.svg)](https://pypi.org/project/echoalign-asr-mlx/)
+[![Python](https://img.shields.io/pypi/pyversions/echoalign-asr-mlx.svg)](https://pypi.org/project/echoalign-asr-mlx/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 `easr` is a local Apple Silicon CLI that turns audio and video files into
 subtitle files (`.srt`, `.vtt`) and timestamp-aligned JSON.
 
-Use it when you want local transcription, readable subtitles, and
-machine-friendly alignment data without running a server.
+Use it when you want local speech recognition, forced alignment, readable
+subtitles, and machine-friendly timing data without running a server.
 
 Current scope:
 
 - runtime target: macOS on Apple Silicon
 - backend: MLX with Qwen3 ASR and Qwen3 ForcedAligner
 - output: SRT, WebVTT, and JSON
+- license: MIT
 - not included yet: translation, speaker diarization, Linux/Windows support
 
 ## What You Get
@@ -59,7 +65,7 @@ Optional text-calibration model:
 
 ## Installation
 
-Install from a published Python package:
+Install from PyPI:
 
 ```bash
 python3.14 -m pip install "echoalign-asr-mlx[mlx]"
@@ -179,6 +185,12 @@ under that input root:
 
 Use `--output-dir` to choose another output root.
 
+Before processing starts, `easr` checks all output paths for collisions. Inputs
+such as `demo.mp3` and `demo.wav` in the same directory would produce the same
+files, so the command lists the conflicting paths and exits without writing
+outputs. Rename the inputs or process them separately into different output
+directories. Existing outputs for a single source are still overwritten.
+
 ## JSON Output
 
 The JSON export keeps the readable transcript and the alignment data used to
@@ -198,6 +210,19 @@ Each segment includes text, start/end timestamps, language metadata, optional
 speaker metadata, and token timing when available. `source_media` includes the
 prepared audio path, VAD metadata, and provider diagnostics such as processing
 strategy, duration, window counts, quality pass counts, and window diagnostics.
+The prepared audio path is diagnostic: its temporary WAV is removed after
+transcription, including when processing fails or finds no speech.
+
+Language metadata uses codes such as `zh` and `en`; Chinese text is split into
+characters while English words within mixed text remain words.
+
+Partial results include top-level `status: "partial"` and `warnings` explaining
+the affected windows. When recognition succeeds but alignment fails, its text
+is retained in short subtitle cues with `timing_source: "estimated"` and empty
+`tokens`. Long unaligned text is distributed across the available window;
+these cue times are estimates, not acoustic alignment. With `--granularity
+token`, unaligned cues remain visible as coarse items marked `unit: "segment"`
+and `timing_source`, alongside any available aligned tokens.
 
 ## CLI Options
 
@@ -230,6 +255,10 @@ easr ./demo.mp4 --no-vad
 If VAD fails, `easr` falls back to full-duration processing. If VAD succeeds and
 finds no speech, `easr` writes successful empty subtitle outputs.
 
+Silero VAD can miss singing in music recordings. If a song produces empty or
+incomplete subtitles, rerun it with `--no-vad`. Forced alignment can still have
+low quality on singing; inspect partial-result warnings and timing diagnostics.
+
 ## Optional Text Calibration
 
 `--calibrate` runs after transcription, alignment, and final subtitle segment
@@ -237,11 +266,13 @@ construction, but before SRT, VTT, and JSON rendering. Each target sentence is
 reviewed with up to the previous three sentences as read-only context. Earlier
 accepted corrections are used as rolling context.
 
-This path is experimental. The committed real-model baseline for the pinned
-revision currently fails the release quality gate (76.19% applied-proposal
-precision and 64% correctable-error recall, versus required thresholds of 95%
-and 70%). Inspect the versioned evaluation artifacts before relying on
-automatic corrections in production.
+This path is experimental. The pinned model's synthetic-error evaluation
+measured 76.19% applied-proposal precision and 64% correctable-error recall,
+below that fixture's thresholds of 95% and 70%. The separate
+[audio/reference pilot](tests/evaluation/calibration/reference-v1/README.md)
+applied no corrections across 24 development clips: WER remained 2.71%
+(14 / 517 words), and modification precision was undefined. These pilots do
+not establish production quality.
 
 The first calibrated run downloads the pinned, approximately 2.9GB model into
 the standard Hugging Face cache. The model is loaded lazily only when an
@@ -285,11 +316,13 @@ Existing completion files at that path are overwritten.
 ## Runtime Behavior
 
 - exit code `0`: all discovered files processed successfully
-- exit code `1`: no supported input was found, environment preflight failed, or
-  at least one file failed in a batch
+- exit code `1`: no supported input was found, output paths collide, environment
+  preflight failed, or at least one file failed or produced a partial result
 - batch files are processed one by one
 - failures are reported per file to stderr
 - other files continue processing after a per-file failure
+- partial transcription still writes available text and reports failed or
+  degraded windows to stderr; alignment quality failures are not silent successes
 - the first run may be slower because model files are downloaded and cached
 
 ## Troubleshooting
@@ -333,7 +366,11 @@ is warmed. Later runs should be faster.
 - Subtitle segmentation quality depends on model and alignment behavior.
 - The public CLI does not expose provider selection.
 
-## Developer Documentation
+## Development and Community
 
-Development setup, test commands, build instructions, and release notes live in
-[docs/development.md](docs/development.md).
+- [Contributing guide](CONTRIBUTING.md)
+- [Development guide](docs/development.md)
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [Security policy](SECURITY.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)

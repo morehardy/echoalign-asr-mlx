@@ -67,10 +67,13 @@ def needs_normalization_review(text: str) -> bool:
 def check_pair(baseline: dict, candidate: dict) -> None:
     if baseline.get("source_path") != candidate.get("source_path"):
         raise ValueError("Candidate must be derived from the same saved ASR document")
+    for key, default in [("status", "ok"), ("warnings", [])]:
+        if baseline.get(key, default) != candidate.get(key, default):
+            raise ValueError(f"Calibration changed document {key}")
     if len(baseline["segments"]) != len(candidate["segments"]):
         raise ValueError("Calibration changed the number of subtitle segments")
     for before, after in zip(baseline["segments"], candidate["segments"]):
-        for key in ["id", "start_time", "end_time", "tokens"]:
+        for key in ["id", "start_time", "end_time", "tokens", "timing_source"]:
             if before.get(key) != after.get(key):
                 raise ValueError(f"Calibration changed segment {key}")
         if before["text"] != after["text"] and after.get("original_text") != before["text"]:

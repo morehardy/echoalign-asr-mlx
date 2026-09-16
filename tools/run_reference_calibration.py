@@ -36,6 +36,7 @@ def load_document(path: Path) -> TranscriptionDocument:
             start_time=segment["start_time"], end_time=segment["end_time"],
             language=segment.get("language"), speaker=segment.get("speaker"),
             tokens=[Token(**token) for token in segment.get("tokens", [])],
+            timing_source=segment.get("timing_source"),
         )
         for segment in payload["segments"]
     ]
@@ -43,6 +44,7 @@ def load_document(path: Path) -> TranscriptionDocument:
         source_path=payload["source_path"], provider_name=payload["provider_name"],
         segments=segments, source_media=payload.get("source_media"),
         detected_language=payload.get("detected_language"),
+        status=payload.get("status", "ok"), warnings=payload.get("warnings", []),
     )
 
 
