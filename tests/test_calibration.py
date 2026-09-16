@@ -38,7 +38,7 @@ class CorrectionUnitSplittingTest(unittest.TestCase):
 
 
 class _FakeCorrector:
-    def __init__(self, responses: list[str]) -> None:
+    def __init__(self, responses: list[str | Exception]) -> None:
         self.responses = iter(responses)
         self.calls: list[tuple[list[str], str, str | None]] = []
 
@@ -49,10 +49,134 @@ class _FakeCorrector:
         retry_error: str | None = None,
     ) -> str:
         self.calls.append((context, target, retry_error))
-        return next(self.responses)
+        response = next(self.responses)
+        if isinstance(response, Exception):
+            raise response
+        return response
 
 
 class CalibrationServiceTest(unittest.TestCase):
+    def test_rejects_spans_containing_or_introducing_non_english_lexical_text(self):
+        for source, replacement in [
+            ("Hello 你好", "Hi"),
+            ("Hello", "Hi 你好"),
+            ("Hello 你好", "Hello 再见"),
+            ("Hello мир", "Hi"),
+            ("Hello e\u0301", "Hi"),
+        ]:
+            with self.subTest(source=source, replacement=replacement):
+                target = source + "."
+                document = TranscriptionDocument(
+                    source_path="mixed.wav", provider_name="fake",
+                    segments=[Segment("seg-1", target, 0.0, 1.0, "en")],
+                )
+                corrector = _FakeCorrector([json.dumps({"proposals": [{
+                    "start": 0, "end": len(source), "source": source,
+                    "replacement": replacement, "score": 5,
+                }]})])
+
+                calibrated, result = calibrate_document(document, corrector=corrector)
+
+                self.assertEqual(calibrated.segments[0].text, target)
+                self.assertIsNone(calibrated.segments[0].original_text)
+                self.assertEqual(result.rejected_proposals[0]["code"], "non_english_span")
+                self.assertEqual(len(corrector.calls), 1)
+
+    def test_rejects_punctuation_edits_even_when_sentence_count_is_preserved(self):
+        for source, replacement in [
+            ("Hello.", "Hello?"),
+            ("Hello friend.", "Hello, friend."),
+            ("Hello, friend.", "Hello friend."),
+            ("Hello, friend.", "Hello friend,."),
+            ("“Hello.”", '"Hello."'),
+            ("Don't worry.", "Dont worry."),
+            ("John’s friend.", "John's friend."),
+            ("rock-n-roll.", "rockn-roll."),
+        ]:
+            with self.subTest(source=source, replacement=replacement):
+                document = TranscriptionDocument(
+                    source_path="punctuation.wav", provider_name="fake",
+                    segments=[Segment("seg-1", source, 0.0, 1.0, "en")],
+                )
+                corrector = _FakeCorrector([json.dumps({"proposals": [{
+                    "start": 0, "end": len(source), "source": source,
+                    "replacement": replacement, "score": 5,
+                }]})])
+
+                calibrated, result = calibrate_document(document, corrector=corrector)
+
+                self.assertEqual(calibrated.segments[0].text, source)
+                self.assertEqual(result.rejected_proposals[0]["code"], "punctuation_changed")
+                self.assertEqual(len(corrector.calls), 1)
+
+    def test_preserves_adjacent_chinese_and_unchanged_punctuation_during_word_corrections(self):
+        for target, source, replacement, expected in [
+            ("你好two世界.", "two", "to", "你好to世界."),
+            ("Hello, Jhon’s here.", "Jhon’s", "John’s", "Hello, John’s here."),
+        ]:
+            with self.subTest(target=target):
+                document = TranscriptionDocument(
+                    source_path="valid.wav", provider_name="fake",
+                    segments=[Segment("seg-1", target, 0.0, 1.0, "en")],
+                )
+                start = target.index(source)
+                corrector = _FakeCorrector([json.dumps({"proposals": [{
+                    "start": start, "end": start + len(source), "source": source,
+                    "replacement": replacement, "score": 5,
+                }]})])
+
+                calibrated, result = calibrate_document(document, corrector=corrector)
+
+                self.assertEqual(calibrated.segments[0].text, expected)
+                self.assertEqual(result.metrics.applied_proposal_count, 1)
+
+    def test_retries_transient_generation_failure_with_the_same_target_and_context(self):
+        document = TranscriptionDocument(
+            source_path="retry.wav", provider_name="fake",
+            segments=[Segment("seg-1", "We want two go.", 0.0, 1.0, "en")],
+        )
+        corrector = _FakeCorrector([
+            CalibrationGenerationError("temporary backend failure"),
+            json.dumps({"proposals": [{"start": 8, "end": 11, "source": "two",
+                                      "replacement": "to", "score": 5}]}),
+        ])
+
+        calibrated, result = calibrate_document(document, corrector=corrector)
+
+        self.assertEqual(calibrated.segments[0].text, "We want to go.")
+        self.assertEqual(result.status, "success")
+        self.assertEqual(result.unit_errors, [])
+        self.assertEqual(corrector.calls, [([], "We want two go.", None)] * 2)
+        self.assertEqual(result.metrics.model_request_count, 2)
+        self.assertEqual(result.metrics.retry_count, 1)
+
+    def test_generation_failures_share_four_attempt_budget_and_keep_later_units(self):
+        for failures in [
+            [CalibrationGenerationError("temporary failure")] * 4,
+            ["invalid JSON", CalibrationGenerationError("temporary failure"),
+             "invalid JSON", CalibrationGenerationError("temporary failure")],
+        ]:
+            with self.subTest(failures=failures):
+                document = TranscriptionDocument(
+                    source_path="retry.wav", provider_name="fake",
+                    segments=[Segment("seg-1", "Keep this. We want two go.", 0.0, 2.0, "en")],
+                )
+                corrector = _FakeCorrector(failures + [json.dumps({"proposals": [{
+                    "start": 8, "end": 11, "source": "two", "replacement": "to", "score": 5,
+                }]})])
+
+                calibrated, result = calibrate_document(document, corrector=corrector)
+
+                self.assertEqual(calibrated.segments[0].text, "Keep this. We want to go.")
+                self.assertEqual(result.status, "partial")
+                self.assertEqual(result.unit_errors, [{
+                    "unit_id": "seg-1:unit-1", "attempts": 4, "code": "generation_failed",
+                }])
+                self.assertEqual(result.metrics.model_request_count, 5)
+                self.assertEqual(result.metrics.retry_count, 3)
+                self.assertEqual(result.metrics.unit_error_count, 1)
+                self.assertEqual(corrector.calls[-1], (["Keep this."], "We want two go.", None))
+
     def test_applies_variable_length_correction_and_rolls_it_into_cross_segment_context(
         self,
     ) -> None:

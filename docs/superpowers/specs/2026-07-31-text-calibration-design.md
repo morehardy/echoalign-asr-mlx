@@ -316,7 +316,7 @@ One target may make at most four model calls:
 initial attempt + at most three retries
 ```
 
-Retry only response-structure failures:
+Retry response-structure failures:
 
 - invalid JSON;
 - missing or non-array `proposals`;
@@ -324,8 +324,16 @@ Retry only response-structure failures:
 - incorrect field types; or
 - a score outside the integer range 1 through 5.
 
-Each retry receives the same correction context plus a concise description of
-the structure error. Raw invalid model output is not persisted.
+Per-unit generation failures (including prompt/tokenizer preparation and schema
+processor failures after model initialization) also consume this same four-call
+budget. This extends the original structure-only retry policy so a transient
+backend error does not immediately fail the unit. Model initialization failure
+still fails calibration immediately and is not retried.
+
+Each retry receives the same correction context and target. A response-structure
+failure adds a concise description of the structure error; a generation failure
+clears that feedback and retries without backend exception text in the prompt.
+Raw invalid model output is not persisted.
 
 Do not retry deterministic proposal-validation failures such as a source
 mismatch, invalid position, or overlap. If all three retries are exhausted,
@@ -354,6 +362,14 @@ Each high-confidence candidate must pass:
 7. `replacement` contains no newline.
 8. Applying the proposal preserves exactly one correction unit and does not
    add, remove, split, or merge sentence boundaries.
+9. Neither `source` nor `replacement` contains letters, combining marks, or
+   numbers outside ASCII. This follows the adapter's ASCII English-span boundary;
+   mixed-language targets remain eligible when the proposed edit covers only
+   their English portion.
+10. Punctuation and symbols remain unchanged. Strip the common prefix and
+    suffix of `source` and `replacement`, then reject punctuation or symbols
+    inside either remaining edit span. This also rejects punctuation movement;
+    broad edits spanning punctuation must be proposed as separate word edits.
 
 Completely identical proposals are deduplicated.
 
@@ -372,8 +388,10 @@ empty_source
 empty_replacement
 no_change
 no_english_source
+non_english_span
 newline_replacement
 structure_changed
+punctuation_changed
 overlapping_ranges
 ```
 
@@ -493,7 +511,7 @@ Status meanings:
 
 - `success`: the model initialized and every eligible unit completed, even if
   some high-confidence proposals were deterministically rejected.
-- `partial`: at least one unit exhausted response retries; other valid
+- `partial`: at least one unit exhausted response/generation retries; other valid
   corrections remain applied.
 - `failed`: the calibration runtime or model could not initialize; the
   transcription remains uncalibrated.

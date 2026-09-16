@@ -272,7 +272,9 @@ below that fixture's thresholds of 95% and 70%. The separate
 [audio/reference pilot](tests/evaluation/calibration/reference-v1/README.md)
 applied no corrections across 24 development clips: WER remained 2.71%
 (14 / 517 words), and modification precision was undefined. These pilots do
-not establish production quality.
+not establish production quality. They describe the recorded implementation;
+the validation and failure-handling fixes made during PR review have not been
+evaluated in a new model run.
 
 The first calibrated run downloads the pinned, approximately 2.9GB model into
 the standard Hugging Face cache. The model is loaded lazily only when an
@@ -281,7 +283,8 @@ the remaining files in the command.
 
 Only model proposals scored 4 or 5 are considered. Exact offsets, source text,
 overlaps, newlines, and sentence structure are checked programmatically before
-application. Scores 1 through 3 are discarded.
+application. Proposed spans cannot include non-English lexical content or alter
+punctuation. Scores 1 through 3 are discarded.
 
 Sentence-level SRT, VTT, and JSON output uses calibrated text. Original ASR
 tokens and token timestamps remain acoustic evidence, so `--granularity token`
@@ -289,6 +292,11 @@ continues to emit the original token text. A changed JSON segment includes
 `original_text`; unchanged segments preserve the existing schema.
 
 Calibration failure never removes the ASR outputs:
+
+Invalid responses and per-unit generation failures share a maximum of four
+attempts. Prompt/tokenizer preparation errors follow the same failure path;
+after the budget is exhausted, that unit stays unchanged and processing
+continues. Model initialization failures are not retried.
 
 - `success` writes calibrated outputs and returns exit code `0`;
 - `partial` preserves successful corrections, leaves failed units unchanged,

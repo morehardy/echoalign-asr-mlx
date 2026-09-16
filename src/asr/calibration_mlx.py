@@ -222,26 +222,22 @@ class MlxVlmCorrector:
         retry_error: str | None = None,
     ) -> str:
         self._ensure_loaded()
-        messages = [
-            {"role": "system", "content": _SYSTEM_PROMPT},
-            {
-                "role": "user",
-                "content": _build_user_prompt(context, target, retry_error),
-            },
-        ]
-        prompt = self._apply_chat_template(
-            self._processor,
-            self._model.config,
-            messages,
-            enable_thinking=False,
-        )
-        tokenizer = (
-            self._processor.tokenizer
-            if hasattr(self._processor, "tokenizer")
-            else self._processor
-        )
         schema_processor: Any = None
         try:
+            messages = [
+                {"role": "system", "content": _SYSTEM_PROMPT},
+                {
+                    "role": "user",
+                    "content": _build_user_prompt(context, target, retry_error),
+                },
+            ]
+            prompt = self._apply_chat_template(
+                self._processor,
+                self._model.config,
+                messages,
+                enable_thinking=False,
+            )
+            tokenizer = getattr(self._processor, "tokenizer", self._processor)
             schema_processor = self._build_schema_processor(
                 tokenizer,
                 _RESPONSE_SCHEMA,
@@ -256,6 +252,7 @@ class MlxVlmCorrector:
                 logits_processors=[schema_processor],
                 verbose=False,
             )
+            return str(output.text)
         except Exception as exc:
             raise CalibrationGenerationError(
                 f"calibration generation failed: {exc}"
@@ -264,12 +261,12 @@ class MlxVlmCorrector:
             cleanup_error: Exception | None = None
             reset_schema_processor: Any = None
             if schema_processor is not None:
-                reset_schema_processor = getattr(schema_processor, "reset", None)
-                if callable(reset_schema_processor):
-                    try:
+                try:
+                    reset_schema_processor = getattr(schema_processor, "reset", None)
+                    if callable(reset_schema_processor):
                         reset_schema_processor()
-                    except Exception as exc:
-                        cleanup_error = exc
+                except Exception as exc:
+                    cleanup_error = exc
             schema_processor = None
             reset_schema_processor = None
             gc.collect()
@@ -277,4 +274,3 @@ class MlxVlmCorrector:
                 raise CalibrationGenerationError(
                     f"calibration schema cleanup failed: {cleanup_error}"
                 ) from cleanup_error
-        return str(output.text)

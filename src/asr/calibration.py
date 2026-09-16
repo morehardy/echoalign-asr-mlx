@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from collections import deque
 from dataclasses import dataclass, field
 from typing import Any, Deque, List, Protocol, Sequence, Tuple
@@ -249,6 +250,37 @@ def _structure_is_preserved(original: str, proposal: CorrectionProposal) -> bool
     )
 
 
+def _has_non_english_lexical_content(text: str) -> bool:
+    # Match the adapter's ASCII English spans, including when a model proposes
+    # a wider phrase containing another script or a combining character.
+    return any(
+        not char.isascii() and unicodedata.category(char)[0] in "LMN"
+        for char in text
+    )
+
+
+def _punctuation_is_preserved(source: str, replacement: str) -> bool:
+    # Unchanged surrounding punctuation is allowed, e.g. Jhon's -> John's.
+    # Require the actual edit to stay within a punctuation-free span. Comparing
+    # punctuation counts alone would permit moving a comma to another word.
+    start = 0
+    while (
+        start < min(len(source), len(replacement))
+        and source[start] == replacement[start]
+    ):
+        start += 1
+    source_end, replacement_end = len(source), len(replacement)
+    while (
+        source_end > start
+        and replacement_end > start
+        and source[source_end - 1] == replacement[replacement_end - 1]
+    ):
+        source_end -= 1
+        replacement_end -= 1
+    changed = source[start:source_end] + replacement[start:replacement_end]
+    return not any(unicodedata.category(char)[0] in "PS" for char in changed)
+
+
 def _base_rejection_code(
     target: str, proposal: CorrectionProposal
 ) -> str | None:
@@ -264,10 +296,17 @@ def _base_rejection_code(
         return "no_change"
     if not _ENGLISH_RE.search(proposal.source):
         return "no_english_source"
+    if (
+        _has_non_english_lexical_content(proposal.source)
+        or _has_non_english_lexical_content(proposal.replacement)
+    ):
+        return "non_english_span"
     if "\n" in proposal.replacement or "\r" in proposal.replacement:
         return "newline_replacement"
     if not _structure_is_preserved(target, proposal):
         return "structure_changed"
+    if not _punctuation_is_preserved(proposal.source, proposal.replacement):
+        return "punctuation_changed"
     return None
 
 
@@ -366,16 +405,21 @@ def calibrate_document(
                     result.error = str(exc)
                     return document, result
                 except CalibrationGenerationError:
-                    result.status = "partial"
-                    result.unit_errors.append(
-                        {
-                            "unit_id": unit_id,
-                            "attempts": attempt,
-                            "code": "generation_failed",
-                        }
-                    )
-                    result.metrics.unit_error_count += 1
-                    break
+                    # A backend failure is not a response-schema error. Retry
+                    # the same target without stale schema feedback or raw
+                    # backend exception text in the model prompt.
+                    retry_error = None
+                    if attempt == 4:
+                        result.status = "partial"
+                        result.unit_errors.append(
+                            {
+                                "unit_id": unit_id,
+                                "attempts": attempt,
+                                "code": "generation_failed",
+                            }
+                        )
+                        result.metrics.unit_error_count += 1
+                    continue
                 try:
                     proposals = _parse_response(raw)
                     break

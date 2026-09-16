@@ -4,10 +4,12 @@ import subprocess
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 import asr
 from asr.calibration import CalibrationMetrics, CalibrationResult
+from asr.calibration_mlx import MlxVlmCorrector
 from asr.cli import (
     _version_callback,
     app,
@@ -17,7 +19,7 @@ from asr.cli import (
     resolve_cli_inputs,
     run_environment_preflight,
 )
-from asr.models import TranscriptionDocument
+from asr.models import Segment, TranscriptionDocument
 
 
 class CliTyperBootstrapTest(unittest.TestCase):
@@ -262,6 +264,49 @@ class CliCompletionInstallTest(unittest.TestCase):
 
 
 class CliObservabilityIntegrationTest(unittest.TestCase):
+    def test_prompt_preparation_failures_still_write_asr_outputs_and_calibration_audit(self):
+        class BrokenTokenizer:
+            @property
+            def tokenizer(self):
+                raise RuntimeError("tokenizer unavailable")
+
+        for stage in ["template", "tokenizer"]:
+            with self.subTest(stage=stage), TemporaryDirectory() as tmp:
+                source = Path(tmp) / "demo.wav"
+                source.touch()
+                output_root = Path(tmp) / "outputs"
+                document = TranscriptionDocument(
+                    source_path=str(source), provider_name="fake",
+                    segments=[Segment("seg-1", "Keep this text.", 0.0, 2.0, "en")],
+                )
+                corrector = MlxVlmCorrector()
+                corrector._model = SimpleNamespace(config=object())
+                corrector._processor = BrokenTokenizer() if stage == "tokenizer" else object()
+                corrector._apply_chat_template = Mock(return_value="prompt")
+                if stage == "template":
+                    corrector._apply_chat_template.side_effect = ValueError("incompatible template")
+                corrector._generate = Mock()
+                stderr = io.StringIO()
+                with patch("asr.cli.process_media_file", return_value=document), \
+                     patch("asr.cli.run_environment_preflight", return_value=(True, "")), \
+                     patch("asr.cli.create_calibration_corrector", return_value=corrector), \
+                     patch("sys.stderr", stderr), patch("sys.stdout", io.StringIO()):
+                    exit_code = main([str(source), "--calibrate", "--verbose"])
+
+                self.assertEqual(exit_code, 1)
+                for suffix in [".srt", ".vtt", ".json", ".calibration.json", ".metrics.json"]:
+                    self.assertTrue((output_root / f"demo{suffix}").exists(), suffix)
+                payload = json.loads((output_root / "demo.json").read_text())
+                audit = json.loads((output_root / "demo.calibration.json").read_text())
+                self.assertEqual(payload["segments"], document.to_dict()["segments"])
+                self.assertEqual(audit["status"], "partial")
+                self.assertEqual(audit["unit_errors"], [{
+                    "unit_id": "seg-1:unit-1", "attempts": 4, "code": "generation_failed",
+                }])
+                self.assertEqual(corrector._apply_chat_template.call_count, 4)
+                corrector._generate.assert_not_called()
+                self.assertIn("calibration partial", stderr.getvalue())
+
     @patch("asr.cli.create_calibration_corrector")
     @patch("asr.cli.calibrate_document")
     @patch("asr.cli.discover_cli_sources")
